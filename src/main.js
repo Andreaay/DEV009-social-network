@@ -7,6 +7,7 @@ import {Events} from './components/Events.js';
 import {Newpost} from './components/Newpost.js';
 import {Profile} from './components/Profile.js';
 
+
 const routes = [
   {path: '/', component: Home},
   {path: '/login', component: Login},
@@ -29,7 +30,6 @@ function navigateTo(hash) {
         route.path,
         window.location.origin + route.path,
     );
-
     if (root.firstChild) {
       root.removeChild(root.firstChild);
     }

@@ -5,10 +5,10 @@ export const Home = (navigateTo) => {
   title.classList.add('title');
 
   const welcome = document.createElement('p');
-  welcome.innerHTML= 'Welcome';
+  welcome.innerHTML = 'Welcome';
 
   const greeting = document.createElement('p');
-  greeting.innerHTML= 'Stay connected with musicians, events, posts and more.';
+  greeting.innerHTML = 'Stay connected with musicians, events, posts and more.';
 
   const buttonRegister = document.createElement('button');
   const buttonLogin = document.createElement('button');
