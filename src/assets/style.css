@@ -19,3 +19,16 @@
 .button-container button {
     margin-bottom: 0.5em;
 }
+@media (max-width: 768px) {
+    .button-container  {
+      flex-direction: column;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+  @media (min-width: 769px) {
+    .button-container {
+      flex-direction: row; 
+      position: static;
+    }}
