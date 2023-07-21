@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { GoogleAuthProvider } from 'firebase/auth';
 import { signinUser, enterGoogle } from '../lib/account';
 
@@ -11,7 +12,6 @@ export const Login = (navigateTo) => {
   const inputPassword = document.createElement('input');
   const loginError = document.createElement('h5');
   loginError.innerText = '';
-  console.log(loginError);
   inputPassword.id = 'enterPassword';
   const password = document.createElement('p');
   password.innerHTML = 'Enter your password';
@@ -28,7 +28,7 @@ export const Login = (navigateTo) => {
       .catch((error) => { // const errorCode = error.code;
         const errorMessage = error.message;
         loginError.innerText = 'Password or Email invalid';
-        console.log(errorMessage);
+        return (errorMessage);
       });
   });
 
@@ -52,7 +52,7 @@ export const Login = (navigateTo) => {
         const credential = GoogleAuthProvider.credentialFromError(error);
         const errorMessage = error.message;
         loginError.innerText = 'Invalid  Accound';
-        console.log(errorMessage + credential);
+        return (credential, errorMessage);
       });
   });
 
