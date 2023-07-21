@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 import { GoogleAuthProvider } from 'firebase/auth';
 import { addUser, enterGoogle } from '../lib/account';
 
