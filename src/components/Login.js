@@ -1,4 +1,5 @@
-import { signinUser } from '../lib/account';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { signinUser, enterGoogle } from '../lib/account';
 
 export const Login = (navigateTo) => {
   const homeDiv = document.createElement('div');
@@ -33,11 +34,32 @@ export const Login = (navigateTo) => {
 
   const buttonBack = document.createElement('button');
   const buttonGoogle = document.createElement('button');
+  buttonGoogle.textContent = 'Continue with Google';
+  buttonGoogle.addEventListener('click', () => {
+    enterGoogle()
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        navigateTo('/start');
+        const token = credential.accessToken;
+        // // The signed-in user info.
+        const { user } = result;
+        return (user, token);
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      })
+      .catch((error) => {
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        const errorMessage = error.message;
+        loginError.innerText = 'Invalid  Accound';
+        console.log(errorMessage + credential);
+      });
+  });
+
   title.textContent = 'Sign in';
   button.textContent = 'Sign In';
 
   buttonBack.textContent = 'Go back';
-  buttonGoogle.textContent = 'Continue with Google';
 
   inputEmail.placeholder = 'Email address';
   inputPassword.placeholder = 'Password';
