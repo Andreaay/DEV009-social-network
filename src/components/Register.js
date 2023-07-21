@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider } from 'firebase/auth';
 import { addUser, enterGoogle } from '../lib/account';
 
 export const Register = (navigateTo) => {
@@ -30,15 +30,15 @@ export const Register = (navigateTo) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         navigateTo('/start');
         const token = credential.accessToken;
-        // The signed-in user info.
         const { user } = result;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+        return (user, token);
+        // // IdP data available using getAdditionalUserInfo(result)
+        // // ...
       })
       .catch((error) => {
         const credential = GoogleAuthProvider.credentialFromError(error);
         const errorMessage = error.message;
-        loginError.innerText = 'Accound invalid';
+        loginError.innerText = 'Invalid  Accound';
         console.log(errorMessage + credential);
       });
   });
