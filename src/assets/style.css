@@ -20,7 +20,7 @@
     margin-bottom: 0.5em;
 }
 @media (max-width: 768px) {
-    .button-container  {
+  .bottom-menu {
       flex-direction: column;
       position: fixed;
       bottom: 0;
@@ -28,7 +28,7 @@
     }
   }
   @media (min-width: 769px) {
-    .button-container {
+    .bottom-menu{
       flex-direction: row; 
       position: static;
     }}

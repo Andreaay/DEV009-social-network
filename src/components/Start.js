@@ -2,12 +2,10 @@ export const Start = (navigateTo) => {
   const homeDiv = document.createElement('div');
   const title = document.createElement('h1');
   const buttonStart = document.createElement('button');
-  const buttonEvents= document.createElement('button');
+  const buttonEvents = document.createElement('button');
   const buttonNewPost = document.createElement('button');
   const buttonProfile = document.createElement('button');
   const buttonLogout = document.createElement('button');
-
-  
 
   buttonStart.textContent = 'Home';
   buttonEvents.textContent = 'Events';
@@ -49,5 +47,3 @@ export const Start = (navigateTo) => {
 
   return homeDiv;
 };
-
-
