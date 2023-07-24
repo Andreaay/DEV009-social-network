@@ -42,9 +42,6 @@ export const Newpost = (navigateTo) => {
     // }
   });
 
-  homeDiv.append(title, post, inputPost, buttonShare, buttonStart, buttonEvents);
-  homeDiv.append(buttonNewPost, buttonProfile, buttonLogout);
-
   const bottomMenuDiv = document.createElement('div');
   bottomMenuDiv.classList.add('bottom-menu');
 
@@ -54,7 +51,10 @@ export const Newpost = (navigateTo) => {
   bottomMenuDiv.append(buttonProfile);
   bottomMenuDiv.append(buttonLogout);
 
+  homeDiv.append(title);
   homeDiv.append(bottomMenuDiv);
+  homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);
+  homeDiv.append(buttonNewPost, buttonProfile, buttonLogout);
 
   return homeDiv;
 };
