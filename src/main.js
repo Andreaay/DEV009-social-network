@@ -1,3 +1,5 @@
+/* eslint-disable import/named */
+/* eslint-disable import/no-cycle */
 /* eslint-disable require-jsdoc */
 import { Home } from './components/Home';
 import { Register } from './components/Register';
@@ -43,3 +45,4 @@ window.onpopstate = () => {
 };
 
 navigateTo(window.location.pathname || defaultRoute);
+export { navigateTo };

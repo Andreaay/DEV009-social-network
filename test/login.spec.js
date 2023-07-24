@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable no-sequences */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-undef */
@@ -5,24 +6,62 @@
 /* eslint-disable import/named */
 // import { } from 'jest';
 import { expect, jest } from '@jest/globals';
-import { signinUser } from '../src/components/Login.js';
+import { signinUser } from '../src/lib/account';
+// eslint-disable-next-line import/no-cycle
+import { Login, navigateTo } from '../src/main';
+import { '/start' } from '../src/components';
 
-function testsigninUser(email, password) {
-  if (email, password !== 'continue with google') {
-    signinUser(email, password);
-  }
-}
+jest.mock('../src/lib/account');
 
-describe('signinUser', () => {
-  test('Test para validar login con email y password', () => {
-    const signInWithEmailAndPassword = jest.fn();
-    testsigninUser(signInWithEmailAndPassword, 'email, password');
-    expect(signInWithEmailAndPassword).toHaveBeenCalled(email, password);
+describe('Login', () => {
+  beforeEach(() => {
+    document.body.appendChild(Login());
+  });
+  test('Se creao el boton correctamente', () => {
+    const bottonLogin = document.querySelector('button');
+    expect(bottonLogin).toBeTruthy();
+  });
+  test('Al hacer click al boton redirecciona si la promesa esta bien', () => {
+    signinUser.mockImplementationOnce((email, password) => {
+      console.log(password);
+      return Promise.resolve({ user: { userCredential: 123, email } });
+    });
+    const bottonLogin = document.querySelector('button');
+    bottonLogin.click();
+    expect(navigateTo).toHaveBeenCalled('/start');
+    // await nextTick()
+  });
+});
+
+/*  test('Test para validar login con email y password', () => {
+    const navigateTo('/start') = jest.fn();
+    signinUser(signInWithEmailAndPassword, 'email, password');
+    expect(navigateTo).toHaveBeenCalled('/start');
   });
 
   test('Test para no validar login', () => {
-    const signInWithEmailAndPassword = jest.fn();
-    testsigninUser(signInWithEmailAndPassword, 'continue with google');
-    expect(signInWithEmailAndPassword).not.toHaveBeenCalled(email, password);
+    const navigateTo = jest.fn();
+    signinUser(signInWithEmailAndPassword, 'continue with google');
+    expect(navigateTo).not.toHaveBeenCalled('/start'); */
+// });
+
+/* function drinkAll(callback, flavour) {
+  if (flavour !== 'octopus') {
+    callback(flavour);
+  }
+}
+
+  describe('drinkAll', () => {
+  test('drinks something lemon-flavoured', () => {
+    const drink = jest.fn();
+    drinkAll(drink, 'lemon');
+    expect(drink).toHaveBeenCalled();
   });
-});
+
+  test('does not drink something octopus-flavoured', () => {
+    const drink = jest.fn();
+    drinkAll(drink, 'octopus');
+    expect(drink).not.toHaveBeenCalled();
+  });
+}); */
+// await nextTick()
