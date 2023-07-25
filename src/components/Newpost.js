@@ -41,14 +41,11 @@ export const Newpost = (navigateTo) => {
     //  fechaBD = serverTimeStamp()
     // }
   });
-  
   homeDiv.append(title);
   homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);
   homeDiv.append(buttonNewPost, buttonProfile, buttonLogout);
-  
   const bottomMenuDiv = document.createElement('div');
   bottomMenuDiv.classList.add('bottom-menu');
-  
   homeDiv.append(bottomMenuDiv);
   bottomMenuDiv.append(buttonStart);
   bottomMenuDiv.append(buttonEvents);

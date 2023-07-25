@@ -22,7 +22,7 @@ export const Login = (navigateTo) => {
       .then((userCredential) => {
         // Signed in
         const { user } = userCredential;
-        alert('Se logró', user);
+        console.log(user);
         navigateTo('/start');
       })
       .catch((error) => { // const errorCode = error.code;

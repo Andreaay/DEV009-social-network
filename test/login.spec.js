@@ -8,8 +8,8 @@
 import { expect, jest } from '@jest/globals';
 import { signinUser } from '../src/lib/account';
 // eslint-disable-next-line import/no-cycle
-import { Login, navigateTo } from '../src/main';
-import { '/start' } from '../src/components';
+import { Login } from '../src/components/Login';
+import { navigateTo } from '../src/main';
 
 jest.mock('../src/lib/account');
 
@@ -21,15 +21,19 @@ describe('Login', () => {
     const bottonLogin = document.querySelector('button');
     expect(bottonLogin).toBeTruthy();
   });
-  test('Al hacer click al boton redirecciona si la promesa esta bien', () => {
+  test('Al hacer click al boton redirecciona si la promesa esta bien', async () => {
     signinUser.mockImplementationOnce((email, password) => {
       console.log(password);
       return Promise.resolve({ user: { userCredential: 123, email } });
     });
     const bottonLogin = document.querySelector('button');
+    const navigateToSpy = jest.spyOn(window, navigateTo);
     bottonLogin.click();
-    expect(navigateTo).toHaveBeenCalled('/start');
-    // await nextTick()
+    expect(navigateToSpy).toHaveBeenCalled();
+    navigateToSpy.mockRestore();
+    await process.nextTick.resolve(() => {
+      console.log(navigateTo);
+    });
   });
 });
 
