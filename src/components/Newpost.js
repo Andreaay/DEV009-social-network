@@ -1,3 +1,5 @@
+import { logOutUser } from '../lib/account';
+
 export const Newpost = (navigateTo) => {
   const homeDiv = document.createElement('div');
   const title = document.createElement('h1');
@@ -11,6 +13,15 @@ export const Newpost = (navigateTo) => {
   const buttonNewPost = document.createElement('button');
   const buttonProfile = document.createElement('button');
   const buttonLogout = document.createElement('button');
+  buttonLogout.addEventListener('click', () => {
+    const alertOutUser = (callback) => {
+      if (callback) {
+        navigateTo('/');
+        console.log(alertOutUser);
+      }
+    };
+    logOutUser(alertOutUser);
+  });
 
   buttonStart.textContent = 'Home';
   buttonShare.textContent = 'Share';
@@ -29,9 +40,7 @@ export const Newpost = (navigateTo) => {
   buttonProfile.addEventListener('click', () => {
     navigateTo('/profile');
   });
-  buttonLogout.addEventListener('click', () => {
-    navigateTo('/');
-  });
+
   buttonShare.addEventListener('click', () => {
     const content = inputPost.value;
     console.log(content);
@@ -41,14 +50,11 @@ export const Newpost = (navigateTo) => {
     //  fechaBD = serverTimeStamp()
     // }
   });
-
   homeDiv.append(title);
   homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);
   homeDiv.append(buttonNewPost, buttonProfile, buttonLogout);
-
   const bottomMenuDiv = document.createElement('div');
   bottomMenuDiv.classList.add('bottom-menu');
-
   homeDiv.append(bottomMenuDiv);
   bottomMenuDiv.append(buttonStart);
   bottomMenuDiv.append(buttonEvents);

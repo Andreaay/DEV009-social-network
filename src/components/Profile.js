@@ -1,3 +1,5 @@
+import { logOutUser } from '../lib/account';
+
 export const Profile = (navigateTo) => {
   const homeDiv = document.createElement('div');
   const title = document.createElement('h1');
@@ -6,6 +8,15 @@ export const Profile = (navigateTo) => {
   const buttonNewPost = document.createElement('button');
   const buttonProfile = document.createElement('button');
   const buttonLogout = document.createElement('button');
+  buttonLogout.addEventListener('click', () => {
+    const alertOutUser = (callback) => {
+      if (callback) {
+        navigateTo('/');
+        console.log(alertOutUser);
+      }
+    };
+    logOutUser(alertOutUser);
+  });
 
   buttonStart.textContent = 'Home';
   buttonEvents.textContent = 'Events';
@@ -22,9 +33,6 @@ export const Profile = (navigateTo) => {
   });
   buttonNewPost.addEventListener('click', () => {
     navigateTo('/newpost');
-  });
-  buttonLogout.addEventListener('click', () => {
-    navigateTo('/');
   });
 
   homeDiv.append(title);
