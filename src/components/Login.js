@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 import { GoogleAuthProvider } from 'firebase/auth';
-import { signinUser, enterGoogle } from '../lib/account';
+import { signinUser, enterGoogle, persistenceUser} from '../lib/account';
+
 
 export const Login = (navigateTo) => {
   const homeDiv = document.createElement('div');
@@ -15,23 +16,21 @@ export const Login = (navigateTo) => {
   inputPassword.id = 'enterPassword';
   const password = document.createElement('p');
   password.innerHTML = 'Enter your password';
+
   const button = document.createElement('button');
-
   button.addEventListener('click', () => {
-    signinUser(inputEmail.value, inputPassword.value)
-      .then((userCredential) => {
-        // Signed in
-        const { user } = userCredential;
-        console.log(user);
+    const alertSignUser = (callback) => {
+      if (callback) {
         navigateTo('/start');
-      })
-      .catch((error) => { // const errorCode = error.code;
-        const errorMessage = error.message;
+        persistenceUser(true)
+      }
+      else {
         loginError.innerText = 'Password or Email invalid';
-        return (errorMessage);
-      });
+      }
+    };
+    signinUser(inputEmail.value, inputPassword.value, alertSignUser);
+    persistenceUser(inputEmail.value, inputPassword.value, alertSignUser);
   });
-
   const buttonBack = document.createElement('button');
   const buttonGoogle = document.createElement('button');
   buttonGoogle.textContent = 'Continue with Google';
