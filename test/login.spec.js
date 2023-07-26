@@ -9,7 +9,7 @@ import { expect, jest } from '@jest/globals';
 import { signinUser } from '../src/lib/account';
 // eslint-disable-next-line import/no-cycle
 import { Login, navigateTo } from '../src/main';
-import { '/start' } from '../src/components';
+// import { '/start' } from '../src/components';
 
 jest.mock('../src/lib/account');
 
@@ -17,17 +17,17 @@ describe('Login', () => {
   beforeEach(() => {
     document.body.appendChild(Login());
   });
-  test('Se creao el boton correctamente', () => {
-    const bottonLogin = document.querySelector('button');
-    expect(bottonLogin).toBeTruthy();
+  test('Se creao el botón correctamente', () => {
+    const buttonLogin = document.querySelector('button');
+    expect(buttonLogin).toBeTruthy();
   });
-  test('Al hacer click al boton redirecciona si la promesa esta bien', () => {
+  test('Al hacer click al botón redirecciona si la promesa esta bien', async () => {
     signinUser.mockImplementationOnce((email, password) => {
       console.log(password);
       return Promise.resolve({ user: { userCredential: 123, email } });
     });
-    const bottonLogin = document.querySelector('button');
-    bottonLogin.click();
+    const buttonLogin = document.querySelector('button');
+    buttonLogin.click();
     expect(navigateTo).toHaveBeenCalled('/start');
     // await nextTick()
   });
