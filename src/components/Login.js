@@ -1,7 +1,6 @@
 /* eslint-disable no-alert */
 import { GoogleAuthProvider } from 'firebase/auth';
-import { signinUser, enterGoogle, persistenceUser} from '../lib/account';
-
+import { signinUser, enterGoogle } from '../lib/account';
 
 export const Login = (navigateTo) => {
   const homeDiv = document.createElement('div');
@@ -22,14 +21,11 @@ export const Login = (navigateTo) => {
     const alertSignUser = (callback) => {
       if (callback) {
         navigateTo('/start');
-        persistenceUser(true)
-      }
-      else {
+      } else {
         loginError.innerText = 'Password or Email invalid';
       }
     };
     signinUser(inputEmail.value, inputPassword.value, alertSignUser);
-    persistenceUser(inputEmail.value, inputPassword.value, alertSignUser);
   });
   const buttonBack = document.createElement('button');
   const buttonGoogle = document.createElement('button');

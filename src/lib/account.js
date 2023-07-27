@@ -4,31 +4,65 @@ import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { auth } from './firebase';
+
 // import { logOutUser } from "firebase/auth";//boton sign out
 // persistencia de cuenta
 
 export const addUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+/* export function signinUser(email, password, callback) {
+  setPersistence('local', auth, browserSessionPersistence)
+    .then(() => {
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential;
+          console.log(user);
+          callback(true);
+          console.log(setPersistence);
+        })
+      /*   if (callback(true)) {
+      .then(() => {
+        signInWithEmailAndPassword(auth, email, password);
+        callback(true);
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage, errorCode);
+          callback(false);
+        });
+    });
+} */
 export function signinUser(email, password, callback) {
-  signInWithEmailAndPassword(auth, email, password)
+  setPersistence('local', auth, browserSessionPersistence)
     .then((userCredential) => {
       const user = userCredential;
-      console.log(user);
       callback(true);
+      console.log(setPersistence, user);
+
+      return signInWithEmailAndPassword(auth, email, password);
     })
-    if (callback(true)){
-    setPersistence(auth, browserSessionPersistence)
-    .then(() =>{
-      signInWithEmailAndPassword(auth, email, password);
-      callback(true);
-    }).catch((error) => { 
+    .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorMessage, errorCode)
       callback(false);
     });
-} 
+}
+/* const auth = getAuth();//
+setPersistence(auth, setPersistence)
+  .then(() => {
+    const provider = new GoogleAuthProvider();
+    // In memory persistence will be applied to the signed in Google user
+    // even though the persistence was set to 'none' and a page redirect
+    // occurred.
+    return signInWithRedirect(auth, provider);
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });  */ // presistencia con google
 
 export const provider = new GoogleAuthProvider();
+
 export const enterGoogle = () => signInWithPopup(auth, provider);
 
 // boton sign out
