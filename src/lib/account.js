@@ -29,7 +29,7 @@ export function signinUser(email, password, callback) {
     .then((userCredential) => {
       const user = userCredential;
       callback(true);
-      console.log(setPersistence, user);
+      console.log(user);
 
       return signInWithEmailAndPassword(auth, email, password);
     }).catch((error) => {
@@ -68,6 +68,7 @@ export function logOutUser(callback) {
     }).catch((error) => {
       const errorMessage = error;
       callback(false);
+      console.log(errorMessage);
       // An error happened.
     });
 }

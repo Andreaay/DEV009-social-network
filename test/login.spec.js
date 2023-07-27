@@ -18,14 +18,16 @@ describe('Login', () => {
     const bottonLogin = document.querySelector('button');
     expect(bottonLogin).toBeTruthy();
   });
-  test('Al hacer click al boton redirecciona si la promesa esta bien' () => {
+  test('Al hacer click al boton redirecciona si la promesa esta bien', () => {
+    const homeDiv = Login();
+    document.body.replaceChildren(homeDiv);
     signinUser. mockImplementationOnce((email, password, callback) => {
       console.log(password);
-      const callback = true
+      const callback2 = true
       return Promise.resolve({ user: { userCredential: 123, email } })
     })
     const bottonLogin = document.querySelector('button')
-    bottonLogin,click();
+    bottonLogin.click();
     expect(callback).toHaveBeenCalled(true);
   });
 });

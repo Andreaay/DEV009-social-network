@@ -28,6 +28,7 @@ export const Login = (navigateTo) => {
     };
     signinUser(inputEmail.value, inputPassword.value, alertSignUser);
   });
+
   const buttonBack = document.createElement('button');
   const buttonGoogle = document.createElement('button');
   buttonGoogle.textContent = 'Continue with Google';

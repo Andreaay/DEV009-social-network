@@ -1,10 +1,10 @@
-/* eslint-disable eol-last */
+/* /* eslint-disable eol-last */
 /* const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
 initializeApp();
 
 const db = getFirestore();
- */
+ /
 getAuth()// crear perfil
   .createUser({
     email: 'user@example.com',
@@ -23,15 +23,15 @@ getAuth()// crear perfil
     console.log('Error creating new user:', error);
   });
 
-getAuth()// borrar perfil
+/* getAuth()// borrar perfil
   .deleteUser(uid)
   .then(() => {
     console.log('Successfully deleted user');
   })
   .catch((error) => {
     console.log('Error deleting user:', error);
-  });
-
+  }); */
+/* 
 const listAllUsers = (nextPageToken) => { // ver todos los usuarios creados
   // List batch of users, 1000 at a time.
   getAuth()
@@ -51,3 +51,4 @@ const listAllUsers = (nextPageToken) => { // ver todos los usuarios creados
 };
   // Start listing users from the beginning, 1000 at a time.
 listAllUsers();
+ */
