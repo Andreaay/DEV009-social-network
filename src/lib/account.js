@@ -1,6 +1,6 @@
 /* eslint-disable import/no-duplicates */
 /* eslint-disable max-len */
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { browserSessionPersistence, createUserWithEmailAndPassword, setPersistence, signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 // import { setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { auth } from './firebase';
@@ -9,7 +9,7 @@ import { auth } from './firebase';
 // persistencia de cuenta
 
 export const addUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
-export function signinUser(email, password, callback) {
+/* export function signinUser(email, password, callback) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential;
@@ -22,9 +22,9 @@ export function signinUser(email, password, callback) {
       console.log(errorMessage, errorCode)
       callback(false);
     });
-}
+} */
 
-/* export function signinUser(email, password, callback) {
+export function signinUser(email, password, callback) {
   setPersistence(auth, browserSessionPersistence)
     .then((userCredential) => {
       const user = userCredential;
@@ -38,7 +38,8 @@ export function signinUser(email, password, callback) {
       callback(false);
       console.log(errorCode, errorMessage);
     });
-} */
+}
+
 /* const auth = getAuth();//
 setPersistence(auth, setPersistence)
   .then(() => {
@@ -70,20 +71,6 @@ export function logOutUser(callback) {
       // An error happened.
     });
 }
-
-// persistencia de cuenta
-/* export function persistenceUser(callback, email, password) {
-  setPersistence(auth, browserSessionPersistence)
-    .then(() =>{
-      signInWithEmailAndPassword(auth, email, password);
-      callback(true);
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage, errorCode)
-      callback(false);
-    });
-} */
 
 // persistencia con google
 /* import { getAuth, setPersistence, signInWithRedirect, inMemoryPersistence, GoogleAuthProvider } from "firebase/auth";
