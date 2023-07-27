@@ -38,21 +38,22 @@ export function signinUser(email, password, callback) {
 //     });
 // }
 
-/* export function signinUser(email, password, callback) {
-  setPersistence(auth, browserSessionPersistence)
-    .then((userCredential) => {
-      const user = userCredential;
-      callback(true);
-      console.log(setPersistence, user);
+// export function signinUser(email, password, callback) {
+//   setPersistence(auth, browserSessionPersistence)
+//     .then((userCredential) => {
+//       const user = userCredential;
+//       callback(true);
+//       console.log(setPersistence, user);
 
-      return signInWithEmailAndPassword(auth, email, password);
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      callback(false);
-      console.log(errorCode, errorMessage);
-    });
-} */
+//       return signInWithEmailAndPassword(auth, email, password);
+//     }).catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       callback(false);
+//       console.log(errorCode, errorMessage);
+//     });
+// }
+
 /* const auth = getAuth();//
 setPersistence(auth, setPersistence)
   .then(() => {
@@ -83,20 +84,6 @@ export function logOutUser(callback) {
       // An error happened.
     });
 }
-
-// persistencia de cuenta
-/* export function persistenceUser(callback, email, password) {
-  setPersistence(auth, browserSessionPersistence)
-    .then(() =>{
-      signInWithEmailAndPassword(auth, email, password);
-      callback(true);
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage, errorCode)
-      callback(false);
-    });
-} */
 
 // persistencia con google
 /* import { getAuth, setPersistence, signInWithRedirect, inMemoryPersistence, GoogleAuthProvider } from "firebase/auth";
