@@ -36,14 +36,14 @@ export function signinUser(email, password, callback) {
     .then((userCredential) => {
       const user = userCredential;
       callback(true);
-      console.log(setPersistence, user);
+      console.log(signinUser, user);
 
       return signInWithEmailAndPassword(auth, email, password);
-    })
-    .catch((error) => {
+    }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       callback(false);
+      console.log(errorCode, errorMessage);
     });
 }
 /* const auth = getAuth();//
