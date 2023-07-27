@@ -1,6 +1,7 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-alert */
 import { GoogleAuthProvider } from 'firebase/auth';
-import { signinUser, enterGoogle } from '../lib/account';
+import { enterGoogle, signinUser } from '../lib/account';
 
 export const Login = (navigateTo) => {
   const homeDiv = document.createElement('div');
