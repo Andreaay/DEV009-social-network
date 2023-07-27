@@ -81,6 +81,7 @@ export function logOutUser(callback) {
     }).catch((error) => {
       const errorMessage = error;
       callback(false);
+      console.log(errorMessage);
       // An error happened.
     });
 }
