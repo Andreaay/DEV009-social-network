@@ -1,44 +1,58 @@
 /* eslint-disable import/no-duplicates */
 /* eslint-disable max-len */
-import { browserSessionPersistence, createUserWithEmailAndPassword, setPersistence, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-// import { setPersistence, browserSessionPersistence } from 'firebase/auth';
+import { setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { auth } from './firebase';
-
 // import { logOutUser } from "firebase/auth";//boton sign out
 // persistencia de cuenta
 
 export const addUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
-/* export function signinUser(email, password, callback) {
-  signInWithEmailAndPassword(auth, email, password)
+export function signinUser(email, password, callback) {
+  setPersistence(auth, browserSessionPersistence)
+    .then(() => signInWithEmailAndPassword(auth, email, password))
     .then((userCredential) => {
-      const user = userCredential;
+      const { user } = userCredential;
       console.log(user);
       callback(true);
     })
-.catch((error) => {
+    .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorMessage, errorCode)
+      console.log(errorMessage, errorCode);
       callback(false);
-    });
-} */
-
-export function signinUser(email, password, callback) {
-  setPersistence(auth, browserSessionPersistence)
-    .then((userCredential) => {
-      const user = userCredential;
-      callback(true);
-      console.log(user);
-
-      return signInWithEmailAndPassword(auth, email, password);
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      callback(false);
-      console.log(errorCode, errorMessage);
     });
 }
+// export function signinUser(email, password, callback) {
+//   signInWithEmailAndPassword(auth, email, password)
+//     .then((userCredential) => {
+//       const user = userCredential;
+//       console.log(user);
+//       callback(true);
+//     })
+// .catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       console.log(errorMessage, errorCode)
+//       callback(false);
+//     });
+// }
+
+// export function signinUser(email, password, callback) {
+//   setPersistence(auth, browserSessionPersistence)
+//     .then((userCredential) => {
+//       const user = userCredential;
+//       callback(true);
+//       console.log(setPersistence, user);
+
+//       return signInWithEmailAndPassword(auth, email, password);
+//     }).catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       callback(false);
+//       console.log(errorCode, errorMessage);
+//     });
+// }
 
 /* const auth = getAuth();//
 setPersistence(auth, setPersistence)
@@ -56,7 +70,6 @@ setPersistence(auth, setPersistence)
   });  */ // presistencia con google
 
 export const provider = new GoogleAuthProvider();
-
 export const enterGoogle = () => signInWithPopup(auth, provider);
 
 // boton sign out
