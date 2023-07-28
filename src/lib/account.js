@@ -8,7 +8,7 @@ import { auth } from './firebase';
 // persistencia de cuenta
 
 export const addUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
-export function signinUser(email, password, callback) {
+/* export function signinUser(email, password, callback) {
   setPersistence(auth, browserSessionPersistence)
     .then(() => signInWithEmailAndPassword(auth, email, password))
     .then((userCredential) => {
@@ -22,7 +22,7 @@ export function signinUser(email, password, callback) {
       console.log(errorMessage, errorCode);
       callback(false);
     });
-}
+} */
 // export function signinUser(email, password, callback) {
 //   signInWithEmailAndPassword(auth, email, password)
 //     .then((userCredential) => {
@@ -38,21 +38,21 @@ export function signinUser(email, password, callback) {
 //     });
 // }
 
-// export function signinUser(email, password, callback) {
-//   setPersistence(auth, browserSessionPersistence)
-//     .then((userCredential) => {
-//       const user = userCredential;
-//       callback(true);
-//       console.log(setPersistence, user);
+export function signinUser(email, password, callback) {
+  setPersistence(auth, browserSessionPersistence)
+    .then((userCredential) => {
+      const user = userCredential;
+      callback(true);
+      console.log(user);
 
-//       return signInWithEmailAndPassword(auth, email, password);
-//     }).catch((error) => {
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       callback(false);
-//       console.log(errorCode, errorMessage);
-//     });
-// }
+      return signInWithEmailAndPassword(auth, email, password);
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      callback(false);
+      console.log(errorCode, errorMessage);
+    });
+}
 
 /* const auth = getAuth();//
 setPersistence(auth, setPersistence)
