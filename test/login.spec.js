@@ -28,10 +28,7 @@ describe('Login', () => {
   });
 });
 
-jest.mock('../src/lib/account', () => ({
-jest.requireActual('../src/lib/account'),
-jest.fn().mockResolvedValue('Logout successful'),
-}));
+jest.mock('../src/lib/account');
 describe('Start', () => {
   beforeEach(() => {
     const homeDiv = Start();

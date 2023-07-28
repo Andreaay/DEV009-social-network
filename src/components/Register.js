@@ -51,6 +51,7 @@ export const Register = (navigateTo) => {
     addUser(inputEmail.value, inputPassword.value)
       .then((userCredential) => {
         const { user } = userCredential;
+        // aqui va displayname
         alert('Welcome', user);
         navigateTo('/start');
       })

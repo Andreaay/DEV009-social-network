@@ -1,6 +1,7 @@
-import { logOutUser } from '../lib/account';
+import { getCurrentUser, logOutUser } from '../lib/account';
 
 export const Start = (navigateTo) => {
+  console.log('start', getCurrentUser());
   const homeDiv = document.createElement('div');
   const title = document.createElement('h1');
   const buttonStart = document.createElement('button');

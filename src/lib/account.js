@@ -1,6 +1,6 @@
 /* eslint-disable import/no-duplicates */
 /* eslint-disable max-len */
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { auth } from './firebase';
@@ -8,6 +8,16 @@ import { auth } from './firebase';
 // persistencia de cuenta
 
 export const addUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+// export updateDisplayName user.updateProfile({
+//   displayName: "Jane Q. User",
+//   photoURL: "https://example.com/jane-q-user/profile.jpg"
+// }).then(() => {
+//   // Update successful
+//   // ...
+// }).catch((error) => {
+//   // An error occurred
+//   // ...
+// });
 export function signinUser(email, password, callback) {
   setPersistence(auth, browserSessionPersistence)
     .then(() => signInWithEmailAndPassword(auth, email, password))
@@ -104,3 +114,8 @@ setPersistence(auth, inMemoryPersistence)
     const errorMessage = error.message;
   });
  */
+
+export const getCurrentUser = () => {
+  const user = getAuth().currentUser;
+  return user;
+};
