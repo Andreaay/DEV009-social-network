@@ -1,14 +1,22 @@
 /* eslint-disable import/no-duplicates */
 /* eslint-disable max-len */
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { auth } from './firebase';
-// import { logOutUser } from "firebase/auth";//boton sign out
 // persistencia de cuenta
-
 export const addUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
-/* export function signinUser(email, password, callback) {
+// export updateDisplayName user.updateProfile({
+//   displayName: "Jane Q. User",
+//   photoURL: "https://example.com/jane-q-user/profile.jpg"
+// }).then(() => {
+//   // Update successful
+//   // ...
+// }).catch((error) => {
+//   // An error occurred
+//   // ...
+// });
+export function signinUser(email, password, callback) {
   setPersistence(auth, browserSessionPersistence)
     .then(() => signInWithEmailAndPassword(auth, email, password))
     .then((userCredential) => {
@@ -22,57 +30,11 @@ export const addUser = (email, password) => createUserWithEmailAndPassword(auth,
       console.log(errorMessage, errorCode);
       callback(false);
     });
-} */
-// export function signinUser(email, password, callback) {
-//   signInWithEmailAndPassword(auth, email, password)
-//     .then((userCredential) => {
-//       const user = userCredential;
-//       console.log(user);
-//       callback(true);
-//     })
-// .catch((error) => {
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       console.log(errorMessage, errorCode)
-//       callback(false);
-//     });
-// }
-
-export function signinUser(email, password, callback) {
-  setPersistence(auth, browserSessionPersistence)
-    .then((userCredential) => {
-      const user = userCredential;
-      callback(true);
-      console.log(user);
-
-      return signInWithEmailAndPassword(auth, email, password);
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      callback(false);
-      console.log(errorCode, errorMessage);
-    });
 }
 
-/* const auth = getAuth();//
-setPersistence(auth, setPersistence)
-  .then(() => {
-    const provider = new GoogleAuthProvider();
-    // In memory persistence will be applied to the signed in Google user
-    // even though the persistence was set to 'none' and a page redirect
-    // occurred.
-    return signInWithRedirect(auth, provider);
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });  */ // presistencia con google
-
+// presistencia con google
 export const provider = new GoogleAuthProvider();
-export const enterGoogle = () => signInWithPopup(auth, provider);
-
-// boton sign out
+export const enterGoogle = () => signInWithPopup(auth, provider); // boton sign out
 export function logOutUser(callback) {
   signOut(auth)
     .then(() => {
@@ -84,12 +46,8 @@ export function logOutUser(callback) {
       console.log(errorMessage);
       // An error happened.
     });
-}
-
-// persistencia con google
-/* import { getAuth, setPersistence, signInWithRedirect, inMemoryPersistence, GoogleAuthProvider } from "firebase/auth";
-
-const auth = getAuth();
+}// persistencia con google
+/* import { getAuth, setPersistence, signInWithRedirect, inMemoryPersistence, GoogleAuthProvider } from "firebase/auth";const auth = getAuth();
 setPersistence(auth, inMemoryPersistence)
   .then(() => {
     const provider = new GoogleAuthProvider();
@@ -103,4 +61,7 @@ setPersistence(auth, inMemoryPersistence)
     const errorCode = error.code;
     const errorMessage = error.message;
   });
- */
+ */export const getCurrentUser = () => {
+  const user = getAuth().currentUser;
+  return user;
+};

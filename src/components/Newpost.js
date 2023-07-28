@@ -1,4 +1,5 @@
 import { logOutUser } from '../lib/account';
+import { database } from '../lib/firebase';
 
 export const Newpost = (navigateTo) => {
   const homeDiv = document.createElement('div');
@@ -44,11 +45,12 @@ export const Newpost = (navigateTo) => {
   buttonShare.addEventListener('click', () => {
     const content = inputPost.value;
     console.log(content);
-    // addDoc(collection(database, "posts")),{  //
-    // addDoc agrega el post a la base de datos en una collecion
-    //  contenidoBD = content,
-    //  fechaBD = serverTimeStamp()
-    // }
+    console.log(database);
+  /*   addDoc(collection(database, "posts")), {  //
+      //addDoc agrega el post a la base de datos en una collecion
+      contenidoBD = content;
+      fechaBD = serverTimeStamp()
+    }  */
   });
   homeDiv.append(title);
   homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);

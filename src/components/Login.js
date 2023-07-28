@@ -16,7 +16,6 @@ export const Login = (navigateTo) => {
   inputPassword.id = 'enterPassword';
   const password = document.createElement('p');
   password.innerHTML = 'Enter your password';
-
   const button = document.createElement('button');
   button.addEventListener('click', () => {
     const alertSignUser = (callback) => {
@@ -28,7 +27,6 @@ export const Login = (navigateTo) => {
     };
     signinUser(inputEmail.value, inputPassword.value, alertSignUser);
   });
-
   const buttonBack = document.createElement('button');
   const buttonGoogle = document.createElement('button');
   buttonGoogle.textContent = 'Continue with Google';
@@ -51,31 +49,13 @@ export const Login = (navigateTo) => {
         loginError.innerText = 'Invalid  Accound';
         return (credential, errorMessage);
       });
-  });
-
-  title.textContent = 'Sign in';
-  button.textContent = 'Sign In';
-
-  buttonBack.textContent = 'Go back';
-
-  inputEmail.placeholder = 'Email address';
-  inputPassword.placeholder = 'Password';
-
-  buttonBack.addEventListener('click', () => {
+  }); title.textContent = 'Sign in';
+  button.textContent = 'Sign In'; buttonBack.textContent = 'Go back'; inputEmail.placeholder = 'Email address';
+  inputPassword.placeholder = 'Password'; buttonBack.addEventListener('click', () => {
     navigateTo('/');
-  });
-
-  homeDiv.append(title, note, inputEmail, password, inputPassword, button, buttonGoogle);
-  homeDiv.append(buttonBack, loginError);
-
-  const buttonContainer = document.createElement('div');
-  buttonContainer.classList.add('button-container');
-
-  buttonContainer.append(button);
+  }); homeDiv.append(title, note, inputEmail, password, inputPassword, button, buttonGoogle);
+  homeDiv.append(buttonBack, loginError); const buttonContainer = document.createElement('div');
+  buttonContainer.classList.add('button-container'); buttonContainer.append(button);
   buttonContainer.append(buttonGoogle);
-  buttonContainer.append(buttonBack);
-
-  homeDiv.append(buttonContainer);
-
-  return homeDiv;
+  buttonContainer.append(buttonBack); homeDiv.append(buttonContainer); return homeDiv;
 };
