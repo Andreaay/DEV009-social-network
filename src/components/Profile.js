@@ -1,4 +1,4 @@
-import { logOutUser } from '../lib/account';
+import { logOutUser, updateProfileInfo } from '../lib/account';
 
 export const Profile = (navigateTo) => {
   const homeDiv = document.createElement('div');
@@ -35,7 +35,26 @@ export const Profile = (navigateTo) => {
     navigateTo('/newpost');
   });
 
+  const displayNameInput = document.createElement('input');
+  displayNameInput.type = 'text';
+  displayNameInput.placeholder = 'Nuevo nombre de visualización';
+
+  const photoURLInput = document.createElement('input');
+  photoURLInput.type = 'text';
+  photoURLInput.placeholder = 'Nueva URL de la foto de perfil';
+
+  const saveChangesButton = document.createElement('button');
+  saveChangesButton.textContent = 'Guardar cambios';
+  saveChangesButton.addEventListener('click', () => {
+    const newDisplayName = displayNameInput.value;
+    const newPhotoURL = photoURLInput.value;
+    updateProfileInfo(newDisplayName, newPhotoURL);
+  });
+
   homeDiv.append(title);
+  homeDiv.append(displayNameInput);
+  homeDiv.append(photoURLInput);
+  homeDiv.append(saveChangesButton);
   homeDiv.append(buttonStart);
   homeDiv.append(buttonEvents);
   homeDiv.append(buttonNewPost);

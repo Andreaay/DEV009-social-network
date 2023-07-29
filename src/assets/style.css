@@ -1,38 +1,47 @@
-.title{
-    color: blueviolet;
+.title {
+  color: blueviolet;
 }
-.post, .inputPost, .buttonShare{
-  margin: top 10em;
+
+.post,
+.inputPost,
+.buttonShare {
+  margin-top: 10em;
   display: flex;
 }
-.bottom-menu{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: .5rem;
-    padding: 0.5em 0;
+
+.bottom-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5em 0;
 }
+
 @media (max-width: 768px) {
   .bottom-menu {
-      flex-direction: column;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
   }
-  @media (min-width: 769px) {
-    .bottom-menu{
-      flex-direction: row; 
-      position: static;
-    }}
-.button-container {
-    margin-top: 5em;
-    display: flex;
-    flex-direction: column;
 }
+
+@media (min-width: 769px) {
+  .bottom-menu {
+    flex-direction: row;
+    position: static;
+  }
+}
+
+.button-container {
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+}
+
 .button-container button {
-    margin-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }

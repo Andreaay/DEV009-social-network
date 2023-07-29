@@ -1,5 +1,6 @@
 import { logOutUser } from '../lib/account';
 import { database } from '../lib/firebase';
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 export const Newpost = (navigateTo) => {
   const homeDiv = document.createElement('div');
@@ -42,15 +43,16 @@ export const Newpost = (navigateTo) => {
     navigateTo('/profile');
   });
 
-  buttonShare.addEventListener('click', () => {
+  buttonShare.addEventListener('click', async () => {
     const content = inputPost.value;
     console.log(content);
     console.log(database);
-  /*   addDoc(collection(database, "posts")), {  //
-      //addDoc agrega el post a la base de datos en una collecion
-      contenidoBD = content;
-      fechaBD = serverTimeStamp()
-    }  */
+    const docRef = await addDoc(collection(database, 'posts'), {
+      postContent: content,
+      author: 'Amalia',
+      postTime: Timestamp.now(),
+    });
+    console.log('Document written with ID: ', docRef.id);
   });
   homeDiv.append(title);
   homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);
