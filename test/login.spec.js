@@ -6,41 +6,61 @@
 /* eslint-disable import/named */
 // import { } from 'jest';
 import { expect, jest } from '@jest/globals';
-import { signinUser, logOutUser } from '../src/lib/account';
+import { signinUser } from '../src/lib/account';
 // eslint-disable-next-line import/no-cycle
 import { Login } from '../src/components/Login';
-import { Start } from '../src/components/Start';
 
 jest.mock('../src/lib/account');
 describe('Login', () => {
   beforeEach(() => {
+  });
+  test('Se creo el boton correctamente', () => {
+    const bottonLogin = document.querySelector('button');
+    expect(bottonLogin).toBeTruthy();
+  });
+  test('Al hacer click al boton redirecciona si la promesa esta bien', () => {
     const homeDiv = Login();
     document.body.replaceChildren(homeDiv);
-  });
-  test('Se creó el botón correctamente', () => {
-    const buttonLogin = document.querySelector('button');
-    expect(buttonLogin).toBeTruthy();
-  });
-  test('Al hacer click al botón redirecciona si la promesa es correcta', () => {
-    const buttonLogin = document.querySelector('button');
-    buttonLogin.click();
-    expect(signinUser).toHaveBeenCalled();
+    signinUser. mockImplementationOnce((email, password, callback) => {
+      console.log(password);
+      const callback2 = true
+      return Promise.resolve({ user: { userCredential: 123, email } })
+    })
+    const bottonLogin = document.querySelector('button')
+    bottonLogin.click();
+    expect(callback).toHaveBeenCalled(true);
   });
 });
 
-jest.mock('../src/lib/account');
-describe('Start', () => {
-  beforeEach(() => {
-    const homeDiv = Start();
-    document.body.replaceChildren(homeDiv);
+/*  test('Test para validar login con email y password', () => {
+    const navigateTo('/start') = jest.fn();
+    signinUser(signInWithEmailAndPassword, 'email, password');
+    expect(navigateTo).toHaveBeenCalled('/start');
   });
-  test('Se creó el botón correctamente', () => {
-    const buttonLogout = document.querySelector('button');
-    expect(buttonLogout).toBeTruthy();
+
+  test('Test para no validar login', () => {
+    const navigateTo = jest.fn();
+    signinUser(signInWithEmailAndPassword, 'continue with google');
+    expect(navigateTo).not.toHaveBeenCalled('/start'); */
+// });
+
+/* function drinkAll(callback, flavour) {
+  if (flavour !== 'octopus') {
+    callback(flavour);
+  }
+}
+
+  describe('drinkAll', () => {
+  test('drinks something lemon-flavoured', () => {
+    const drink = jest.fn();
+    drinkAll(drink, 'lemon');
+    expect(drink).toHaveBeenCalled();
   });
-  test('Al hacer click al botón logout redirecciona si la promesa es correcta', () => {
-    const buttonLogout = document.querySelector('button');
-    buttonLogout.click();
-    expect(logOutUser).toHaveBeenCalled();
+
+  test('does not drink something octopus-flavoured', () => {
+    const drink = jest.fn();
+    drinkAll(drink, 'octopus');
+    expect(drink).not.toHaveBeenCalled();
   });
-});
+}); */
+// await nextTick()

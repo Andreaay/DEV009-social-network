@@ -1,7 +1,5 @@
 import { logOutUser } from '../lib/account';
-import { database } from '../lib/firebase';
-import { collection, addDoc, Timestamp } from "firebase/firestore";
-
+import { createPost, drawPost, database } from '../lib/post';
 export const Newpost = (navigateTo) => {
   const homeDiv = document.createElement('div');
   const title = document.createElement('h1');
@@ -10,11 +8,17 @@ export const Newpost = (navigateTo) => {
   const post = document.createElement('p');
   post.innerHTML = 'What is happening?';
   const buttonShare = document.createElement('button');
+  buttonShare.innerHTML = 'share <i class="fa-solid fa-share"></i>';
   const buttonStart = document.createElement('button');
+  buttonStart.innerHTML = '<i class="fas fa-house"></i>';
   const buttonEvents = document.createElement('button');
+  buttonEvents.innerHTML = '<i class="fas fa-users"></i>';
   const buttonNewPost = document.createElement('button');
+  buttonNewPost.innerHTML = '<i class="fas fa-plus"></i>';
   const buttonProfile = document.createElement('button');
+  buttonProfile.innerHTML = '<i class="fas fa-user"></i>';
   const buttonLogout = document.createElement('button');
+  buttonLogout.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
   buttonLogout.addEventListener('click', () => {
     const alertOutUser = (callback) => {
       if (callback) {
@@ -23,17 +27,7 @@ export const Newpost = (navigateTo) => {
       }
     };
     logOutUser(alertOutUser);
-  });
-
-  buttonStart.textContent = 'Home';
-  buttonShare.textContent = 'Share';
-  buttonEvents.textContent = 'Events';
-  buttonNewPost.textContent = 'New Post';
-  buttonProfile.textContent = 'Profile';
-  buttonLogout.textContent = 'Log Out';
-  title.textContent = 'Expressio Music';
-
-  buttonStart.addEventListener('click', () => {
+  });  title.textContent = 'Expressio Music';  buttonStart.addEventListener('click', () => {
     navigateTo('/start');
   });
   buttonEvents.addEventListener('click', () => {
@@ -41,19 +35,22 @@ export const Newpost = (navigateTo) => {
   });
   buttonProfile.addEventListener('click', () => {
     navigateTo('/profile');
-  });
-
-  buttonShare.addEventListener('click', async () => {
-    const content = inputPost.value;
-    console.log(content);
-    console.log(database);
-    const docRef = await addDoc(collection(database, 'posts'), {
-      postContent: content,
-      author: 'Amalia',
-      postTime: Timestamp.now(),
-    });
-    console.log('Document written with ID: ', docRef.id);
-  });
+  });  buttonShare.addEventListener('click', async () => {
+    const createPost = (callback) => {
+      if (callback) {
+        drawPost(true);
+      }
+    };
+    content(inputPost.value, database, createPost, drawPost);
+  });  //   const content = inputPost.value;
+  //   console.log(content);
+  //   console.log(database);
+  //   const docRef = await addDoc(collection(database, 'posts'), {
+  //     postContent: content,
+  //     author: 'Amalia',
+  //     postTime: Timestamp.now(),
+  //   });
+  //   console.log('Document written with ID: ', docRef.id);
   homeDiv.append(title);
   homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);
   homeDiv.append(buttonNewPost, buttonProfile, buttonLogout);
@@ -64,20 +61,12 @@ export const Newpost = (navigateTo) => {
   bottomMenuDiv.append(buttonEvents);
   bottomMenuDiv.append(buttonNewPost);
   bottomMenuDiv.append(buttonProfile);
-  bottomMenuDiv.append(buttonLogout);
-
-  return homeDiv;
-};
-
-/* const inputPost = document.createElement('input');
+  bottomMenuDiv.append(buttonLogout);  return homeDiv;
+};/* const inputPost = document.createElement('input');
   inputPost.classList.add=('input-post');
   export const newPost = document.querySelector('.input-post');
   newPost.addEventListener('submit', (e) => {
     e.preventDefault()
     console.log('submitted');
-  const newPost= newPost['input-post']
-
-  console.log (inputPost)
-  });
-
- */
+  const newPost= newPost['input-post']  console.log (inputPost)
+  }); */
