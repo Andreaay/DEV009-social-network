@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-sequences */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -31,11 +34,12 @@ describe('Login', () => {
     expect(callback).toHaveBeenCalled(true);
   });
 });
-
-/*  test('Test para validar login con email y password', () => {
-    const navigateTo('/start') = jest.fn();
-    signinUser(signInWithEmailAndPassword, 'email, password');
-    expect(navigateTo).toHaveBeenCalled('/start');
+/*
+jest.mock('../src/lib/account');
+describe('Start', () => {
+  beforeEach(() => {
+    const homeDiv = Start();
+    document.body.replaceChildren(homeDiv);
   });
 
   test('Test para no validar login', () => {
@@ -62,5 +66,10 @@ describe('Login', () => {
     drinkAll(drink, 'octopus');
     expect(drink).not.toHaveBeenCalled();
   });
+<<<<<<< HEAD
 }); */
 // await nextTick()
+=======
+});
+*/
+>>>>>>> 4796bd2e7fbada48e03c73f22e7bdf6ec3a39334

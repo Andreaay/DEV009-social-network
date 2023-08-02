@@ -43,12 +43,59 @@ import { auth, database } from './firebase';
 
 
 // /* eslint-disable eol-last */
-/* const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
-const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
-initializeApp();
+/* eslint-disable import/no-duplicates */
+import { getFirestore } from 'firebase/firestore';
+import { updateProfile } from 'firebase/auth';
+import { collection, getDocs } from 'firebase/firestore';
+import { addDoc, Timestamp } from 'firebase/firestore';
+import { auth } from './firebase';
 
-const db = getFirestore();
- */
+// const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
+// const {  FieldValue, Filter } = require('firebase-admin/firestore');
+
+// initializeApp();
+
+export const db = getFirestore();
+
+export const updateProfileInfo = (displayName, photoURL) => {
+  const user = auth.currentUser;
+  if (user) {
+    return updateProfile(user, { displayName, photoURL })
+      .then(() => {
+        console.log('Perfil actualizado correctamente.');
+      })
+      .catch((error) => {
+        // Ocurrió un error durante la actualización del perfil.
+        console.error('Error al actualizar el perfil:', error.message);
+        return Promise.reject(error);
+      });
+  }
+  console.error('No hay un usuario autenticado.');
+  return Promise.reject(new Error('No hay un usuario autenticado.'));
+};
+
+export async function createPost(database, inputPost, callback) {
+  const content = inputPost.value;
+  console.log(content);
+  console.log(database);
+  const docRef = await addDoc(collection(database, 'posts'), {
+    postContent: content,
+    author: 'Amalia',
+    postTime: Timestamp.now(),
+  });
+  console.log('Document written with ID: ', docRef.id);
+  callback(true);
+}
+
+export async function drawPost(database, collection, callback) {
+  querySnapshot = await getDocs(collection(database, 'posts'));
+  querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, ' => ', doc.data());
+    callback(true);
+  });
+}
+
 /* getAuth()// crear perfil
   .createUser({
     email: 'user@example.com',

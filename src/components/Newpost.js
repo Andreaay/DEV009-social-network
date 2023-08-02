@@ -1,5 +1,7 @@
+import { database, collection } from 'firebase/firestore';
 import { logOutUser } from '../lib/account';
-import { createPost, drawPost, database } from '../lib/post';
+import { createPost, drawPost } from '../lib/post';
+
 export const Newpost = (navigateTo) => {
   const homeDiv = document.createElement('div');
   const title = document.createElement('h1');
@@ -27,7 +29,11 @@ export const Newpost = (navigateTo) => {
       }
     };
     logOutUser(alertOutUser);
-  });  title.textContent = 'Expressio Music';  buttonStart.addEventListener('click', () => {
+  });
+
+  title.textContent = 'Expressio Music';
+
+  buttonStart.addEventListener('click', () => {
     navigateTo('/start');
   });
   buttonEvents.addEventListener('click', () => {
@@ -35,14 +41,20 @@ export const Newpost = (navigateTo) => {
   });
   buttonProfile.addEventListener('click', () => {
     navigateTo('/profile');
-  });  buttonShare.addEventListener('click', async () => {
-    const createPost = (callback) => {
-      if (callback) {
-        drawPost(true);
-      }
-    };
-    content(inputPost.value, database, createPost, drawPost);
-  });  //   const content = inputPost.value;
+  });
+
+  buttonShare.addEventListener('click', async () => {
+    try {
+      await createPost(database, inputPost);
+      drawPost(database, collection, (success) => {
+        console.log('Posts:', success);
+      });
+    } catch (error) {
+      console.error('Post error:', error);
+    }
+  });
+
+  //   const content = inputPost.value;
   //   console.log(content);
   //   console.log(database);
   //   const docRef = await addDoc(collection(database, 'posts'), {
