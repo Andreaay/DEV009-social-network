@@ -3,32 +3,32 @@
 import { getFirestore } from 'firebase/firestore';
 import { updateProfile } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
-import { addDoc, Timestamp } from 'firebase/firestore';
+import { addDoc } from 'firebase/firestore';
 import { auth } from './firebase';
-import { database, app } from './firebase';
+import { database } from './firebase';
 
 // const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 // const {  FieldValue, Filter } = require('firebase-admin/firestore');
 
 // initializeApp();
 
-export const db = getFirestore(app);
+export const db = getFirestore();
 
 export const updateProfileInfo = (displayName, photoURL) => {
   const user = auth.currentUser;
   if (user) {
     return updateProfile(user, { displayName, photoURL })
       .then(() => {
-        console.log('Perfil actualizado correctamente.');
+        console.log('Profile updated correctly');
       })
       .catch((error) => {
         // Ocurrió un error durante la actualización del perfil.
-        console.error('Error al actualizar el perfil:', error.message);
+        console.error('Error updating profile:', error.message);
         return Promise.reject(error);
       });
   }
-  console.error('No hay un usuario autenticado.');
-  return Promise.reject(new Error('No hay un usuario autenticado.'));
+  console.error('No authenticated user.');
+  return Promise.reject(new Error('No authenticated user.'));
 };
 
 export async function createPost(data) {

@@ -61,7 +61,7 @@ export const Newpost = (navigateTo) => {
         // likes:"",
       };
       inputPost.value = '';
-      await createPost(datos);
+      await createPost(data);
     }
   });
 
