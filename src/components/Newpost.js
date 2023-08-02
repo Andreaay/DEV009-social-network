@@ -1,6 +1,6 @@
-import { database, collection } from 'firebase/firestore';
+import { collection } from 'firebase/firestore';
 import { logOutUser } from '../lib/account';
-import { createPost, drawPost } from '../lib/post';
+import { createPost, bringPost } from '../lib/post';
 
 export const Newpost = (navigateTo) => {
   const homeDiv = document.createElement('div');
@@ -11,6 +11,7 @@ export const Newpost = (navigateTo) => {
   post.innerHTML = 'What is happening?';
   const buttonShare = document.createElement('button');
   buttonShare.innerHTML = 'share <i class="fa-solid fa-share"></i>';
+  const olPosts = document.createElement('ol');
   const buttonStart = document.createElement('button');
   buttonStart.innerHTML = '<i class="fas fa-house"></i>';
   const buttonEvents = document.createElement('button');
@@ -30,8 +31,10 @@ export const Newpost = (navigateTo) => {
     };
     logOutUser(alertOutUser);
   });
-
   title.textContent = 'Expressio Music';
+  const textTitleContainer = document.createElement('div');
+  textTitleContainer.classList.add('title-container');
+  textTitleContainer.append(title);
 
   buttonStart.addEventListener('click', () => {
     navigateTo('/start');
@@ -44,15 +47,35 @@ export const Newpost = (navigateTo) => {
   });
 
   buttonShare.addEventListener('click', async () => {
-    try {
-      await createPost(database, inputPost);
-      drawPost(database, collection, (success) => {
-        console.log('Posts:', success);
-      });
-    } catch (error) {
-      console.error('Post error:', error);
+    const valuePost = inputPost.value;
+
+    if (valuePost.length === 0) {
+      alert('Can not post empty value');
+    } else {
+      const data = {
+        // user: "Maria",
+        // last: "Martínez",
+        created_date: new Date(),
+        // edited_date:"",
+        post: valuePost,
+        // likes:"",
+      };
+      inputPost.value = '';
+      await createPost(datos);
     }
   });
+
+  // async () => {
+  //   try {
+  //     await createPost(database, inputPost);
+  //     querySnapshot(database, collection, (success) => {
+  //       console.log('Posts:', success);
+  //       olPosts.innerText = 'Posts';
+  //     });
+  //   } catch (error) {
+  //     console.error('Post error:', error);
+  //   }
+  // });
 
   //   const content = inputPost.value;
   //   console.log(content);

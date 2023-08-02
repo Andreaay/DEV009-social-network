@@ -1,5 +1,25 @@
-.title {
-  color: blueviolet;
+body{
+  background-color: #EAEBFC;
+
+}
+h1, h2, h3 {
+  text-align: center;
+  font-size: xx-large;
+  letter-spacing: 8px;
+  color: #242426;
+  background-color: #BD90CE;
+  width: 100%;
+  margin: 0;
+}
+
+p{
+  text-align: center;
+  font-size: large;
+}
+.title-container{
+  display: grid;
+  place-items: center;
+  height: 100vh;
 }
 
 .grid-container {
@@ -12,6 +32,7 @@
 .inputPost,
 .buttonShare {
   margin-top: 10em;
+  align-items: center;
 }
 
 .bottom-menu {
@@ -23,7 +44,7 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.5em 0;
-  transition: 2s;
+  transition: 8s;
   border: none;
 
 }
@@ -48,16 +69,28 @@ button:hover{
   border-top: 4px solid  #707AE6;
   background-color: transparent;
 }
+.button-icon {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.5rem;
+}
+.button-icon:hover {
+  color: #707AE6;
+}
 
 .button-container {
   margin-top: 5em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
+  justify-content: center;
 }
 
 .button-container button {
   margin-bottom: 0.5em;
+  background-color: #bd90ce;
 }
 
 button:hover,

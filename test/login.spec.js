@@ -9,10 +9,9 @@
 /* eslint-disable import/named */
 // import { } from 'jest';
 import { expect, jest } from '@jest/globals';
-import { signinUser, logOutUser } from '../src/lib/account';
+import { signinUser } from '../src/lib/account';
 // eslint-disable-next-line import/no-cycle
 import { Login } from '../src/components/Login';
-import { Start } from '../src/components/Start';
 
 jest.mock('../src/lib/account');
 describe('Login', () => {
@@ -30,21 +29,3 @@ describe('Login', () => {
     expect(signinUser).toHaveBeenCalled();
   });
 });
-/*
-jest.mock('../src/lib/account');
-describe('Start', () => {
-  beforeEach(() => {
-    const homeDiv = Start();
-    document.body.replaceChildren(homeDiv);
-  });
-  test('Se creó el botón correctamente', () => {
-    const buttonLogout = document.querySelector('button');
-    expect(buttonLogout).toBeTruthy();
-  });
-  test('Al hacer click al botón logout redirecciona si la promesa es correcta', () => {
-    const buttonLogout = document.querySelector('button');
-    buttonLogout.click();
-    expect(logOutUser).toHaveBeenCalled();
-  });
-});
-*/

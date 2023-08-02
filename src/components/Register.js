@@ -24,7 +24,7 @@ export const Register = (navigateTo) => {
   const buttonBack = document.createElement('button');
 
   const buttonGoogle = document.createElement('button');
-  buttonGoogle.textContent = 'Continue with Google';
+  buttonGoogle.innerHTML = 'Continue with Google <i class="fa-brands fa-google"></i>';
   buttonGoogle.addEventListener('click', () => {
     enterGoogle()
       .then((result) => {
@@ -61,6 +61,7 @@ export const Register = (navigateTo) => {
         console.log(errorMessage);
       });
   });
+  registerUser.setAttribute('id', 'buttonReg');
   title.textContent = 'Sign Up';
   buttonBack.textContent = 'Go back';
   inputEmail.placeholder = 'Email address';

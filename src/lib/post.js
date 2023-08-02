@@ -5,13 +5,14 @@ import { updateProfile } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
 import { addDoc, Timestamp } from 'firebase/firestore';
 import { auth } from './firebase';
+import { database, app } from './firebase';
 
 // const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 // const {  FieldValue, Filter } = require('firebase-admin/firestore');
 
 // initializeApp();
 
-export const db = getFirestore();
+export const db = getFirestore(app);
 
 export const updateProfileInfo = (displayName, photoURL) => {
   const user = auth.currentUser;
@@ -30,27 +31,28 @@ export const updateProfileInfo = (displayName, photoURL) => {
   return Promise.reject(new Error('No hay un usuario autenticado.'));
 };
 
-export async function createPost(database, inputPost, callback) {
-  const content = inputPost.value;
-  console.log(content);
-  console.log(database);
-  const docRef = await addDoc(collection(database, 'posts'), {
-    postContent: content,
-    author: 'Amalia',
-    postTime: Timestamp.now(),
-  });
-  console.log('Document written with ID: ', docRef.id);
-  callback(true);
+export async function createPost(data) {
+  try {
+    const docRef = await addDoc(collection(database, 'posts'), data);
+    console.log(data);
+    console.log('Document written with ID: ', docRef.id);
+    return createPost;
+  } catch (e) {
+    console.error('Error adding post: ', e);
+  }
 }
 
-export async function drawPost(database, collection, callback) {
-  querySnapshot = await getDocs(collection(database, 'posts'));
-  querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, ' => ', doc.data());
-    callback(true);
-  });
+export async function bringPost() {
+  console.log('bring function');
+  const everyPost = query(collection(database, 'posts'), orderBy('created_date', 'desc'));
+  const documents = await getDocs(everyPost);
+  return documents;
 }
+
+// export const querySnapshot = await getDocs(collection(database, 'posts'));
+// querySnapshot.forEach((doc) => {
+//   console.log(doc.id, ' => ', doc.data());
+// });
 
 /* getAuth()// crear perfil
   .createUser({
