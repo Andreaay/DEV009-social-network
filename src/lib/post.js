@@ -5,18 +5,12 @@ import { updateProfile } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
 import { addDoc, Timestamp, database } from 'firebase/firestore';
 import { auth } from './firebase';
-import { database, app } from './firebase';
+
 
 // const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 // const {  FieldValue, Filter } = require('firebase-admin/firestore');
 
 // initializeApp();
-
-<<<<<<< HEAD
-/* export const db = getFirestore();
-=======
-export const db = getFirestore(app);
->>>>>>> e12028482defbaea9efc82204d4fc510a08b6ee8
 
 export const updateProfileInfo = (displayName, photoURL) => {
   const user = auth.currentUser;
@@ -33,7 +27,7 @@ export const updateProfileInfo = (displayName, photoURL) => {
   }
   console.error('No hay un usuario autenticado.');
   return Promise.reject(new Error('No hay un usuario autenticado.'));
-}; */
+};
 
 export async function createPost(data) {
   try {
@@ -46,22 +40,12 @@ export async function createPost(data) {
   }
 }
 
-<<<<<<< HEAD
-import { collection, getDocs } from "firebase/firestore";
-
-const querySnapshot = await getDocs(collection(db, "cities"));
-querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-  console.log(doc.id, " => ", doc.data());
-});
-=======
 export async function bringPost() {
   console.log('bring function');
   const everyPost = query(collection(database, 'posts'), orderBy('created_date', 'desc'));
   const documents = await getDocs(everyPost);
   return documents;
 }
->>>>>>> e12028482defbaea9efc82204d4fc510a08b6ee8
 
 // export const querySnapshot = await getDocs(collection(database, 'posts'));
 // querySnapshot.forEach((doc) => {
