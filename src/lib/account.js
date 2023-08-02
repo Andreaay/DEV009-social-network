@@ -3,7 +3,7 @@
 import { createUserWithEmailAndPassword, getAuth, signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { setPersistence, browserSessionPersistence } from 'firebase/auth';
-import { auth } from './firebase';
+import { auth } from './post.js';
 
 // const db = getFirestore(app);
 export const addUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);

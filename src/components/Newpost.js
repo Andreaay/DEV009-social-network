@@ -1,4 +1,4 @@
-import { collection } from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
 import { logOutUser } from '../lib/account';
 import { createPost, bringPost } from '../lib/post';
 
@@ -46,7 +46,7 @@ export const Newpost = (navigateTo) => {
     navigateTo('/profile');
   });
 
-  buttonShare.addEventListener('click', async () => {
+  buttonShare.addEventListener('click', () => {
     const valuePost = inputPost.value;
 
     if (valuePost.length === 0) {
@@ -61,9 +61,16 @@ export const Newpost = (navigateTo) => {
         // likes:"",
       };
       inputPost.value = '';
-      await createPost(data);
+      createPost(data);
     }
   });
+ bringPost().then(res => {
+  res.forEach(doc =>{
+    const p = doc.data();
+    console.log(p.post);
+  }) 
+ })
+
 
   // async () => {
   //   try {

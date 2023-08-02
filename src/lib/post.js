@@ -1,18 +1,16 @@
 // /* eslint-disable eol-last */
 /* eslint-disable import/no-duplicates */
-import { getFirestore } from 'firebase/firestore';
-import { updateProfile } from 'firebase/auth';
-import { collection, getDocs } from 'firebase/firestore';
-import { addDoc } from 'firebase/firestore';
-import { auth } from './firebase';
-import { database } from './firebase';
-
+import { getFirestore, collection, getDocs, addDoc, query, orderBy } from 'firebase/firestore';
+import { updateProfile, getAuth } from 'firebase/auth';
+import { app } from './firebase.js';
+ 
 // const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 // const {  FieldValue, Filter } = require('firebase-admin/firestore');
 
 // initializeApp();
 
-export const db = getFirestore();
+export const auth = getAuth(app);
+export const database = getFirestore(app);
 
 export const updateProfileInfo = (displayName, photoURL) => {
   const user = auth.currentUser;
@@ -31,16 +29,16 @@ export const updateProfileInfo = (displayName, photoURL) => {
   return Promise.reject(new Error('No authenticated user.'));
 };
 
-export async function createPost(data) {
+export const createPost = async (data) => {
   try {
     const docRef = await addDoc(collection(database, 'posts'), data);
     console.log(data);
     console.log('Document written with ID: ', docRef.id);
-    return createPost;
+    // return createPost;
   } catch (e) {
     console.error('Error adding post: ', e);
   }
-}
+};
 
 export async function bringPost() {
   console.log('bring function');
