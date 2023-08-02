@@ -34,6 +34,7 @@ describe('Login', () => {
     expect(callback).toHaveBeenCalled(true);
   });
 });
+<<<<<<< HEAD
 /*
 jest.mock('../src/lib/account');
 describe('Start', () => {
@@ -73,3 +74,5 @@ describe('Start', () => {
 });
 */
 >>>>>>> 4796bd2e7fbada48e03c73f22e7bdf6ec3a39334
+=======
+>>>>>>> e12028482defbaea9efc82204d4fc510a08b6ee8
