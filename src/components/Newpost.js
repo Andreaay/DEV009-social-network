@@ -1,6 +1,6 @@
+import { database, collection } from 'firebase/firestore';
 import { logOutUser } from '../lib/account';
-import { database } from '../lib/firebase';
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { createPost, drawPost } from '../lib/post';
 
 export const Newpost = (navigateTo) => {
   const homeDiv = document.createElement('div');
@@ -10,11 +10,17 @@ export const Newpost = (navigateTo) => {
   const post = document.createElement('p');
   post.innerHTML = 'What is happening?';
   const buttonShare = document.createElement('button');
+  buttonShare.innerHTML = 'share <i class="fa-solid fa-share"></i>';
   const buttonStart = document.createElement('button');
+  buttonStart.innerHTML = '<i class="fas fa-house"></i>';
   const buttonEvents = document.createElement('button');
+  buttonEvents.innerHTML = '<i class="fas fa-users"></i>';
   const buttonNewPost = document.createElement('button');
+  buttonNewPost.innerHTML = '<i class="fas fa-plus"></i>';
   const buttonProfile = document.createElement('button');
+  buttonProfile.innerHTML = '<i class="fas fa-user"></i>';
   const buttonLogout = document.createElement('button');
+  buttonLogout.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
   buttonLogout.addEventListener('click', () => {
     const alertOutUser = (callback) => {
       if (callback) {
@@ -25,12 +31,6 @@ export const Newpost = (navigateTo) => {
     logOutUser(alertOutUser);
   });
 
-  buttonStart.textContent = 'Home';
-  buttonShare.textContent = 'Share';
-  buttonEvents.textContent = 'Events';
-  buttonNewPost.textContent = 'New Post';
-  buttonProfile.textContent = 'Profile';
-  buttonLogout.textContent = 'Log Out';
   title.textContent = 'Expressio Music';
 
   buttonStart.addEventListener('click', () => {
@@ -44,16 +44,25 @@ export const Newpost = (navigateTo) => {
   });
 
   buttonShare.addEventListener('click', async () => {
-    const content = inputPost.value;
-    console.log(content);
-    console.log(database);
-    const docRef = await addDoc(collection(database, 'posts'), {
-      postContent: content,
-      author: 'Amalia',
-      postTime: Timestamp.now(),
-    });
-    console.log('Document written with ID: ', docRef.id);
+    try {
+      await createPost(database, inputPost);
+      drawPost(database, collection, (success) => {
+        console.log('Posts:', success);
+      });
+    } catch (error) {
+      console.error('Post error:', error);
+    }
   });
+
+  //   const content = inputPost.value;
+  //   console.log(content);
+  //   console.log(database);
+  //   const docRef = await addDoc(collection(database, 'posts'), {
+  //     postContent: content,
+  //     author: 'Amalia',
+  //     postTime: Timestamp.now(),
+  //   });
+  //   console.log('Document written with ID: ', docRef.id);
   homeDiv.append(title);
   homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);
   homeDiv.append(buttonNewPost, buttonProfile, buttonLogout);

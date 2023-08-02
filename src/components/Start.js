@@ -1,16 +1,21 @@
 import { getCurrentUser, logOutUser } from '../lib/account';
 
 export const Start = (navigateTo) => {
-  console.log('start', getCurrentUser());
+  // console.log('start', getCurrentUser());
   const homeDiv = document.createElement('div');
   const title = document.createElement('h1');
   const buttonStart = document.createElement('button');
+  buttonStart.innerHTML = '<i class="fas fa-house"></i>';
   const buttonEvents = document.createElement('button');
+  buttonEvents.innerHTML = '<i class="fas fa-users"></i>';
   const buttonNewPost = document.createElement('button');
+  buttonNewPost.innerHTML = '<i class="fas fa-plus"></i>';
   const buttonProfile = document.createElement('button');
+  buttonProfile.innerHTML = '<i class="fas fa-user"></i>';
   const loginError = document.createElement('h5');
   loginError.innerText = '';
   const buttonLogout = document.createElement('button');
+  buttonLogout.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
   buttonLogout.addEventListener('click', () => {
     const alertOutUser = (callback) => {
       if (callback) {
@@ -20,12 +25,7 @@ export const Start = (navigateTo) => {
     };
     logOutUser(alertOutUser);
   });
-
-  buttonStart.textContent = 'Home';
-  buttonEvents.textContent = 'Events';
-  buttonNewPost.textContent = 'New Post';
-  buttonProfile.textContent = 'Profile';
-  buttonLogout.textContent = 'Log Out';
+  buttonLogout.setAttribute('id', 'botoncito');
   title.textContent = 'Expressio Music';
 
   buttonEvents.addEventListener('click', () => {

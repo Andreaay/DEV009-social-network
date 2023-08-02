@@ -2,9 +2,10 @@
 /* eslint-disable max-len */
 import { createUserWithEmailAndPassword, getAuth, signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { setPersistence, browserSessionPersistence, updateProfile } from 'firebase/auth';
+import { setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { auth } from './firebase';
 
+// const db = getFirestore(app);
 export const addUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 // export updateDisplayName user.updateProfile({
 //   displayName: "Jane Q. User",
@@ -16,22 +17,6 @@ export const addUser = (email, password) => createUserWithEmailAndPassword(auth,
 //   // An error occurred
 //   // ...
 // });
-export const updateProfileInfo = (displayName, photoURL) => {
-  const user = auth.currentUser;
-  if (user) {
-    return updateProfile(user, { displayName, photoURL })
-      .then(() => {
-        console.log('Perfil actualizado correctamente.');
-      })
-      .catch((error) => {
-        // Ocurrió un error durante la actualización del perfil.
-        console.error('Error al actualizar el perfil:', error.message);
-        return Promise.reject(error);
-      });
-  }
-  console.error('No hay un usuario autenticado.');
-  return Promise.reject(new Error('No hay un usuario autenticado.'));
-};
 
 export function signinUser(email, password, callback) {
   setPersistence(auth, browserSessionPersistence)
@@ -49,7 +34,6 @@ export function signinUser(email, password, callback) {
     });
 }
 
-// presistencia con google
 export const provider = new GoogleAuthProvider();
 export const enterGoogle = () => signInWithPopup(auth, provider); // boton sign out
 export function logOutUser(callback) {
@@ -78,7 +62,8 @@ setPersistence(auth, inMemoryPersistence)
     const errorCode = error.code;
     const errorMessage = error.message;
   });
- */export const getCurrentUser = () => {
+ */
+export const getCurrentUser = () => {
   const user = getAuth().currentUser;
   return user;
 };
