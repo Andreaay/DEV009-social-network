@@ -1,5 +1,4 @@
-import { getCurrentUser, logOutUser } from '../lib/account';
-import { bringPost } from '../lib/post';
+import { logOutUser } from '../lib/account';
 
 export const Start = (navigateTo) => {
   // console.log('start', getCurrentUser());
@@ -20,7 +19,7 @@ export const Start = (navigateTo) => {
   const containerPosts = document.createElement('div');
   containerPosts.classList.add('post-area');
   document.createElement('container', containerPosts);
-  
+
   buttonLogout.addEventListener('click', () => {
     const alertOutUser = (callback) => {
       if (callback) {

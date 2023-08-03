@@ -1,6 +1,7 @@
 import { doc } from 'firebase/firestore';
 import { logOutUser } from '../lib/account';
 import { createPost, bringPost } from '../lib/post';
+
 export const Newpost = (navigateTo) => {
   const homeDiv = document.createElement('div');
   const title = document.createElement('h1');
@@ -40,6 +41,7 @@ export const Newpost = (navigateTo) => {
   });
   buttonProfile.addEventListener('click', () => {
     navigateTo('/profile');
+<<<<<<< HEAD
   }); 
   
   const containerPosts = document.createElement('div');
@@ -48,6 +50,12 @@ export const Newpost = (navigateTo) => {
 
   
   buttonShare.addEventListener('click', () => {
+=======
+  }); const containerPosts = document.createElement('div');
+  containerPosts.classList.add('post-area');
+  document.createElement('container', containerPosts);
+  bringPost(); buttonShare.addEventListener('click', () => {
+>>>>>>> 3fc6abe5b223352bd989f18e5304b442008dcb5d
     const valuePost = inputPost.value;
     if (valuePost.length === 0) {
       alert('Can not post empty value');
@@ -65,6 +73,7 @@ export const Newpost = (navigateTo) => {
       const postsArea = document.querySelector('.posts_area');
       postsArea.innerHTML = '';
     }
+<<<<<<< HEAD
   }); 
   
   bringPost().then((res) => {
@@ -81,6 +90,18 @@ export const Newpost = (navigateTo) => {
   }); 
   
   homeDiv.append(title);
+=======
+  });
+  bringPost().then((res) => {
+    res.forEach((doc) => {
+      const p = doc.data();
+      console.log(p.post);
+      const postElement = document.createElement('p');
+      postElement.textContent = p.post;
+      containerPosts.appendChild(postElement);
+    });
+  }); homeDiv.append(title);
+>>>>>>> 3fc6abe5b223352bd989f18e5304b442008dcb5d
   homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);
   homeDiv.append(buttonNewPost, buttonProfile, buttonLogout);
   homeDiv.appendChild(containerPosts);
@@ -94,11 +115,3 @@ export const Newpost = (navigateTo) => {
   bottomMenuDiv.append(buttonLogout);
   return homeDiv;
 };
-/* const inputPost = document.createElement('input');
-  inputPost.classList.add=('input-post');
-  export const newPost = document.querySelector('.input-post');
-  newPost.addEventListener('submit', (e) => {
-    e.preventDefault()
-    console.log('submitted');
-  const newPost= newPost['input-post']  console.log (inputPost)
-  }); */

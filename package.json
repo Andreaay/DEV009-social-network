@@ -14,7 +14,11 @@
     "htmlhint": "htmlhint dist/*.html ",
     "eslint": "eslint --ext .js src/ test/",
     "stylelint": "stylelint --aei src/**/*.css",
+<<<<<<< HEAD
     "pretest_": "npm run htmlhint && npm run eslint && npm run stylelint",
+=======
+    "xpretest": "npm run htmlhint && npm run eslint && npm run stylelint",
+>>>>>>> 3fc6abe5b223352bd989f18e5304b442008dcb5d
     "test": "jest --env=jsdom --coverage",
     "dev": "vite dev src",
     "start": "npm run dev",

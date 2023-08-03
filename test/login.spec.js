@@ -11,8 +11,9 @@
 import { expect, jest } from '@jest/globals';
 import { signinUser } from '../src/lib/account';
 // eslint-disable-next-line import/no-cycle
-import { Login } from '../src/components/Login';// jest.mock('../src/lib/account');
+import { Login } from '../src/components/Login';
 
+jest.mock('../src/lib/account');
 describe('Login', () => {
   beforeEach(() => {
     const homeDiv = Login();

@@ -1,13 +1,13 @@
 // /* eslint-disable eol-last */
 /* eslint-disable import/no-duplicates */
-import { getFirestore, collection, getDocs, addDoc, query, orderBy } from 'firebase/firestore';
+import {
+  getFirestore, collection, getDocs, addDoc, query, orderBy,
+} from 'firebase/firestore';
+// import {
+//   doc, updateDoc, arrayUnion, arrayRemove,
+// } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { app } from './firebase.js';
-
-// const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
-// const {  FieldValue, Filter } = require('firebase-admin/firestore');
-
-// initializeApp();.
 
 export const auth = getAuth(app);
 export const database = getFirestore(app);
@@ -17,7 +17,6 @@ export const createEvent = async (data) => {
     const docRef = await addDoc(collection(database, 'events'), data);
     console.log(data);
     console.log('Document written with ID: ', docRef.id);
-    // return createPost;
   } catch (e) {
     console.error('Error adding event: ', e);
   }
@@ -29,3 +28,25 @@ export async function bringEvent() {
   const documents = await getDocs(everyPost);
   return documents.docs.map((doc) => doc.data());
 }
+
+// // UPDATE EVENT
+// export async function updateEvent(eventId, newData) {
+//   try {
+//     const eventRef = doc(database, 'events', eventId);
+//     await updateDoc(eventRef, newData);
+//     console.log('Event updated successfully');
+//   } catch (e) {
+//     console.error('Error updating event: ', e);
+//   }
+// }
+
+// // REMOVE EVENT
+// export async function removeEvent(eventId) {
+//   try {
+//     const eventRef = doc(database, 'events', eventId);
+//     await deleteDoc(eventRef);
+//     console.log('Event removed successfully');
+//   } catch (e) {
+//     console.error('Error removing event: ', e);
+//   }
+// }
