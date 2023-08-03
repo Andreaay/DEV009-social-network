@@ -11,7 +11,6 @@ export const Newpost = (navigateTo) => {
   post.innerHTML = 'What is happening?';
   const buttonShare = document.createElement('button');
   buttonShare.innerHTML = 'share <i class="fa-solid fa-share"></i>';
-  const olPosts = document.createElement('ol');
   const buttonStart = document.createElement('button');
   buttonStart.innerHTML = '<i class="fas fa-house"></i>';
   const buttonEvents = document.createElement('button');
@@ -46,9 +45,13 @@ export const Newpost = (navigateTo) => {
     navigateTo('/profile');
   });
 
+  const containerPosts = document.createElement('div');
+  containerPosts.classList.add('post-area');
+  document.createElement('container', containerPosts);
+  bringPost();
+
   buttonShare.addEventListener('click', () => {
     const valuePost = inputPost.value;
-
     if (valuePost.length === 0) {
       alert('Can not post empty value');
     } else {
@@ -62,40 +65,26 @@ export const Newpost = (navigateTo) => {
       };
       inputPost.value = '';
       createPost(data);
+      const postsArea = document.querySelector('.posts_area');
+      postsArea.innerHTML = '';
+      bringPost();
     }
   });
- bringPost().then(res => {
-  res.forEach(doc =>{
-    const p = doc.data();
-    console.log(p.post);
-  }) 
- })
 
+  bringPost().then((res) => {
+    res.forEach((doc) => {
+      const p = doc.data();
+      console.log(p.post);
+      const postElement = document.createElement('p');
+      postElement.textContent = p.post;
+      containerPosts.appendChild(postElement);
+    });
+  });
 
-  // async () => {
-  //   try {
-  //     await createPost(database, inputPost);
-  //     querySnapshot(database, collection, (success) => {
-  //       console.log('Posts:', success);
-  //       olPosts.innerText = 'Posts';
-  //     });
-  //   } catch (error) {
-  //     console.error('Post error:', error);
-  //   }
-  // });
-
-  //   const content = inputPost.value;
-  //   console.log(content);
-  //   console.log(database);
-  //   const docRef = await addDoc(collection(database, 'posts'), {
-  //     postContent: content,
-  //     author: 'Amalia',
-  //     postTime: Timestamp.now(),
-  //   });
-  //   console.log('Document written with ID: ', docRef.id);
   homeDiv.append(title);
   homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);
   homeDiv.append(buttonNewPost, buttonProfile, buttonLogout);
+  homeDiv.appendChild(containerPosts);
   const bottomMenuDiv = document.createElement('div');
   bottomMenuDiv.classList.add('bottom-menu');
   homeDiv.append(bottomMenuDiv);

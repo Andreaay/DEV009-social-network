@@ -3,7 +3,7 @@
 import { getFirestore, collection, getDocs, addDoc, query, orderBy } from 'firebase/firestore';
 import { updateProfile, getAuth } from 'firebase/auth';
 import { app } from './firebase.js';
- 
+
 // const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 // const {  FieldValue, Filter } = require('firebase-admin/firestore');
 
@@ -11,7 +11,7 @@ import { app } from './firebase.js';
 
 export const auth = getAuth(app);
 export const database = getFirestore(app);
-
+// PROFILE
 export const updateProfileInfo = (displayName, photoURL) => {
   const user = auth.currentUser;
   if (user) {
@@ -28,7 +28,7 @@ export const updateProfileInfo = (displayName, photoURL) => {
   console.error('No authenticated user.');
   return Promise.reject(new Error('No authenticated user.'));
 };
-
+// NEW POST
 export const createPost = async (data) => {
   try {
     const docRef = await addDoc(collection(database, 'posts'), data);
@@ -46,11 +46,6 @@ export async function bringPost() {
   const documents = await getDocs(everyPost);
   return documents;
 }
-
-// export const querySnapshot = await getDocs(collection(database, 'posts'));
-// querySnapshot.forEach((doc) => {
-//   console.log(doc.id, ' => ', doc.data());
-// });
 
 /* getAuth()// crear perfil
   .createUser({
