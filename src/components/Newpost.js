@@ -1,4 +1,4 @@
-import { collection, addDoc, Timestamp } from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
 import { logOutUser } from '../lib/account';
 import { database } from '../lib/firebase';
 
@@ -10,6 +10,7 @@ export const Newpost = (navigateTo) => {
   const post = document.createElement('p');
   post.innerHTML = 'What is happening?';
   const buttonShare = document.createElement('button');
+  buttonShare.innerHTML = 'share <i class="fa-solid fa-share"></i>';
   const buttonStart = document.createElement('button');
   const buttonEvents = document.createElement('button');
   const buttonNewPost = document.createElement('button');
@@ -43,21 +44,46 @@ export const Newpost = (navigateTo) => {
     navigateTo('/profile');
   });
 
-  buttonShare.addEventListener('click', async () => {
-    const content = inputPost.value;
-    console.log(content);
-    console.log(database);
-    const docRef = await addDoc(collection(database, 'posts'), {
-      postContent: content,
-      author: 'Amalia',
-      postTime: Timestamp.now(),
+  const containerPosts = document.createElement('div');
+  containerPosts.classList.add('post-area');
+  document.createElement('container', containerPosts);
+  bringPost();
+
+  buttonShare.addEventListener('click', () => {
+    const valuePost = inputPost.value;
+    if (valuePost.length === 0) {
+      alert('Can not post empty value');
+    } else {
+      const data = {
+        // user: "Maria",
+        // last: "Martínez",
+        created_date: new Date(),
+        // edited_date:"",
+        post: valuePost,
+        // likes:"",
+      };
+      inputPost.value = '';
+      createPost(data);
+      const postsArea = document.querySelector('.posts_area');
+      postsArea.innerHTML = '';
+      bringPost();
+    }
+  });
+
+  bringPost().then((res) => {
+    res.forEach((doc) => {
+      const p = doc.data();
+      console.log(p.post);
+      const postElement = document.createElement('p');
+      postElement.textContent = p.post;
+      containerPosts.appendChild(postElement);
     });
-    console.log('Document written with ID: ', docRef.id);
   });
 
   homeDiv.append(title);
   homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);
   homeDiv.append(buttonNewPost, buttonProfile, buttonLogout);
+  homeDiv.appendChild(containerPosts);
   const bottomMenuDiv = document.createElement('div');
   bottomMenuDiv.classList.add('bottom-menu');
   homeDiv.append(bottomMenuDiv);
@@ -66,11 +92,8 @@ export const Newpost = (navigateTo) => {
   bottomMenuDiv.append(buttonNewPost);
   bottomMenuDiv.append(buttonProfile);
   bottomMenuDiv.append(buttonLogout);
-
   return homeDiv;
-};
-
-/* const inputPost = document.createElement('input');
+};/* const inputPost = document.createElement('input');
   inputPost.classList.add=('input-post');
   export const newPost = document.querySelector('.input-post');
   newPost.addEventListener('submit', (e) => {

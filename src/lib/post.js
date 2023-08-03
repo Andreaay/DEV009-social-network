@@ -1,44 +1,44 @@
-/* eslint-disable eol-last */
+// /* eslint-disable eol-last */
 /* eslint-disable import/no-duplicates */
-import { getFirestore } from 'firebase/firestore';
-import { updateProfile } from 'firebase/auth';
-import { collection, getDocs } from 'firebase/firestore';
-import { addDoc, Timestamp, database } from 'firebase/firestore';
-import { auth } from './firebase';
-
+import { getFirestore, collection, getDocs, addDoc, query, orderBy } from 'firebase/firestore';
+import { updateProfile, getAuth } from 'firebase/auth';
+import { app } from './firebase.js';
 
 // const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 // const {  FieldValue, Filter } = require('firebase-admin/firestore');
 
 // initializeApp();
 
+export const auth = getAuth(app);
+export const database = getFirestore(app);
+// PROFILE
 export const updateProfileInfo = (displayName, photoURL) => {
   const user = auth.currentUser;
   if (user) {
     return updateProfile(user, { displayName, photoURL })
       .then(() => {
-        console.log('Perfil actualizado correctamente.');
+        console.log('Profile updated correctly');
       })
       .catch((error) => {
         // Ocurrió un error durante la actualización del perfil.
-        console.error('Error al actualizar el perfil:', error.message);
+        console.error('Error updating profile:', error.message);
         return Promise.reject(error);
       });
   }
-  console.error('No hay un usuario autenticado.');
-  return Promise.reject(new Error('No hay un usuario autenticado.'));
+  console.error('No authenticated user.');
+  return Promise.reject(new Error('No authenticated user.'));
 };
-
-export async function createPost(data) {
+// NEW POST
+export const createPost = async (data) => {
   try {
     const docRef = await addDoc(collection(database, 'posts'), data);
     console.log(data);
     console.log('Document written with ID: ', docRef.id);
-    return createPost;
+    // return createPost;
   } catch (e) {
     console.error('Error adding post: ', e);
   }
-}
+};
 
 export async function bringPost() {
   console.log('bring function');
@@ -46,11 +46,6 @@ export async function bringPost() {
   const documents = await getDocs(everyPost);
   return documents;
 }
-
-// export const querySnapshot = await getDocs(collection(database, 'posts'));
-// querySnapshot.forEach((doc) => {
-//   console.log(doc.id, ' => ', doc.data());
-// });
 
 /* getAuth()// crear perfil
   .createUser({
