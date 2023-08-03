@@ -26,3 +26,4 @@ test('Al hacer click al botón logout redirecciona si la promesa es correcta', (
   buttonLogout.click();
   expect(account.logOutUser).toHaveBeenCalled();
 });
+

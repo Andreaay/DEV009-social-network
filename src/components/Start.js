@@ -1,5 +1,5 @@
 import { logOutUser } from '../lib/account';
-
+import { bringPost } from '../lib/post';
 export const Start = (navigateTo) => {
   // console.log('start', getCurrentUser());
   const homeDiv = document.createElement('div');
