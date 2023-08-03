@@ -93,19 +93,12 @@ export const Newpost = (navigateTo) => {
   bottomMenuDiv.append(buttonNewPost);
   bottomMenuDiv.append(buttonProfile);
   bottomMenuDiv.append(buttonLogout);
-
   return homeDiv;
-};
-
-/* const inputPost = document.createElement('input');
+};/* const inputPost = document.createElement('input');
   inputPost.classList.add=('input-post');
   export const newPost = document.querySelector('.input-post');
   newPost.addEventListener('submit', (e) => {
     e.preventDefault()
     console.log('submitted');
-  const newPost= newPost['input-post']
-
-  console.log (inputPost)
-  });
-
- */
+  const newPost= newPost['input-post']  console.log (inputPost)
+  }); */
