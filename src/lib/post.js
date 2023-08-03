@@ -1,6 +1,8 @@
 //* eslint-disable eol-last */
 /* eslint-disable import/no-duplicates */
-import { getFirestore, collection, getDocs, addDoc, query, orderBy } from 'firebase/firestore';
+import {
+  getFirestore, collection, getDocs, addDoc, query, orderBy,
+} from 'firebase/firestore';
 import { updateProfile, getAuth } from 'firebase/auth';
 import { app } from './firebase.js';
 // const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');

@@ -1,4 +1,4 @@
-import { getCurrentUser, logOutUser } from '../lib/account';
+import { logOutUser } from '../lib/account';
 
 export const Start = (navigateTo) => {
   // console.log('start', getCurrentUser());
