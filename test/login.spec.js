@@ -11,9 +11,7 @@
 import { expect, jest } from '@jest/globals';
 import { signinUser } from '../src/lib/account';
 // eslint-disable-next-line import/no-cycle
-import { Login } from '../src/components/Login';
-
-jest.mock('../src/lib/account');
+import { Login } from '../src/components/Login';jest.mock('../src/lib/account');
 describe('Login', () => {
   beforeEach(() => {
   });
@@ -33,40 +31,29 @@ describe('Login', () => {
     bottonLogin.click();
     expect(callback).toHaveBeenCalled(true);
   });
-});
-
-/*
+});/*
 jest.mock('../src/lib/account');
 describe('Start', () => {
   beforeEach(() => {
     const homeDiv = Start();
     document.body.replaceChildren(homeDiv);
-  });
-
-  test('Test para no validar login', () => {
+  });  test('Test para no validar login', () => {
     const navigateTo = jest.fn();
     signinUser(signInWithEmailAndPassword, 'continue with google');
     expect(navigateTo).not.toHaveBeenCalled('/start'); */
-// });
-
-/* function drinkAll(callback, flavour) {
+// });/* function drinkAll(callback, flavour) {
   if (flavour !== 'octopus') {
     callback(flavour);
   }
-}
-
-  describe('drinkAll', () => {
+}  describe('drinkAll', () => {
   test('drinks something lemon-flavoured', () => {
     const drink = jest.fn();
     drinkAll(drink, 'lemon');
     expect(drink).toHaveBeenCalled();
-  });
-
-  test('does not drink something octopus-flavoured', () => {
+  });  test('does not drink something octopus-flavoured', () => {
     const drink = jest.fn();
     drinkAll(drink, 'octopus');
     expect(drink).not.toHaveBeenCalled();
   });
-
 }); */
 // await nextTick()
