@@ -10,11 +10,7 @@
 import { expect } from '@jest/globals';
 import * as account from '../src/lib/account';
 // eslint-disable-next-line import/no-cycle
-import { Start } from '../src/components/Start';
-
-// jest.mock('../src/lib/account');
-
-describe('Start', () => {
+import { Start } from '../src/components/Start';   //jest.mock('../src/lib/account');describe('Start', () => {
   beforeEach(() => {
     const homeDiv = Start();
     document.body.replaceChildren(homeDiv);
@@ -29,4 +25,4 @@ describe('Start', () => {
     buttonLogout.click();
     expect(account.logOutUser).toHaveBeenCalled();
   });
-});
+  

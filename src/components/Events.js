@@ -1,7 +1,6 @@
 import { logOutUser } from '../lib/account';
 import { createEvent, bringEvent } from '../lib/events';
 import { doc } from 'firebase/firestore';
-
 export const Events = (navigateTo) => {
   const homeDiv = document.createElement('div');
   const title = document.createElement('h1');
@@ -29,11 +28,7 @@ export const Events = (navigateTo) => {
       }
     };
     logOutUser(alertOutUser);
-  });
-
-  title.textContent = 'Expressio Music';
-
-  buttonStart.addEventListener('click', () => {
+  });  title.textContent = 'Expressio Music';  buttonStart.addEventListener('click', () => {
     navigateTo('/start');
   });
   buttonNewPost.addEventListener('click', () => {
@@ -41,14 +36,10 @@ export const Events = (navigateTo) => {
   });
   buttonProfile.addEventListener('click', () => {
     navigateTo('/profile');
-  });
-
-  const containerEvents = document.createElement('div');
+  });  const containerEvents = document.createElement('div');
   containerEvents.classList.add('event-area');
   document.createElement('container', containerEvents);
-  bringEvent();
-
-  buttonShare.addEventListener('click', () => {
+  bringEvent();  buttonShare.addEventListener('click', () => {
     const valuePost = inputEvent.value;
     if (valuePost.length === 0) {
       alert('Can not post empty value');
@@ -67,9 +58,7 @@ export const Events = (navigateTo) => {
       eventArea.innerHTML = '';
       bringEvent();
     }
-  });
-
-  bringEvent().then((res) => {
+  });  bringEvent().then((res) => {
     res.forEach((doc) => {
       const ev = doc.data();
       console.log(ev.events);
@@ -85,18 +74,11 @@ export const Events = (navigateTo) => {
   homeDiv.append(buttonEvents);
   homeDiv.append(buttonNewPost);
   homeDiv.append(buttonProfile);
-  homeDiv.append(buttonLogout);
-
-  const bottomMenuDiv = document.createElement('div');
-  bottomMenuDiv.classList.add('bottom-menu');
-
-  bottomMenuDiv.append(buttonStart);
+  homeDiv.append(buttonLogout);  const bottomMenuDiv = document.createElement('div');
+  bottomMenuDiv.classList.add('bottom-menu');  bottomMenuDiv.append(buttonStart);
   bottomMenuDiv.append(buttonEvents);
   bottomMenuDiv.append(buttonNewPost);
   bottomMenuDiv.append(buttonProfile);
-  bottomMenuDiv.append(buttonLogout);
-
-  homeDiv.append(bottomMenuDiv);
-
+  bottomMenuDiv.append(buttonLogout);  homeDiv.append(bottomMenuDiv);  
   return homeDiv;
 };

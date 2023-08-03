@@ -23,16 +23,16 @@ describe('Register', () => {
   });
   test('Al hacer click al botón register redirecciona si la promesa es correcta', () => {
     const mockUser = {
-        uid: 'user123',
-        displayName: 'John Doe',
-        email: 'john.doe@example.com',
-      };
-      const mockUserCredential = {
-        user: mockUser,
+      uid: 'user123',
+      displayName: 'John Doe',
+      email: 'john.doe@example.com',
+    };
+    const mockUserCredential = {
+      user: mockUser,
       jest.spyOn(account, 'addUser').mockResolvedValue(mockUserCredential);
       const registerUser = document.querySelector('#buttonReg');
       registerUser.click();
       expect(account.addUser).toHaveBeenCalled();
-      };
-     });
-});
+    };
+    });
+  })

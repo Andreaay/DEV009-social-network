@@ -7,7 +7,7 @@ import { app } from './firebase.js';
 // const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 // const {  FieldValue, Filter } = require('firebase-admin/firestore');
 
-// initializeApp();
+// initializeApp();.
 
 export const auth = getAuth(app);
 export const database = getFirestore(app);

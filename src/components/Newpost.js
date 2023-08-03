@@ -1,7 +1,6 @@
 import { doc } from 'firebase/firestore';
 import { logOutUser } from '../lib/account';
 import { createPost, bringPost } from '../lib/post';
-
 export const Newpost = (navigateTo) => {
   const homeDiv = document.createElement('div');
   const title = document.createElement('h1');
@@ -33,9 +32,7 @@ export const Newpost = (navigateTo) => {
   title.textContent = 'Expressio Music';
   const textTitleContainer = document.createElement('div');
   textTitleContainer.classList.add('title-container');
-  textTitleContainer.append(title);
-
-  buttonStart.addEventListener('click', () => {
+  textTitleContainer.append(title);  buttonStart.addEventListener('click', () => {
     navigateTo('/start');
   });
   buttonEvents.addEventListener('click', () => {
@@ -43,14 +40,10 @@ export const Newpost = (navigateTo) => {
   });
   buttonProfile.addEventListener('click', () => {
     navigateTo('/profile');
-  });
-
-  const containerPosts = document.createElement('div');
+  });  const containerPosts = document.createElement('div');
   containerPosts.classList.add('post-area');
   document.createElement('container', containerPosts);
-  bringPost();
-
-  buttonShare.addEventListener('click', () => {
+  bringPost();  buttonShare.addEventListener('click', () => {
     const valuePost = inputPost.value;
     if (valuePost.length === 0) {
       alert('Can not post empty value');
@@ -69,9 +62,7 @@ export const Newpost = (navigateTo) => {
       postsArea.innerHTML = '';
       bringPost();
     }
-  });
-
-  bringPost().then((res) => {
+  });  bringPost().then((res) => {
     res.forEach((doc) => {
       const p = doc.data();
       console.log(p.post);
@@ -79,9 +70,7 @@ export const Newpost = (navigateTo) => {
       postElement.textContent = p.post;
       containerPosts.appendChild(postElement);
     });
-  });
-
-  homeDiv.append(title);
+  });  homeDiv.append(title);
   homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);
   homeDiv.append(buttonNewPost, buttonProfile, buttonLogout);
   homeDiv.appendChild(containerPosts);
@@ -94,7 +83,8 @@ export const Newpost = (navigateTo) => {
   bottomMenuDiv.append(buttonProfile);
   bottomMenuDiv.append(buttonLogout);
   return homeDiv;
-};/* const inputPost = document.createElement('input');
+};
+/* const inputPost = document.createElement('input');
   inputPost.classList.add=('input-post');
   export const newPost = document.querySelector('.input-post');
   newPost.addEventListener('submit', (e) => {
