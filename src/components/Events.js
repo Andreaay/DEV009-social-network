@@ -59,11 +59,10 @@ export const Events = (navigateTo) => {
       bringEvent();
     }
   });  bringEvent().then((res) => {
-    res.forEach((doc) => {
-      const ev = doc.data();
-      console.log(ev.events);
+    res.forEach((ev) => {
+      console.log(ev.post);
       const postElement = document.createElement('p');
-      postElement.textContent = ev.events;
+      postElement.textContent = ev.post;
       containerEvents.appendChild(postElement);
     });
   });

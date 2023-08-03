@@ -27,5 +27,5 @@ export async function bringEvent() {
   console.log('bring function');
   const everyPost = query(collection(database, 'events'), orderBy('created_date', 'desc'));
   const documents = await getDocs(everyPost);
-  return documents;
+  return documents.docs.map((doc) => doc.data());
 }
