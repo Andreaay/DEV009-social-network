@@ -1,4 +1,5 @@
 import { getCurrentUser, logOutUser } from '../lib/account';
+import { bringPost } from '../lib/post';
 
 export const Start = (navigateTo) => {
   // console.log('start', getCurrentUser());
@@ -16,6 +17,10 @@ export const Start = (navigateTo) => {
   loginError.innerText = '';
   const buttonLogout = document.createElement('button');
   buttonLogout.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+  const containerPosts = document.createElement('div');
+  containerPosts.classList.add('post-area');
+  document.createElement('container', containerPosts);
+  
   buttonLogout.addEventListener('click', () => {
     const alertOutUser = (callback) => {
       if (callback) {
@@ -28,6 +33,17 @@ export const Start = (navigateTo) => {
   buttonLogout.setAttribute('id', 'botoncito');
   title.textContent = 'Expressio Music';
 
+  bringPost().then((res) => {
+    res.forEach((doc) => {
+      const p = doc.data();
+      console.log('prueba x');
+      console.log(p.post);
+      const postElement = document.createElement('p');
+      postElement.textContent = p.post;
+      containerPosts.appendChild(postElement);
+    });
+  }); 
+
   buttonEvents.addEventListener('click', () => {
     navigateTo('/events');
   });
@@ -39,6 +55,9 @@ export const Start = (navigateTo) => {
   });
 
   homeDiv.append(title);
+
+  homeDiv.appendChild(containerPosts);
+
   homeDiv.append(buttonStart);
   homeDiv.append(buttonEvents);
   homeDiv.append(buttonNewPost);

@@ -32,7 +32,7 @@ export const Newpost = (navigateTo) => {
   title.textContent = 'Expressio Music';
   const textTitleContainer = document.createElement('div');
   textTitleContainer.classList.add('title-container');
-  textTitleContainer.append(title);  buttonStart.addEventListener('click', () => {
+  textTitleContainer.append(title); buttonStart.addEventListener('click', () => {
     navigateTo('/start');
   });
   buttonEvents.addEventListener('click', () => {
@@ -40,10 +40,14 @@ export const Newpost = (navigateTo) => {
   });
   buttonProfile.addEventListener('click', () => {
     navigateTo('/profile');
-  });  const containerPosts = document.createElement('div');
+  }); 
+  
+  const containerPosts = document.createElement('div');
   containerPosts.classList.add('post-area');
   document.createElement('container', containerPosts);
-  bringPost();  buttonShare.addEventListener('click', () => {
+
+  
+  buttonShare.addEventListener('click', () => {
     const valuePost = inputPost.value;
     if (valuePost.length === 0) {
       alert('Can not post empty value');
@@ -60,17 +64,23 @@ export const Newpost = (navigateTo) => {
       createPost(data);
       const postsArea = document.querySelector('.posts_area');
       postsArea.innerHTML = '';
-      bringPost();
     }
-  });  bringPost().then((res) => {
-    res.forEach((doc) => {
-      const p = doc.data();
-      console.log(p.post);
-      const postElement = document.createElement('p');
-      postElement.textContent = p.post;
-      containerPosts.appendChild(postElement);
-    });
-  });  homeDiv.append(title);
+  }); 
+  
+  bringPost().then((res) => {
+
+    const lastPost = res._snapshot.docChanges[0].doc.data.value.mapValue.fields.post.stringValue
+    console.log(postDate);
+    const successMessage = document.createElement('p');
+    successMessage.textContent = 'The post was created correctly : '
+    const postElement = document.createElement('p');
+    postElement.textContent = lastPost
+    containerPosts.appendChild(successMessage)
+    containerPosts.appendChild(postElement  );
+
+  }); 
+  
+  homeDiv.append(title);
   homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);
   homeDiv.append(buttonNewPost, buttonProfile, buttonLogout);
   homeDiv.appendChild(containerPosts);
