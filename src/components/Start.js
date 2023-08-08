@@ -1,5 +1,5 @@
 import { logOutUser } from '../lib/account';
-import { bringPost } from '../lib/post';
+import { bringPost, updatePost, removePost } from '../lib/post';
 
 export const Start = (navigateTo) => {
   // console.log('start', getCurrentUser());
@@ -68,7 +68,7 @@ export const Start = (navigateTo) => {
           return popup;
         }
 
-        const popup = createEditPopup(p.data().post);
+        const popup = createEditPopup(p.post);
 
         const saveButton = popup.querySelector('.popup-save');
         saveButton.addEventListener('click', () => {
@@ -87,25 +87,23 @@ export const Start = (navigateTo) => {
         cancelButton.addEventListener('click', () => {
           popup.remove();
         });
-
-        containerPost.appendChild(popup);
+        containerPosts.appendChild(popup);
       });
 
       const deleteButton = document.createElement('button');
       deleteButton.textContent = 'Delete';
       deleteButton.addEventListener('click', () => {
         console.log('click');
-        if (p.id) {
-          removePost(p.id);
-          console.log(removePost(p.id), p.id);
+        if (doc.id) {
+          removePost(doc.id);
+          console.log(removePost(doc.id), doc.id);
         }
       });
+
+      containerPosts.appendChild(editButton);
+      containerPosts.appendChild(deleteButton);
     });
-
-    containerPost.appendChild(editButton);
-    containerPost.appendChild(deleteButton);
   });
-
   buttonEvents.addEventListener('click', () => {
     navigateTo('/events');
   });

@@ -46,21 +46,21 @@ export async function bringPost() {
 }
 
 // UPDATE POST
-export async function updateEvent(postId, newData) {
+export async function updatePost(postId, newData) {
   try {
-    const docRef = doc(database, 'events', postId);
-    await updateDoc(docRef, newData);
-    console.log('Event updated successfully');
+    const postRef = doc(database, 'posts', postId);
+    await updateDoc(postRef, newData);
+    console.log('Post updated successfully');
   } catch (e) {
-    console.error('Error updating event: ', e);
+    console.error('Error updating post: ', e);
   }
 }
 
 // REMOVE POST
-export async function removeEvent(eventId) {
-  const docRef = doc(database, 'events', eventId);
-  await deleteDoc(docRef);
-  console.log('Event removed successfully');
+export async function removePost(postId) {
+  const postRef = doc(database, 'posts', postId);
+  await deleteDoc(postRef);
+  console.log('Post removed successfully');
 }
 /* getAuth()// crear perfil
   .createUser({

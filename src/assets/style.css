@@ -2,7 +2,6 @@ body{
   background-color: #EAEBFC;
 }
 h1, h2, h3 {
-  position: fixed;
   text-align: center;
   font-size: xx-large;
   letter-spacing: 8px;
@@ -40,7 +39,6 @@ h1, h2, h3 {
   border: none;}@media (max-width: 768px) {
   .bottom-menu {
     flex-direction: row;
-    position: fixed;
     bottom: 0;
     border: none;
     width: 100%;
