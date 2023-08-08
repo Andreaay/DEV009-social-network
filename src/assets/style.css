@@ -1,8 +1,11 @@
-body{
+body {
   background-color: #EAEBFC;
 }
-h1, h2, h3 {
-  position: fixed;
+
+h1,
+h2,
+h3 {
+  /* position: fixed; */
   text-align: center;
   font-size: xx-large;
   letter-spacing: 8px;
@@ -10,24 +13,33 @@ h1, h2, h3 {
   background-color: #5E95FF;
   width: 100%;
   margin: 0;
-}p{
+}
+
+p {
   text-align: center;
   font-size: large;
 }
-.title-container{
+
+.title-container {
   display: grid;
   place-items: center;
   height: 100vh;
-}.grid-container {
+}
+
+.grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
-}.post,
+}
+
+.post,
 .inputPost,
 .buttonShare {
   margin-top: 10em;
   align-items: center;
-}.bottom-menu {
+}
+
+.bottom-menu {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -37,7 +49,10 @@ h1, h2, h3 {
   gap: 0.5rem;
   padding: 0.5em 0;
   transition: 8s;
-  border: none;}@media (max-width: 768px) {
+  border: none;
+}
+
+@media (max-width: 768px) {
   .bottom-menu {
     flex-direction: row;
     position: fixed;
@@ -45,33 +60,45 @@ h1, h2, h3 {
     border: none;
     width: 100%;
   }
-}@media (min-width: 769px) {
+}
+
+@media (min-width: 769px) {
   .bottom-menu {
     flex-direction: row;
     border: none;
     position: static;
   }
-}button:hover{
-  border-top: 4px solid  #707AE6;
 }
+
+button:hover {
+  border-top: 4px solid #707AE6;
+}
+
 .button-icon {
   border: none;
   cursor: pointer;
   padding: 0;
   font-size: 1.5rem;
 }
+
 .button-icon:hover {
   color: #707AE6;
-}.button-container {
+}
+
+.button-container {
   margin-top: 5em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
   justify-content: center;
-}.button-container button {
+}
+
+.button-container button {
   margin-bottom: 0.5em;
   background-color: #BD90CE;
-}button:hover,
-.bottom.button-container{
-  border-top: 4px solid  #707AE6;
+}
+
+button:hover,
+.bottom.button-container {
+  border-top: 4px solid #707AE6;
 }

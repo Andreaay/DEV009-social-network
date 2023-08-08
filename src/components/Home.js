@@ -24,11 +24,10 @@ export const Home = (navigateTo) => {
     navigateTo('/login');
   });
 
-  homeDiv.append(title);
-  homeDiv.append(welcome);
-  homeDiv.append(greeting);
-  homeDiv.append(buttonRegister);
-  homeDiv.append(buttonLogin);
+  homeDiv.append(title, welcome, greeting);
+  
+  homeDiv.append(buttonRegister, buttonLogin);
+  
 
   const buttonContainer = document.createElement('div');
   buttonContainer.classList.add('button-container');

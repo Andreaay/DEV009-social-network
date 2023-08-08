@@ -70,7 +70,9 @@ export const Events = (navigateTo) => {
       bringEvent();
     }
   });
+  function refreshBringEvent() {
   bringEvent().then((res) => {
+    containerEvents.innerHTML = ''
     res.forEach((ev) => {
       console.log(ev.data());
       const postElement = document.createElement('p');
@@ -140,21 +142,18 @@ export const Events = (navigateTo) => {
       containerEvents.appendChild(deleteButton);
     });
   });
+}
+refreshBringEvent()
+  window.addEventListener('click',refreshBringEvent)
+
   homeDiv.append(title);
   homeDiv.append(post, inputEvent, buttonShare);
   homeDiv.appendChild(containerEvents);
-  homeDiv.append(buttonStart);
-  homeDiv.append(buttonEvents);
-  homeDiv.append(buttonNewPost);
-  homeDiv.append(buttonProfile);
-  homeDiv.append(buttonLogout);
+  homeDiv.append(buttonStart, buttonEvents, buttonNewPost, buttonProfile, buttonLogout);
+  
   const bottomMenuDiv = document.createElement('div');
   bottomMenuDiv.classList.add('bottom-menu');
-  bottomMenuDiv.append(buttonStart);
-  bottomMenuDiv.append(buttonEvents);
-  bottomMenuDiv.append(buttonNewPost);
-  bottomMenuDiv.append(buttonProfile);
-  bottomMenuDiv.append(buttonLogout);
+  bottomMenuDiv.append(buttonStart, buttonEvents, buttonNewPost, buttonProfile, buttonLogout);
   homeDiv.append(bottomMenuDiv);
   return homeDiv;
 };
