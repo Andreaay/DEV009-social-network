@@ -81,7 +81,8 @@ export const Events = (navigateTo) => {
 
       const editButton = document.createElement('button');
       editButton.textContent = 'Edit';
-      editButton.addEventListener('click', () => {
+      editButton.addEventListener('click', (event) => {
+        event.preventDefault();
         function createEditPopup(initialValue) {
           const popup = document.createElement('div');
           popup.classList.add('popup');
