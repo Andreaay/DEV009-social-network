@@ -70,91 +70,90 @@ export const Events = (navigateTo) => {
       bringEvent();
     }
   });
-  bringEvent().then((res) => {
-    res.forEach((ev) => {
-      console.log(ev.data());
-      const postElement = document.createElement('p');
-      postElement.textContent = ev.data().post;
-      containerEvents.appendChild(postElement);
+  function refreshBringEvent() {
+    bringEvent().then((res) => {
+      containerEvents.innerHTML = '';
+      res.forEach((ev) => {
+        console.log(ev.data());
+        const postElement = document.createElement('p');
+        postElement.textContent = ev.data().post;
+        containerEvents.appendChild(postElement);
 
-      const editButton = document.createElement('button');
-      editButton.textContent = 'Edit';
-      editButton.addEventListener('click', () => {
-        function createEditPopup(initialValue) {
-          const popup = document.createElement('div');
-          popup.classList.add('popup');
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.addEventListener('click', () => {
+          function createEditPopup(initialValue) {
+            const popup = document.createElement('div');
+            popup.classList.add('popup');
 
-          const input = document.createElement('input');
-          input.classList.add('popup-input');
-          input.value = initialValue;
+            const input = document.createElement('input');
+            input.classList.add('popup-input');
+            input.value = initialValue;
 
-          const saveButton = document.createElement('button');
-          saveButton.classList.add('popup-save');
-          saveButton.textContent = 'Save';
+            const saveButton = document.createElement('button');
+            saveButton.classList.add('popup-save');
+            saveButton.textContent = 'Save';
 
-          const cancelButton = document.createElement('button');
-          cancelButton.classList.add('popup-cancel');
-          cancelButton.textContent = 'Cancel';
+            const cancelButton = document.createElement('button');
+            cancelButton.classList.add('popup-cancel');
+            cancelButton.textContent = 'Cancel';
 
-          popup.appendChild(input);
-          popup.appendChild(saveButton);
-          popup.appendChild(cancelButton);
+            popup.appendChild(input);
+            popup.appendChild(saveButton);
+            popup.appendChild(cancelButton);
 
-          return popup;
-        }
-
-        const popup = createEditPopup(ev.data().post);
-
-        const saveButton = popup.querySelector('.popup-save');
-        saveButton.addEventListener('click', () => {
-          const newPostContent = popup.querySelector('.popup-input').value;
-          postElement.textContent = newPostContent;
-          const newData = {
-            post: newPostContent,
-          };
-          if (ev.id) {
-            updateEvent(ev.id, newData);
+            return popup;
           }
-          popup.remove();
+
+          const popup = createEditPopup(ev.data().post);
+
+          const saveButton = popup.querySelector('.popup-save');
+          saveButton.addEventListener('click', () => {
+            const newPostContent = popup.querySelector('.popup-input').value;
+            postElement.textContent = newPostContent;
+            const newData = {
+              post: newPostContent,
+            };
+            if (ev.id) {
+              updateEvent(ev.id, newData);
+            }
+            popup.remove();
+          });
+
+          const cancelButton = popup.querySelector('.popup-cancel');
+          cancelButton.addEventListener('click', () => {
+            popup.remove();
+          });
+
+          containerEvents.appendChild(popup);
         });
 
-        const cancelButton = popup.querySelector('.popup-cancel');
-        cancelButton.addEventListener('click', () => {
-          popup.remove();
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', () => {
+          console.log('click');
+          if (ev.id) {
+            removeEvent(ev.id);
+            console.log(removeEvent(ev.id), ev.id);
+          }
         });
 
-        containerEvents.appendChild(popup);
+        containerEvents.appendChild(editButton);
+        containerEvents.appendChild(deleteButton);
       });
-
-      const deleteButton = document.createElement('button');
-      deleteButton.textContent = 'Delete';
-      deleteButton.addEventListener('click', () => {
-        console.log('click');
-        if (ev.id) {
-          removeEvent(ev.id);
-          console.log(removeEvent(ev.id), ev.id);
-        }
-      });
-
-      containerEvents.appendChild(editButton);
-      containerEvents.appendChild(deleteButton);
     });
-  });
+  }
+  refreshBringEvent();
+  window.addEventListener('click', refreshBringEvent);
+
   homeDiv.append(title);
   homeDiv.append(post, inputEvent, buttonShare);
   homeDiv.appendChild(containerEvents);
-  homeDiv.append(buttonStart);
-  homeDiv.append(buttonEvents);
-  homeDiv.append(buttonNewPost);
-  homeDiv.append(buttonProfile);
-  homeDiv.append(buttonLogout);
+  homeDiv.append(buttonStart, buttonEvents, buttonNewPost, buttonProfile, buttonLogout);
+
   const bottomMenuDiv = document.createElement('div');
   bottomMenuDiv.classList.add('bottom-menu');
-  bottomMenuDiv.append(buttonStart);
-  bottomMenuDiv.append(buttonEvents);
-  bottomMenuDiv.append(buttonNewPost);
-  bottomMenuDiv.append(buttonProfile);
-  bottomMenuDiv.append(buttonLogout);
+  bottomMenuDiv.append(buttonStart, buttonEvents, buttonNewPost, buttonProfile, buttonLogout);
   homeDiv.append(bottomMenuDiv);
   return homeDiv;
 };

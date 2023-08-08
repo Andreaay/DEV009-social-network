@@ -1,4 +1,3 @@
-import { doc } from 'firebase/firestore';
 import { logOutUser } from '../lib/account';
 import { createPost, bringPost } from '../lib/post';
 
@@ -53,12 +52,9 @@ export const Newpost = (navigateTo) => {
       alert('Can not post empty value');
     } else {
       const data = {
-        // user: "Maria",
-        // last: "Martínez",
+        // agrgar username  y likes
         created_date: new Date(),
-        // edited_date:"",
         post: valuePost,
-        // likes:"",
       };
       inputPost.value = '';
       createPost(data);
@@ -85,10 +81,7 @@ export const Newpost = (navigateTo) => {
   const bottomMenuDiv = document.createElement('div');
   bottomMenuDiv.classList.add('bottom-menu');
   homeDiv.append(bottomMenuDiv);
-  bottomMenuDiv.append(buttonStart);
-  bottomMenuDiv.append(buttonEvents);
-  bottomMenuDiv.append(buttonNewPost);
-  bottomMenuDiv.append(buttonProfile);
-  bottomMenuDiv.append(buttonLogout);
+  bottomMenuDiv.append(buttonStart, buttonEvents, buttonNewPost, buttonProfile, buttonLogout);
+  
   return homeDiv;
 };
