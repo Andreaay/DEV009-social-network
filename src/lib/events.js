@@ -1,7 +1,7 @@
 // /* eslint-disable eol-last */
 /* eslint-disable import/no-duplicates */
 import {
-  getFirestore, collection, getDocs, addDoc, query, orderBy,
+  getFirestore, collection, getDocs, addDoc, query, orderBy, doc, updateDoc, deleteDoc,
 } from 'firebase/firestore';
 // import {
 //   doc, updateDoc, arrayUnion, arrayRemove,
@@ -26,27 +26,23 @@ export async function bringEvent() {
   console.log('bring function');
   const everyPost = query(collection(database, 'events'), orderBy('created_date', 'desc'));
   const documents = await getDocs(everyPost);
-  return documents.docs.map((doc) => doc.data());
+  return documents;
 }
 
-// // UPDATE EVENT
-// export async function updateEvent(eventId, newData) {
-//   try {
-//     const eventRef = doc(database, 'events', eventId);
-//     await updateDoc(eventRef, newData);
-//     console.log('Event updated successfully');
-//   } catch (e) {
-//     console.error('Error updating event: ', e);
-//   }
-// }
+// UPDATE EVENT
+export async function updateEvent(eventId, newData) {
+  try {
+    const eventRef = doc(database, 'events', eventId);
+    await updateDoc(eventRef, newData);
+    console.log('Event updated successfully');
+  } catch (e) {
+    console.error('Error updating event: ', e);
+  }
+}
 
-// // REMOVE EVENT
-// export async function removeEvent(eventId) {
-//   try {
-//     const eventRef = doc(database, 'events', eventId);
-//     await deleteDoc(eventRef);
-//     console.log('Event removed successfully');
-//   } catch (e) {
-//     console.error('Error removing event: ', e);
-//   }
-// }
+// REMOVE EVENT
+export async function removeEvent(eventId) {
+  const eventRef = doc(database, 'events', eventId);
+  await deleteDoc(eventRef);
+  console.log('Event removed successfully');
+}

@@ -41,21 +41,13 @@ export const Newpost = (navigateTo) => {
   });
   buttonProfile.addEventListener('click', () => {
     navigateTo('/profile');
-<<<<<<< HEAD
-  }); 
-  
+  });
+
   const containerPosts = document.createElement('div');
   containerPosts.classList.add('post-area');
   document.createElement('container', containerPosts);
 
-  
   buttonShare.addEventListener('click', () => {
-=======
-  }); const containerPosts = document.createElement('div');
-  containerPosts.classList.add('post-area');
-  document.createElement('container', containerPosts);
-  bringPost(); buttonShare.addEventListener('click', () => {
->>>>>>> 3fc6abe5b223352bd989f18e5304b442008dcb5d
     const valuePost = inputPost.value;
     if (valuePost.length === 0) {
       alert('Can not post empty value');
@@ -73,35 +65,20 @@ export const Newpost = (navigateTo) => {
       const postsArea = document.querySelector('.posts_area');
       postsArea.innerHTML = '';
     }
-<<<<<<< HEAD
-  }); 
-  
-  bringPost().then((res) => {
+  });
 
-    const lastPost = res._snapshot.docChanges[0].doc.data.value.mapValue.fields.post.stringValue
+  bringPost().then((res) => {
+    const lastPost = res.snapshot.docChanges[0].doc.data.value.mapValue.fields.post.stringValue;
     console.log(postDate);
     const successMessage = document.createElement('p');
-    successMessage.textContent = 'The post was created correctly : '
+    successMessage.textContent = 'The post was created correctly : ';
     const postElement = document.createElement('p');
-    postElement.textContent = lastPost
-    containerPosts.appendChild(successMessage)
-    containerPosts.appendChild(postElement  );
-
-  }); 
-  
-  homeDiv.append(title);
-=======
+    postElement.textContent = lastPost;
+    containerPosts.appendChild(successMessage);
+    containerPosts.appendChild(postElement);
   });
-  bringPost().then((res) => {
-    res.forEach((doc) => {
-      const p = doc.data();
-      console.log(p.post);
-      const postElement = document.createElement('p');
-      postElement.textContent = p.post;
-      containerPosts.appendChild(postElement);
-    });
-  }); homeDiv.append(title);
->>>>>>> 3fc6abe5b223352bd989f18e5304b442008dcb5d
+
+  homeDiv.append(title);
   homeDiv.append(post, inputPost, buttonShare, buttonStart, buttonEvents);
   homeDiv.append(buttonNewPost, buttonProfile, buttonLogout);
   homeDiv.appendChild(containerPosts);

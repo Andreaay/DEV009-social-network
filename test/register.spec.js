@@ -27,13 +27,10 @@ describe('Register', () => {
       displayName: 'John Doe',
       email: 'john.doe@example.com',
     };
-    const mockUserCredential = {
-      user: mockUser,
-      jest.spyOn(account, 'addUser').mockResolvedValue(mockUserCredential),
-      const registerUser = document.querySelector('#buttonReg');
-      registerUser.click();
-      expect(account.addUser).toHaveBeenCalled();
-    };
-    });
+    const mockUserCredential = { user: mockUser };
+    jest.spyOn(account, 'addUser').mockResolvedValue(mockUserCredential);
+    const registerUser = document.querySelector('#buttonReg');
+    registerUser.click();
+    expect(account.addUser).toHaveBeenCalled();
   });
 });

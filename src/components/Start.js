@@ -1,4 +1,5 @@
 import { logOutUser } from '../lib/account';
+import { bringPost } from '../lib/post';
 
 export const Start = (navigateTo) => {
   // console.log('start', getCurrentUser());
@@ -40,8 +41,70 @@ export const Start = (navigateTo) => {
       const postElement = document.createElement('p');
       postElement.textContent = p.post;
       containerPosts.appendChild(postElement);
+
+      const editButton = document.createElement('button');
+      editButton.textContent = 'Edit';
+      editButton.addEventListener('click', () => {
+        function createEditPopup(initialValue) {
+          const popup = document.createElement('div');
+          popup.classList.add('popup');
+
+          const input = document.createElement('input');
+          input.classList.add('popup-input');
+          input.value = initialValue;
+
+          const saveButton = document.createElement('button');
+          saveButton.classList.add('popup-save');
+          saveButton.textContent = 'Save';
+
+          const cancelButton = document.createElement('button');
+          cancelButton.classList.add('popup-cancel');
+          cancelButton.textContent = 'Cancel';
+
+          popup.appendChild(input);
+          popup.appendChild(saveButton);
+          popup.appendChild(cancelButton);
+
+          return popup;
+        }
+
+        const popup = createEditPopup(p.data().post);
+
+        const saveButton = popup.querySelector('.popup-save');
+        saveButton.addEventListener('click', () => {
+          const newPostContent = popup.querySelector('.popup-input').value;
+          postElement.textContent = newPostContent;
+          const newData = {
+            post: newPostContent,
+          };
+          if (p.id) {
+            updatePost(p.id, newData);
+          }
+          popup.remove();
+        });
+
+        const cancelButton = popup.querySelector('.popup-cancel');
+        cancelButton.addEventListener('click', () => {
+          popup.remove();
+        });
+
+        containerPost.appendChild(popup);
+      });
+
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.addEventListener('click', () => {
+        console.log('click');
+        if (p.id) {
+          removePost(p.id);
+          console.log(removePost(p.id), p.id);
+        }
+      });
     });
-  }); 
+
+    containerPost.appendChild(editButton);
+    containerPost.appendChild(deleteButton);
+  });
 
   buttonEvents.addEventListener('click', () => {
     navigateTo('/events');

@@ -1,8 +1,11 @@
-import { doc } from 'firebase/firestore';
+import {
+  addDoc, doc, updateDoc, deleteDoc,
+} from 'firebase/firestore';
 import { logOutUser } from '../lib/account';
 import {
-  createEvent, bringEvent,
+  createEvent, bringEvent, updateEvent, removeEvent,
 } from '../lib/events';
+import { database } from '../lib/post';
 
 export const Events = (navigateTo) => {
   const homeDiv = document.createElement('div');
@@ -58,6 +61,7 @@ export const Events = (navigateTo) => {
         // edited_date:"",
         post: valuePost,
         // likes:"",
+        // aquí se puede id de usuario registrado
       };
       inputEvent.value = '';
       createEvent(data);
@@ -68,19 +72,74 @@ export const Events = (navigateTo) => {
   });
   bringEvent().then((res) => {
     res.forEach((ev) => {
-      console.log(ev.post);
+      console.log(ev.data());
       const postElement = document.createElement('p');
-      postElement.textContent = ev.post;
+      postElement.textContent = ev.data().post;
       containerEvents.appendChild(postElement);
+
+      const editButton = document.createElement('button');
+      editButton.textContent = 'Edit';
+      editButton.addEventListener('click', () => {
+        function createEditPopup(initialValue) {
+          const popup = document.createElement('div');
+          popup.classList.add('popup');
+
+          const input = document.createElement('input');
+          input.classList.add('popup-input');
+          input.value = initialValue;
+
+          const saveButton = document.createElement('button');
+          saveButton.classList.add('popup-save');
+          saveButton.textContent = 'Save';
+
+          const cancelButton = document.createElement('button');
+          cancelButton.classList.add('popup-cancel');
+          cancelButton.textContent = 'Cancel';
+
+          popup.appendChild(input);
+          popup.appendChild(saveButton);
+          popup.appendChild(cancelButton);
+
+          return popup;
+        }
+
+        const popup = createEditPopup(ev.data().post);
+
+        const saveButton = popup.querySelector('.popup-save');
+        saveButton.addEventListener('click', () => {
+          const newPostContent = popup.querySelector('.popup-input').value;
+          postElement.textContent = newPostContent;
+          const newData = {
+            post: newPostContent,
+          };
+          if (ev.id) {
+            updateEvent(ev.id, newData);
+          }
+          popup.remove();
+        });
+
+        const cancelButton = popup.querySelector('.popup-cancel');
+        cancelButton.addEventListener('click', () => {
+          popup.remove();
+        });
+
+        containerEvents.appendChild(popup);
+      });
+
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.addEventListener('click', () => {
+        console.log('click');
+        if (ev.id) {
+          removeEvent(ev.id);
+          console.log(removeEvent(ev.id), ev.id);
+        }
+      });
+
+      containerEvents.appendChild(editButton);
+      containerEvents.appendChild(deleteButton);
     });
   });
-
-  //   const eventDataToUpdate = {
-  //     name: 'Updated Event Name', description: 'Updated Description',
-  //   };
-  //   updateEvent('event_id_here', eventDataToUpdate);
-  //   removeEvent('event_id_here');
-  // });
   homeDiv.append(title);
   homeDiv.append(post, inputEvent, buttonShare);
   homeDiv.appendChild(containerEvents);

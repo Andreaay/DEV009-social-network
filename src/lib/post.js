@@ -1,7 +1,7 @@
 //* eslint-disable eol-last */
 /* eslint-disable import/no-duplicates */
 import {
-  getFirestore, collection, getDocs, addDoc, query, orderBy,
+  getFirestore, collection, getDocs, addDoc, query, orderBy, doc, updateDoc, deleteDoc,
 } from 'firebase/firestore';
 import { updateProfile, getAuth } from 'firebase/auth';
 import { app } from './firebase.js';
@@ -43,6 +43,24 @@ export async function bringPost() {
   const everyPost = query(collection(database, 'posts'), orderBy('created_date', 'desc'));
   const documents = await getDocs(everyPost);
   return documents;
+}
+
+// UPDATE POST
+export async function updateEvent(postId, newData) {
+  try {
+    const docRef = doc(database, 'events', postId);
+    await updateDoc(docRef, newData);
+    console.log('Event updated successfully');
+  } catch (e) {
+    console.error('Error updating event: ', e);
+  }
+}
+
+// REMOVE POST
+export async function removeEvent(eventId) {
+  const docRef = doc(database, 'events', eventId);
+  await deleteDoc(docRef);
+  console.log('Event removed successfully');
 }
 /* getAuth()// crear perfil
   .createUser({
