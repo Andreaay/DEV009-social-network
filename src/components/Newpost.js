@@ -1,16 +1,24 @@
 import { logOutUser } from '../lib/account';
 import { createPost, bringPost } from '../lib/post';
+
 import { bottomMenu2, titleBox2 } from './htmlElements';
 
 export const Newpost = (navigateTo) => {
   const homeDiv = document.createElement('div');
-
-  const subtitle = document.createElement('p');
-  subtitle.innerHTML = 'What is happening?';
   const inputPost = document.createElement('input');
   inputPost.id = 'enterPost';
+  const subtitle = document.createElement('p');
+  subtitle.innerHTML = 'What is happening?';
+
   const buttonShare = document.createElement('button');
   buttonShare.innerHTML = 'share <i class="fa-solid fa-share"></i>';
+
+  /*  const containerPosts = document.createElement('div');
+  containerPosts.classList.add('post-area');
+  document.createElement('container', containerPosts); */
+  homeDiv.append(titleBox2());
+  homeDiv.append(subtitle, inputPost, buttonShare);
+  bringPost();
 
   buttonShare.addEventListener('click', () => {
     const valuePost = inputPost.value;
@@ -29,8 +37,9 @@ export const Newpost = (navigateTo) => {
     }
   });
   // -------------------->>>>> Page creation
-  const menuFromHTML = bottomMenu2(navigateTo,logOutUser)
-  const titleFromHTML = titleBox2()
-  homeDiv.append(titleFromHTML,subtitle, inputPost, buttonShare,menuFromHTML);
+  // homeDiv.appendChild(containerPosts);
+
+  homeDiv.append(bottomMenu2(navigateTo, logOutUser));
+
   return homeDiv;
-}
+};

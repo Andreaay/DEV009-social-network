@@ -10,6 +10,7 @@ import { app } from './firebase.js';
 // initializeApp();
 export const auth = getAuth(app);
 export const database = getFirestore(app);
+export const q = query(collection(database, 'posts'));
 // PROFILE
 export const updateProfileInfo = (displayName, photoURL) => {
   const user = auth.currentUser;
