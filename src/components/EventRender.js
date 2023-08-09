@@ -1,29 +1,19 @@
-import { logOutUser } from '../lib/account';
-import { bringPost, updatePost, removePost } from '../lib/post';
-import { bottomMenu2, titleBox2 } from './htmlElements';
+import { onSnapshot } from 'firebase/firestore';
+import { updateEvent, removeEvent, q } from '../lib/events';
 
-export const Start = (navigateTo) => {
-  const homeDiv = document.createElement('div');
-
-  const loginError = document.createElement('h5');
-  loginError.innerText = '';
-
-  const containerPosts = document.createElement('div');
-  containerPosts.classList.add('post-area');
-  document.createElement('container', containerPosts);
-
-  // buttonLogout.setAttribute('id', 'botoncito');
-
-  bringPost().then((res) => {
-    res.forEach((doc) => {
-      const p = doc.data();
+const eventRender = () => {
+  const div = document.createElement('div');
+  div.classList = 'tiemporeal';
+  onSnapshot(q, (querySnapshot) => {
+    document.querySelector('.tiemporeal').innerHTML = '';
+    querySnapshot.forEach((ev) => {
       const postElement = document.createElement('p');
-      postElement.textContent = p.post;
-      containerPosts.appendChild(postElement);
+      postElement.textContent = ev.data().post;
 
       const editButton = document.createElement('button');
       editButton.textContent = 'Edit';
-      editButton.addEventListener('click', () => {
+      editButton.addEventListener('click', (event) => {
+        event.preventDefault();
         function createEditPopup(initialValue) {
           const popup = document.createElement('div');
           popup.classList.add('popup');
@@ -47,7 +37,7 @@ export const Start = (navigateTo) => {
           return popup;
         }
 
-        const popup = createEditPopup(p.post);
+        const popup = createEditPopup(ev.data().post);
 
         const saveButton = popup.querySelector('.popup-save');
         saveButton.addEventListener('click', () => {
@@ -56,8 +46,8 @@ export const Start = (navigateTo) => {
           const newData = {
             post: newPostContent,
           };
-          if (p.id) {
-            updatePost(p.id, newData);
+          if (ev.id) {
+            updateEvent(ev.id, newData);
           }
           popup.remove();
         });
@@ -66,25 +56,20 @@ export const Start = (navigateTo) => {
         cancelButton.addEventListener('click', () => {
           popup.remove();
         });
-        containerPosts.appendChild(popup);
+
+        postElement.appendChild(popup);
       });
 
       const deleteButton = document.createElement('button');
-      deleteButton.textContent = 'Deleted';
+      deleteButton.textContent = 'Delete';
       deleteButton.addEventListener('click', () => {
-        if (doc.id) {
-          removePost(doc.id);
+        if (ev.id) {
+          removeEvent(ev.id);
         }
       });
-
-      containerPosts.appendChild(editButton);
-      containerPosts.appendChild(deleteButton);
+      div.appendChild(postElement);
     });
   });
-
-  homeDiv.append(titleBox2());
-  homeDiv.appendChild(containerPosts);
-  homeDiv.append(bottomMenu2(navigateTo, logOutUser));
-
-  return homeDiv;
+  return div;
 };
+export default eventRender;

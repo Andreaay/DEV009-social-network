@@ -14,7 +14,6 @@ export const Register = (navigateTo) => {
   note.innerHTML = 'Enter your email address';
   const loginError = document.createElement('h5');
   loginError.innerText = '';
-  console.log(loginError);
 
   const inputPassword = document.createElement('input');
   inputPassword.id = 'enterPassword';
@@ -41,7 +40,6 @@ export const Register = (navigateTo) => {
         const credential = GoogleAuthProvider.credentialFromError(error);
         const errorMessage = error.message;
         loginError.innerText = 'Invalid  Accound';
-        console.log(errorMessage + credential);
       });
   });
 
@@ -56,7 +54,6 @@ export const Register = (navigateTo) => {
       .catch((error) => {
         const errorMessage = error.message;
         loginError.innerText = 'Password or Email invalid';
-        console.log(errorMessage);
       });
   });
   registerUser.setAttribute('id', 'buttonReg');

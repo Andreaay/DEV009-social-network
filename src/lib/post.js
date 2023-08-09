@@ -16,13 +16,10 @@ export const updateProfileInfo = (displayName, photoURL) => {
   if (user) {
     return updateProfile(user, { displayName, photoURL })
       .then(() => {
-        console.log('Profile updated correctly');
       })
-      .catch((error) => {
+      .catch((error) =>
         // Ocurrió un error durante la actualización del perfil.
-        console.error('Error updating profile:', error.message);
-        return Promise.reject(error);
-      });
+        Promise.reject(error));
   }
   console.error('No authenticated user.');
   return Promise.reject(new Error('No authenticated user.'));

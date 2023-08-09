@@ -23,13 +23,11 @@ export function signinUser(email, password, callback) {
     .then(() => signInWithEmailAndPassword(auth, email, password))
     .then((userCredential) => {
       const { user } = userCredential;
-      console.log(user);
       callback(true);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorMessage, errorCode);
       callback(false);
     });
 }
@@ -44,7 +42,6 @@ export function logOutUser(callback) {
     }).catch((error) => {
       const errorMessage = error;
       callback(false);
-      console.log(errorMessage);
       // An error happened.
     });
 }// persistencia con google

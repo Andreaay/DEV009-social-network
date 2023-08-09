@@ -1,12 +1,4 @@
-export function titleBox2() {
-    const title = document.createElement('h1');
-    title.textContent = 'Expressio Music';
-    const textTitleContainer = document.createElement('div');
-    textTitleContainer.classList.add('title-container');
-    textTitleContainer.append(title);
-    return title;
-}
-export function bottomMenu2(navigateTo,logOutUser) {
+export function bottomMenu2() {
     const buttonNewPost = document.createElement('button');
     buttonNewPost.innerHTML = '<i class="fas fa-plus"></i>';
     const buttonStart = document.createElement('button');
@@ -34,11 +26,8 @@ export function bottomMenu2(navigateTo,logOutUser) {
     buttonProfile.addEventListener('click', () => {
         navigateTo('/profile');
     });
-    buttonNewPost.addEventListener('click', () => {
-        navigateTo('/newpost');
-    });
     const bottomMenuDiv = document.createElement('div');
     bottomMenuDiv.classList.add('bottom-menu');
+    homeDiv.append(bottomMenuDiv);
     bottomMenuDiv.append(buttonStart, buttonEvents, buttonNewPost, buttonProfile, buttonLogout);
-    return bottomMenuDiv
 }
