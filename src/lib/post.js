@@ -2,8 +2,10 @@
 /* eslint-disable import/no-duplicates */
 import {
   getFirestore, collection, getDocs, addDoc, query, orderBy, doc, updateDoc, deleteDoc,
-} from 'firebase/firestore';
+  // incrementCounter
+ } from 'firebase/firestore';
 import { updateProfile, getAuth } from 'firebase/auth';
+// import { firebase } from 'firebase/app';
 import { app } from './firebase.js';
 // const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 // const {  FieldValue, Filter } = require('firebase-admin/firestore');
@@ -60,6 +62,19 @@ export async function removePost(postId) {
   await deleteDoc(postRef);
   console.log('Post removed successfully');
 }
+/* import { getAuth, updateProfile } from "firebase/auth";
+const auth = getAuth();
+updateProfile(auth.currentUser, {
+  displayName: "Jane Q. User", photoURL: "https://example.com/jane-q-user/profile.jpg"
+}).then(() => {
+  // Profile updated!
+  // ...
+}).catch((error) => {
+  // An error occurred
+  // ...
+}); */
+
+
 /* getAuth()// crear perfil
   .createUser({
     email: 'user@example.com',

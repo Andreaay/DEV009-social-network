@@ -1,5 +1,4 @@
 import { logOutUser } from '../lib/account';
-import { bringPost } from '../lib/post';
 import postRender from './PostRender';
 import { bottomMenu2, titleBox2 } from './htmlElements';
 

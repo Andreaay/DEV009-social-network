@@ -11,6 +11,20 @@ const postRender = () => {
       const postElement = document.createElement('p');
       postElement.textContent = doc.data().post;
 
+      const likeButton = document.createElement('button');
+      likeButton.innerHTML = '<i class="fa-solid fa-heart"></i>';
+      //aqui va validacion
+      likeButton.addEventListener('click', () => {
+        console.log('click');
+        console.log(doc);
+        const newData = {
+          like: doc.data().like+1,
+          
+        };
+        if (doc.id) {
+          updatePost(doc.id, newData);
+        }
+      });
       const editButton = document.createElement('button');
       editButton.textContent = 'Edit';
       editButton.addEventListener('click', () => {
@@ -67,11 +81,14 @@ const postRender = () => {
           removePost(doc.id);
         }
       });
+
       div.appendChild(postElement);
+      div.appendChild(likeButton);
       div.appendChild(deleteButton);
       div.appendChild(editButton);
     });
   });
+
   return div;
 };
 export default postRender;
