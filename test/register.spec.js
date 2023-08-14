@@ -17,11 +17,11 @@ describe('Register', () => {
     const homeDiv = Register();
     document.body.replaceChildren(homeDiv);
   });
-  test('Se creó el botón correctamente', () => {
+  test('Button created correctly', () => {
     const registerUser = document.querySelector('button');
     expect(registerUser).toBeTruthy();
   });
-  test('Al hacer click al botón register redirecciona si la promesa es correcta', () => {
+  test('Clicking the register button redirects if the promise is correct', () => {
     const mockUser = {
       uid: 'user123',
       displayName: 'John Doe',

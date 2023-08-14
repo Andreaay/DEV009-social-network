@@ -1,18 +1,15 @@
 import { onSnapshot } from 'firebase/firestore';
-import { updateEvent, removeEvent, q } from '../lib/events';
+import { updatePost, removePost, q } from '../lib/post';
 
-const containerEvents = document.createElement('div');
-containerEvents.classList.add('event-area');
-document.createElement('container', containerEvents);
 
-const eventRender = () => {
+const postRender = () => {
   const div = document.createElement('div');
-  div.classList = 'tiemporeal';
+  div.classList = 'postReal';
   onSnapshot(q, (querySnapshot) => {
-    document.querySelector('.tiemporeal').innerHTML = '';
-    querySnapshot.forEach((ev) => {
+    document.querySelector('.postReal').innerHTML = '';
+    querySnapshot.forEach((doc) => {
       const postElement = document.createElement('p');
-      postElement.textContent = ev.data().post;
+      postElement.textContent = doc.data().post;
 
       const editButton = document.createElement('button');
       editButton.textContent = 'Edit';
@@ -40,7 +37,7 @@ const eventRender = () => {
           return popup;
         }
 
-        const popup = createEditPopup(ev.data().post);
+        const popup = createEditPopup(doc.data().post);
 
         const saveButton = popup.querySelector('.popup-save');
         saveButton.addEventListener('click', () => {
@@ -49,8 +46,8 @@ const eventRender = () => {
           const newData = {
             post: newPostContent,
           };
-          if (ev.id) {
-            updateEvent(ev.id, newData);
+          if (doc.data().id) {
+            updatePost(doc.data().id, newData);
           }
           popup.remove();
         });
@@ -65,11 +62,12 @@ const eventRender = () => {
 
       const deleteButton = document.createElement('button');
       deleteButton.textContent = 'Delete';
-      deleteButton.addEventListener('click', () => { 
-        if (ev.id) {
-          removeEvent(ev.id);
+      deleteButton.addEventListener('click', () => {
+        if (doc.id) {
+          removePost(doc.id);
         }
       });
+
       div.appendChild(postElement);
       div.appendChild(deleteButton);
       div.appendChild(editButton);
@@ -77,4 +75,4 @@ const eventRender = () => {
   });
   return div;
 };
-export default eventRender;
+export default postRender;

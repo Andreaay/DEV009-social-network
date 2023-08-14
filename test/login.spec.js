@@ -21,24 +21,24 @@ describe('Login', () => {
     const homeDiv = Login();
     document.body.replaceChildren(homeDiv);
   });
-  test('Se creo el boton correctamente', () => {
-    const bottonLogin = document.querySelector('button');
-    expect(bottonLogin).toBeTruthy();
+  test('The button was created successfully', () => {
+    const buttonLogin = document.querySelector('button');
+    expect(buttonLogin).toBeTruthy();
   });
-  test('Al hacer click al boton redirecciona si la promesa esta bien', () => {
+  test('Clicking the button redirects if the promise is correct', () => {
     firebase.setPersistence.mockResolvedValue(123);
     firebase.signInWithEmailAndPassword.mockResolvedValue({ user: 'andrea' });
     jest.spyOn(account, 'signinUser');
-    const bottonLogin = document.querySelector('button');
-    bottonLogin.click();
+    const buttonLogin = document.querySelector('button');
+    buttonLogin.click();
     expect(account.signinUser).toHaveBeenCalled();
   });
 
-  test('Al hacer click al botón validaremos que se invoque setPersistence', () => {
+  test('By clicking the button we will validate that setPersistence is invoked', () => {
     firebase.setPersistence.mockResolvedValue(123);
     firebase.signInWithEmailAndPassword.mockResolvedValue({ user: 'andrea' });
-    const bottonLogin = document.querySelector('button');
-    bottonLogin.click();
+    const buttonLogin = document.querySelector('button');
+    buttonLogin.click();
     expect(firebase.setPersistence).toHaveBeenCalled();
   });
 });

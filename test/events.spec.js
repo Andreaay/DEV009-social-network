@@ -18,8 +18,12 @@ describe('Events', () => {
     const homeDiv = Events();
     document.body.replaceChildren(homeDiv);
   });
-  test('Se creó el evento correctamente', () => {
+  test('Event created successfully', () => {
     const createEvent = document.querySelector('button');
     expect(createEvent).toBeTruthy();
+  });
+  test('The event was drawn successfully', () => {
+    const bringEvent = document.querySelector('button');
+    expect(bringEvent).toBeTruthy();
   });
 });

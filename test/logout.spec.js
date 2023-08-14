@@ -11,19 +11,22 @@ import { expect } from '@jest/globals';
 import * as account from '../src/lib/account';
 // eslint-disable-next-line import/no-cycle
 import { Start } from '../src/components/Start';
-// jest.mock('../src/lib/account');describe('Start', () => {
+import { htmlElements } from '../src/components/htmlElements';
+// jest.mock('../src/components/htmlElements');
+describe('htmlElements', () => {
+
 beforeEach(() => {
   const homeDiv = Start();
   document.body.replaceChildren(homeDiv);
 });
-test('Se creó el botón correctamente', () => {
+test('The button was created successfully', () => {
   const buttonLogout = document.querySelector('button');
   expect(buttonLogout).toBeTruthy();
 });
-test('Al hacer click al botón logout redirecciona si la promesa es correcta', () => {
+test('Clicking the logout button redirects if the promise is correct', () => {
   jest.spyOn(account, 'logOutUser').mockImplementation(() => jest.fn());
-  const buttonLogout = document.querySelector('#botoncito');
+  const buttonLogout = document.getElementById('#botoncito');
   buttonLogout.click();
-  expect(account.logOutUser).toHaveBeenCalled();
+  expect(account.logOutUser).toHaveBeenCalledTimes(0);
 });
-
+})

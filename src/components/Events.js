@@ -2,10 +2,9 @@ import {
   addDoc, doc, updateDoc, deleteDoc,
 } from 'firebase/firestore';
 import { logOutUser } from '../lib/account';
-import {
-  createEvent, bringEvent, updateEvent, removeEvent,
-} from '../lib/events';
-import { database } from '../lib/post';
+import { createEvent, bringEvent } from '../lib/events';
+import eventRender from './EventRender';
+import { bottomMenu2, titleBox2 } from './htmlElements';
 
 export const Events = (navigateTo) => {
   const homeDiv = document.createElement('div');
@@ -14,6 +13,7 @@ export const Events = (navigateTo) => {
   inputEvent.id = 'enterEvent';
   const post = document.createElement('p');
   post.innerHTML = 'What is the new event?';
+
   const buttonShare = document.createElement('button');
   buttonShare.innerHTML = 'share <i class="fa-solid fa-share"></i>';
   const buttonStart = document.createElement('button');
@@ -48,7 +48,10 @@ export const Events = (navigateTo) => {
   const containerEvents = document.createElement('div');
   containerEvents.classList.add('event-area');
   document.createElement('container', containerEvents);
+  homeDiv.append(titleBox2());
+  homeDiv.append(post, inputEvent, buttonShare);
   bringEvent();
+
   buttonShare.addEventListener('click', () => {
     const valuePost = inputEvent.value;
     if (valuePost.length === 0) {
@@ -60,101 +63,18 @@ export const Events = (navigateTo) => {
         created_date: new Date(),
         // edited_date:"",
         post: valuePost,
-        // likes:"",
+        //likes:[],
         // aquí se puede id de usuario registrado
       };
       inputEvent.value = '';
       createEvent(data);
       const eventArea = document.querySelector('.event_area');
       eventArea.innerHTML = '';
-      bringEvent();
     }
   });
-  function refreshBringEvent() {
-    bringEvent().then((res) => {
-      containerEvents.innerHTML = '';
-      res.forEach((ev) => {
-        console.log(ev.data());
-        const postElement = document.createElement('p');
-        postElement.textContent = ev.data().post;
-        containerEvents.appendChild(postElement);
-
-        const editButton = document.createElement('button');
-        editButton.textContent = 'Edit';
-        editButton.addEventListener('click', (event) => {
-          event.preventDefault();
-          function createEditPopup(initialValue) {
-            const popup = document.createElement('div');
-            popup.classList.add('popup');
-
-            const input = document.createElement('input');
-            input.classList.add('popup-input');
-            input.value = initialValue;
-
-            const saveButton = document.createElement('button');
-            saveButton.classList.add('popup-save');
-            saveButton.textContent = 'Save';
-
-            const cancelButton = document.createElement('button');
-            cancelButton.classList.add('popup-cancel');
-            cancelButton.textContent = 'Cancel';
-
-            popup.appendChild(input);
-            popup.appendChild(saveButton);
-            popup.appendChild(cancelButton);
-
-            return popup;
-          }
-
-          const popup = createEditPopup(ev.data().post);
-
-          const saveButton = popup.querySelector('.popup-save');
-          saveButton.addEventListener('click', () => {
-            const newPostContent = popup.querySelector('.popup-input').value;
-            postElement.textContent = newPostContent;
-            const newData = {
-              post: newPostContent,
-            };
-            if (ev.id) {
-              updateEvent(ev.id, newData);
-            }
-            popup.remove();
-          });
-
-          const cancelButton = popup.querySelector('.popup-cancel');
-          cancelButton.addEventListener('click', () => {
-            popup.remove();
-          });
-
-          containerEvents.appendChild(popup);
-        });
-
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.addEventListener('click', () => {
-          console.log('click');
-          if (ev.id) {
-            removeEvent(ev.id);
-            console.log(removeEvent(ev.id), ev.id);
-          }
-        });
-
-        containerEvents.appendChild(editButton);
-        containerEvents.appendChild(deleteButton);
-      });
-    });
-  }
-  refreshBringEvent();
-  window.addEventListener('click', refreshBringEvent);
-
-  homeDiv.append(title);
-  homeDiv.append(post, inputEvent, buttonShare);
   homeDiv.appendChild(containerEvents);
-  homeDiv.append(buttonStart, buttonEvents, buttonNewPost, buttonProfile, buttonLogout);
+  homeDiv.appendChild(eventRender());
+  homeDiv.append(bottomMenu2(navigateTo, logOutUser));
 
-  const bottomMenuDiv = document.createElement('div');
-  bottomMenuDiv.classList.add('bottom-menu');
-  bottomMenuDiv.append(buttonStart, buttonEvents, buttonNewPost, buttonProfile, buttonLogout);
-  homeDiv.append(bottomMenuDiv);
   return homeDiv;
-};
+}

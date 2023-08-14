@@ -10,6 +10,7 @@ import { app } from './firebase.js';
 // initializeApp();
 export const auth = getAuth(app);
 export const database = getFirestore(app);
+export const q = query(collection(database, 'posts'));
 // PROFILE
 export const updateProfileInfo = (displayName, photoURL) => {
   const user = auth.currentUser;
@@ -59,6 +60,24 @@ export async function removePost(postId) {
   await deleteDoc(postRef);
   console.log('Post removed successfully');
 }
+
+// crear perfil
+export function creatNewUser(displayName, photoURL, disabled) {
+  getAuth()
+    .createUser({
+
+      displayName: displayName,
+      photoURL: photoURL,
+      disabled: disabled,
+    })
+    .then((userRecord) => {
+      console.log('Usuario creado exitosamente:', userRecord.uid);
+    })
+    .catch((error) => {
+      console.log('Error al crear usuario:', error);
+    });
+}
+
 /* getAuth()// crear perfil
   .createUser({
     email: 'user@example.com',
