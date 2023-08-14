@@ -14,12 +14,6 @@ export const Newpost = (navigateTo) => {
   buttonShare.innerHTML = 'share <i class="fa-solid fa-share"></i>';
   buttonShare.setAttribute('id', 'paltesting')
 
-  const errorMessage = document.createElement('p');
-  errorMessage.style.color = 'red';
-  errorMessage.style.display = 'none';
-  /*  const containerPosts = document.createElement('div');
-  containerPosts.classList.add('post-area');
-  document.createElement('container', containerPosts); */
   homeDiv.append(titleBox2());
   homeDiv.append(subtitle, inputPost, buttonShare);
   bringPost();
@@ -31,9 +25,13 @@ export const Newpost = (navigateTo) => {
       errorMessage.style.display = 'block'; 
     } else {
       const data = {
-        // agrgar username  y likes
+        user: "Maria",//usuario logeado
+        // last: "Martínez",
         created_date: new Date(),
         post: valuePost,
+        // shard: 'shard_id',
+        like: 0,
+        // aquí se puede id de usuario registrado
       };
       inputPost.value = '';
       createPost(data);
@@ -41,8 +39,6 @@ export const Newpost = (navigateTo) => {
       // postsArea.innerHTML = '';
     }
   });
-  // -------------------->>>>> Page creation
-  // homeDiv.appendChild(containerPosts);
 
   homeDiv.append(bottomMenu2(navigateTo, logOutUser));
 

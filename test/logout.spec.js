@@ -1,6 +1,6 @@
-/**
- * @jest-environment jsdom
- */
+/*
+*@jest-environment jsdom 
+*/
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-sequences */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -11,22 +11,18 @@ import { expect } from '@jest/globals';
 import * as account from '../src/lib/account';
 // eslint-disable-next-line import/no-cycle
 import { Start } from '../src/components/Start';
-import { htmlElements } from '../src/components/htmlElements';
-// jest.mock('../src/components/htmlElements');
-describe('htmlElements', () => {
-
+// jest.mock('../src/lib/account');describe('Start', () => {
 beforeEach(() => {
   const homeDiv = Start();
   document.body.replaceChildren(homeDiv);
 });
-test('The button was created successfully', () => {
+test('Se creó el botón correctamente', () => {
   const buttonLogout = document.querySelector('button');
   expect(buttonLogout).toBeTruthy();
 });
-test('Clicking the logout button redirects if the promise is correct', () => {
+test('Al hacer click al botón logout redirecciona si la promesa es correcta', () => {
   jest.spyOn(account, 'logOutUser').mockImplementation(() => jest.fn());
-  const buttonLogout = document.getElementById('#botoncito');
+  const buttonLogout = document.querySelector('#botoncito');
   buttonLogout.click();
-  expect(account.logOutUser).toHaveBeenCalledTimes(0);
+  expect(account.logOutUser).toHaveBeenCalled();
 });
-})

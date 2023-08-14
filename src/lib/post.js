@@ -2,8 +2,10 @@
 /* eslint-disable import/no-duplicates */
 import {
   getFirestore, collection, getDocs, addDoc, query, orderBy, doc, updateDoc, deleteDoc,
-} from 'firebase/firestore';
-import { updateProfile, getAuth } from 'firebase/auth';
+  // incrementCounter
+ } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+// import { firebase } from 'firebase/app';
 import { app } from './firebase.js';
 // const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 // const {  FieldValue, Filter } = require('firebase-admin/firestore');
@@ -12,7 +14,8 @@ export const auth = getAuth(app);
 export const database = getFirestore(app);
 export const q = query(collection(database, 'posts'));
 // PROFILE
-export const updateProfileInfo = (displayName, photoURL) => {
+
+/* export const updateProfileInfo = (displayName, photoURL) => {
   const user = auth.currentUser;
   if (user) {
     return updateProfile(user, { displayName, photoURL })
@@ -24,7 +27,7 @@ export const updateProfileInfo = (displayName, photoURL) => {
   }
   console.error('No authenticated user.');
   return Promise.reject(new Error('No authenticated user.'));
-};
+}; */
 // NEW POST
 export const createPost = async (data) => {
   try {
@@ -60,23 +63,18 @@ export async function removePost(postId) {
   await deleteDoc(postRef);
   console.log('Post removed successfully');
 }
+/* import { getAuth, updateProfile } from "firebase/auth";
+const auth = getAuth();
+updateProfile(auth.currentUser, {
+  displayName: "Jane Q. User", photoURL: "https://example.com/jane-q-user/profile.jpg"
+}).then(() => {
+  // Profile updated!
+  // ...
+}).catch((error) => {
+  // An error occurred
+  // ...
+}); */
 
-// crear perfil
-export function creatNewUser(displayName, photoURL, disabled) {
-  getAuth()
-    .createUser({
-
-      displayName: displayName,
-      photoURL: photoURL,
-      disabled: disabled,
-    })
-    .then((userRecord) => {
-      console.log('Usuario creado exitosamente:', userRecord.uid);
-    })
-    .catch((error) => {
-      console.log('Error al crear usuario:', error);
-    });
-}
 
 /* getAuth()// crear perfil
   .createUser({
