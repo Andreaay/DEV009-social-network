@@ -4,7 +4,7 @@ import {
   getFirestore, collection, getDocs, addDoc, query, orderBy, doc, updateDoc, deleteDoc,
   // incrementCounter
  } from 'firebase/firestore';
-import { updateProfile, getAuth } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 // import { firebase } from 'firebase/app';
 import { app } from './firebase.js';
 // const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
@@ -14,7 +14,8 @@ export const auth = getAuth(app);
 export const database = getFirestore(app);
 export const q = query(collection(database, 'posts'));
 // PROFILE
-export const updateProfileInfo = (displayName, photoURL) => {
+
+/* export const updateProfileInfo = (displayName, photoURL) => {
   const user = auth.currentUser;
   if (user) {
     return updateProfile(user, { displayName, photoURL })
@@ -26,7 +27,7 @@ export const updateProfileInfo = (displayName, photoURL) => {
   }
   console.error('No authenticated user.');
   return Promise.reject(new Error('No authenticated user.'));
-};
+}; */
 // NEW POST
 export const createPost = async (data) => {
   try {

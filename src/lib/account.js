@@ -3,20 +3,36 @@
 import { createUserWithEmailAndPassword, getAuth, signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { setPersistence, browserSessionPersistence } from 'firebase/auth';
+import { updateProfile } from 'firebase/auth';
 import { auth } from './post.js';
 
+export const getCurrentUser = () => {
+  const user = getAuth().currentUser;
+  return user;
+};
 // const db = getFirestore(app);
 export const addUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
-// export updateDisplayName user.updateProfile({
-//   displayName: "Jane Q. User",
-//   photoURL: "https://example.com/jane-q-user/profile.jpg"
-// }).then(() => {
-//   // Update successful
-//   // ...
-// }).catch((error) => {
-//   // An error occurred
-//   // ...
-// });
+// PROFILE
+ export function getProfile() {
+  const auth = getAuth();
+  const user = auth.currentUser;
+  //console.log(user.displayName + '  '+ user.email +'  '+ user.photoURL);
+  const userInfo = [user.displayName, user.email, user.photoURL];
+  return userInfo;
+} 
+export function createProfile(displayName, photoURL) {
+  const auth = getAuth();
+  updateProfile(auth.currentUser, {
+    displayName: displayName, photoURL: photoURL
+  }).then(() => {
+    console.log('Se creo correctamente el nombre de ususario y url');
+    // ...
+  }).catch((error) => {
+    console.log(error);
+    // ...
+  });
+  console.log(user);
+}
 
 export function signinUser(email, password, callback) {
   setPersistence(auth, browserSessionPersistence)
@@ -60,7 +76,3 @@ setPersistence(auth, inMemoryPersistence)
     const errorMessage = error.message;
   });
  */
-export const getCurrentUser = () => {
-  const user = getAuth().currentUser;
-  return user;
-};

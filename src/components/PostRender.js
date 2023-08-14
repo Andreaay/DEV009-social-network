@@ -19,7 +19,6 @@ const postRender = () => {
         console.log(doc);
         const newData = {
           like: doc.data().like+1,
-          
         };
         if (doc.id) {
           updatePost(doc.id, newData);
