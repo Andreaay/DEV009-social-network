@@ -1,4 +1,4 @@
-// eslint-disable import/no-duplicates */
+// eslint-disable import/no-duplicates
 //  eslint-disable max-len */
 import { createUserWithEmailAndPassword, getAuth, signInWithPopup } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signOut } from 'firebase/auth';

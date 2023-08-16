@@ -17,6 +17,7 @@ export const Register = (navigateTo) => {
 
   const inputPassword = document.createElement('input');
   inputPassword.id = 'enterPassword';
+  inputPassword.type = 'password';
   const password = document.createElement('p');
   password.innerHTML = 'Enter your password';
 
