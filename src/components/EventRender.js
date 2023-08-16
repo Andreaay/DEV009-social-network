@@ -15,6 +15,7 @@ const eventRender = () => {
       postElement.textContent = ev.data().post;
 
       const editButton = document.createElement('button');
+      editButton.id = 'editbuttonid' 
       editButton.textContent = 'Edit';
       editButton.addEventListener('click', () => {
         function createEditPopup(initialValue) {

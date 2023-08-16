@@ -15,6 +15,7 @@ export const Profile = (navigateTo) => {
     photoUrlInput.placeholder = 'Pega la url de tu imagen';
     // create the button
     const updateProfileButton = document.createElement('button');
+    updateProfileButton.id = 'updateProfileButton';
     updateProfileButton.innerHTML = 'Submit';
     // create the event listenr
     updateProfileButton.addEventListener('click', () => {
@@ -29,6 +30,7 @@ export const Profile = (navigateTo) => {
   }
   function showProfile() {
     const getProfileButton = document.createElement('button');
+    getProfileButton.id = 'getProfileButton';
     getProfileButton.innerHTML = 'Show current Profile';
     const profilesDiv = document.createElement('div');
     const nameProfile = document.createElement('p');
@@ -36,7 +38,7 @@ export const Profile = (navigateTo) => {
     // create the event listenrgit
     getProfileButton.addEventListener('click', () => {
       const dataFromProfile = (getProfile());
-      console.log(dataFromProfile);
+      // console.log(dataFromProfile);
       nameProfile.textContent = `Welcome ${dataFromProfile[0]}`;
       photoProfile.src = dataFromProfile[2];
     });
