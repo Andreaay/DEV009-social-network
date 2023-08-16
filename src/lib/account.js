@@ -26,10 +26,8 @@ export function createProfile(displayName, photoURL) {
     photoURL: photoURL,
   }).then(() => {
     console.log('Se creo correctamente el nombre de ususario y url');
-    // ...
   }).catch((error) => {
     console.log(error);
-    // ...
   });
   console.log(user);
 }
@@ -47,7 +45,10 @@ export function signinUser(email, password, callback) {
     });
 }
 export const provider = new GoogleAuthProvider();
-export const enterGoogle = () => signInWithPopup(auth, provider); // boton sign out
+export const enterGoogle = () => signInWithPopup(auth, provider); 
+
+
+// boton sign out
 export function logOutUser(callback) {
   signOut(auth)
     .then(() => {
