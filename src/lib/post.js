@@ -12,7 +12,8 @@ import { app } from './firebase.js';
 // initializeApp();
 export const auth = getAuth(app);
 export const database = getFirestore(app);
-export const q = query(collection(database, 'posts'));
+export const q = query(collection(database, 'posts'), orderBy('created_date', 'desc'));
+
 // PROFILE
 
 /* export const updateProfileInfo = (displayName, photoURL) => {

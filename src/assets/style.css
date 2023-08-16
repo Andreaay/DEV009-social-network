@@ -1,103 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+
+:root {
+  --primary-color: rgb(#E5E4E2);
+  --primary-accent: rgb(177, 82, 82);
+
+
+  --secondary-color: hsl(#383E42);
+  /* Oscuro por defecto */
+}
+
+
 body {
-  background-color: #EAEBFC;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-family: 'Libre Baskerville', serif;
+  padding-top: 90px;
 }
 
-h1,
-h2,
-h3 {
-  /* position: fixed; */
-  text-align: center;
-  font-size: xx-large;
-  letter-spacing: 8px;
-  color: #DFE07C;
-  background-color: #5E95FF;
-  width: 100%;
+
+button {
+  border: none;
   margin: 0;
+  width: auto;
+  background:  var(--primary-color);
+  color: var(--secondary-color);
+  width: 13rem;
+  text-align: center;
+  padding: .7em 0;
+  font-size: 1.0em;
+  font-weight: 600;
+  /* negrita*/
+  text-transform: uppercase;
+  /* mayusculas*/
+}
+button:hover {
+  border-bottom: 4px solid #707AE6;
+  background-color: var(--primary-accent);
 }
 
-p {
-  text-align: center;
-  font-size: large;
-}
 
 .title-container {
-  display: grid;
-  place-items: center;
-  height: 100vh;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-.post,
-.inputPost,
-.buttonShare {
-  margin-top: 10em;
-  align-items: center;
-}
-
-.bottom-menu {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.5em 0;
-  transition: 8s;
-  border: none;
-}
-
-@media (max-width: 768px) {
-  .bottom-menu {
-    flex-direction: row;
-    bottom: 0;
-    border: none;
-    width: 100%;
-  }
-}
-
-@media (min-width: 769px) {
-  .bottom-menu {
-    flex-direction: row;
-    border: none;
-    position: static;
-  }
-}
-
-button:hover {
-  border-top: 4px solid #707AE6;
-}
-
-.button-icon {
-  border: none;
-  cursor: pointer;
+  border: #070c45 3px solid;
+  background-color: var(--primary-color);
+  margin: 0;
   padding: 0;
-  font-size: 1.5rem;
+  display: flex;
+  justify-content : space-between;
 }
-
-.button-icon:hover {
-  color: #707AE6;
-}
-
-.button-container {
-  margin-top: 5em;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  justify-content: center;
-}
-
-.button-container button {
-  margin-bottom: 0.5em;
-  background-color: #BD90CE;
-}
-
-button:hover,
-.bottom.button-container {
-  border-top: 4px solid #707AE6;
+.title-container button {
+  margin: 0;
+  padding: 0;
+  width: 4rem;
+  padding-right: 5rem;
+  font-size: 3rem;
 }

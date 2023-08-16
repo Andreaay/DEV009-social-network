@@ -11,7 +11,8 @@ import { app } from './firebase.js';
 
 export const auth = getAuth(app);
 export const database = getFirestore(app);
-export const q = query(collection(database, 'events'));
+export const q = query(collection(database, 'events'), orderBy('created_date', 'desc'));
+
 // EVENTS
 export const createEvent = async (data) => {
   try {

@@ -9,7 +9,7 @@
 /* eslint-disable import/named */
 // import { } from 'jest';
 import { expect } from '@jest/globals';
-// import { createPost, bringPost } from '../src/lib/post';
+import { createPost, bringPost } from '../src/lib/post';
 // eslint-disable-next-line import/no-cycle
 import * as post from '../src/lib/post';
 import { Newpost } from '../src/components/Newpost';

@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 import { GoogleAuthProvider } from 'firebase/auth';
 import { addUser, enterGoogle } from '../lib/account';
+import { titleBox2 } from './htmlElements';
 
 export const Register = (navigateTo) => {
   const homeDiv = document.createElement('div');
@@ -17,6 +18,7 @@ export const Register = (navigateTo) => {
 
   const inputPassword = document.createElement('input');
   inputPassword.id = 'enterPassword';
+  inputPassword.type = 'password';
   const password = document.createElement('p');
   password.innerHTML = 'Enter your password';
 
@@ -65,7 +67,7 @@ export const Register = (navigateTo) => {
   buttonBack.addEventListener('click', () => {
     navigateTo('/');
   });
-
+  homeDiv.append(titleBox2())
   homeDiv.append(title, note, inputEmail, password, buttonGoogle);
   homeDiv.append(inputPassword, buttonBack, loginError);
 

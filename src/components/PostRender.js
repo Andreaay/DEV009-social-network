@@ -11,6 +11,9 @@ const postRender = () => {
       const postElement = document.createElement('p');
       postElement.textContent = doc.data().post;
 
+      const numberLikes = document.createElement('span');
+      numberLikes.textContent = ' '+ doc.data().like + '♥';
+
       const likeButton = document.createElement('button');
       likeButton.innerHTML = '<i class="fa-solid fa-heart"></i>';
       //aqui va validacion
@@ -46,10 +49,8 @@ const postRender = () => {
           popup.appendChild(input);
           popup.appendChild(saveButton);
           popup.appendChild(cancelButton);
-
           return popup;
         }
-
         const popup = createEditPopup(doc.data().post);
 
         const saveButton = popup.querySelector('.popup-save');
@@ -80,7 +81,8 @@ const postRender = () => {
           removePost(doc.id);
         }
       });
-
+      
+      postElement.appendChild(numberLikes);
       div.appendChild(postElement);
       div.appendChild(likeButton);
       div.appendChild(deleteButton);

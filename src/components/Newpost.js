@@ -1,4 +1,4 @@
-import { logOutUser } from '../lib/account';
+import { logOutUser, getCurrentUser } from '../lib/account';
 import { createPost, bringPost } from '../lib/post';
 
 import { bottomMenu2, titleBox2 } from './htmlElements';
@@ -9,13 +9,14 @@ export const Newpost = (navigateTo) => {
   inputPost.id = 'enterPost';
   const subtitle = document.createElement('p');
   subtitle.innerHTML = 'What is happening?';
-
+  const postsArea = document.createElement('p');
   const buttonShare = document.createElement('button');
   buttonShare.innerHTML = 'share <i class="fa-solid fa-share"></i>';
   buttonShare.setAttribute('id', 'paltesting')
 
   homeDiv.append(titleBox2());
   homeDiv.append(subtitle, inputPost, buttonShare);
+  homeDiv.append(postsArea)
   bringPost();
 
   buttonShare.addEventListener('click', () => {
@@ -24,8 +25,9 @@ export const Newpost = (navigateTo) => {
       errorMessage.textContent = 'Can not post empty value';
       errorMessage.style.display = 'block'; 
     } else {
+      
       const data = {
-        user: "Maria",//usuario logeado
+        user: getCurrentUser().displayName,//usuario logeado
         // last: "Martínez",
         created_date: new Date(),
         post: valuePost,
@@ -35,12 +37,11 @@ export const Newpost = (navigateTo) => {
       };
       inputPost.value = '';
       createPost(data);
-      const postsArea = document.querySelector('.posts_area');
-      // postsArea.innerHTML = '';
+      postsArea.innerHTML = 'The post was created correctly: "' + data.post +'" by ' + data.user;
+      
     }
   });
 
   homeDiv.append(bottomMenu2(navigateTo, logOutUser));
-
   return homeDiv;
 };

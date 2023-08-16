@@ -5,6 +5,7 @@ import { GoogleAuthProvider, signInWithEmailAndPassword, signOut } from 'firebas
 import { setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { updateProfile } from 'firebase/auth';
 import { auth } from './post.js';
+
 export const getCurrentUser = () => {
   const user = getAuth().currentUser;
   return user;
