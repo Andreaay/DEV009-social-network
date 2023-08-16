@@ -1,24 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
-
-
 :root {
   --primary-color: rgb(#E5E4E2);
   --primary-accent: rgb(177, 82, 82);
-
-
   --secondary-color: hsl(#383E42);
   /* Oscuro por defecto */
 }
-
-
 body {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   font-family: 'Libre Baskerville', serif;
   padding-top: 90px;
 }
-
-
 button {
   border: none;
   margin: 0;
@@ -38,14 +30,12 @@ button:hover {
   border-bottom: 4px solid #707AE6;
   background-color: var(--primary-accent);
 }
-
-
 .title-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  border: #070c45 3px solid;
+  border: #070C45 3px solid;
   background-color: var(--primary-color);
   margin: 0;
   padding: 0;

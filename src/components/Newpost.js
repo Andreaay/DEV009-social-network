@@ -14,6 +14,11 @@ export const Newpost = (navigateTo) => {
   buttonShare.innerHTML = 'share <i class="fa-solid fa-share"></i>';
   buttonShare.setAttribute('id', 'paltesting')
 
+  const errorMessage = document.createElement('p');
+  errorMessage.style.display = 'none';
+  errorMessage.style.color = 'red';
+  errorMessage.textContent = 'Can not post empty value';
+
   homeDiv.append(titleBox2());
   homeDiv.append(subtitle, inputPost, buttonShare);
   homeDiv.append(postsArea)
@@ -22,7 +27,6 @@ export const Newpost = (navigateTo) => {
   buttonShare.addEventListener('click', () => {
     const valuePost = inputPost.value;
     if (valuePost.length === 0) {
-      errorMessage.textContent = 'Can not post empty value';
       errorMessage.style.display = 'block'; 
     } else {
       

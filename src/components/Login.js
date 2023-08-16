@@ -12,6 +12,7 @@ export const Login = (navigateTo) => {
   const note = document.createElement('p');
   note.innerHTML = 'Enter your email address';
   const inputPassword = document.createElement('input');
+  inputPassword.type = 'password';
   const loginError = document.createElement('h5');
   loginError.innerText = '';
   inputPassword.id = 'enterPassword';
