@@ -5,8 +5,9 @@ import { bottomMenu2, titleBox2 } from './htmlElements';
 
 export const Newpost = (navigateTo) => {
   const homeDiv = document.createElement('div');
-  const inputPost = document.createElement('input');
+  const inputPost = document.createElement('textarea');
   inputPost.id = 'enterPost';
+  inputPost.placeholder = 'Please write your post here'
   const subtitle = document.createElement('p');
   subtitle.innerHTML = 'What is happening?';
   const postsArea = document.createElement('p');
@@ -14,10 +15,6 @@ export const Newpost = (navigateTo) => {
   buttonShare.innerHTML = 'share <i class="fa-solid fa-share"></i>';
   buttonShare.setAttribute('id', 'paltesting')
 
-  const errorMessage = document.createElement('p');
-  errorMessage.style.display = 'none';
-  errorMessage.style.color = 'red';
-  errorMessage.textContent = 'Can not post empty value';
 
   homeDiv.append(titleBox2());
   homeDiv.append(subtitle, inputPost, buttonShare);
@@ -27,7 +24,7 @@ export const Newpost = (navigateTo) => {
   buttonShare.addEventListener('click', () => {
     const valuePost = inputPost.value;
     if (valuePost.length === 0) {
-      errorMessage.style.display = 'block'; 
+      postsArea.innerHTML = 'Please fill this field'
     } else {
       
       const data = {

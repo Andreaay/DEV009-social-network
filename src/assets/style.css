@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 :root {
-  --primary-color: rgb(#E5E4E2);
-  --primary-accent: rgb(177, 82, 82);
-  --secondary-color: hsl(#383E42);
-  /* Oscuro por defecto */
+  --primary-color: rgb(#e1e1e1);
+  --primary-accent: rgb(186, 186, 186);
+  --secondary-color: rgb(0, 0, 0);
+  --secondary-accent: rgb(105, 105, 105);
 }
 body {
-  background-color: var(--primary-color);
+  background:  var(--primary-color);
   color: var(--secondary-color);
   font-family: 'Libre Baskerville', serif;
   padding-top: 90px;
@@ -27,7 +27,8 @@ button {
   /* mayusculas*/
 }
 button:hover {
-  border-bottom: 4px solid #707AE6;
+  border-bottom: 4px solid;
+  border-bottom-color:var(--secondary-accent);
   background-color: var(--primary-accent);
 }
 .title-container {
@@ -35,12 +36,11 @@ button:hover {
   top: 0;
   left: 0;
   width: 100%;
-  border: #070C45 3px solid;
-  background-color: var(--primary-color);
-  margin: 0;
-  padding: 0;
   display: flex;
+  padding: 0 10px;
   justify-content : space-between;
+  background-color: var(--primary-accent);
+  flex-direction: row;
 }
 .title-container button {
   margin: 0;
@@ -48,4 +48,70 @@ button:hover {
   width: 4rem;
   padding-right: 5rem;
   font-size: 3rem;
+  background-color: var(--primary-accent);
+}
+
+
+.bottom-menu button{
+  background-color: var(--primary-accent);
+}
+.bottom-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5em 0;
+  /* transition: 1s; */
+  border: none;
+  flex-direction: row;
+  border: none;
+  background-color: var(--primary-accent);
+}
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.postCard {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.postCard p {
+  grid-row: 1;
+  margin: 0;
+}
+
+.postCard span,
+.postCard button:first-child {
+  grid-row: 2;
+}
+
+.postCard button:nth-child(2),
+.postCard button:nth-child(3) {
+  grid-row: 3;
+}
+.elementCard{
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  margin: 20px 10px;
+  padding: 10px;
+  width: 80%;
+}
+
+
+/* ESTILOS PARA PANTALLA GRANDE */
+@media (min-width: 769px) { 
+  .bottom-menu {
+    background-color: aquamarine;
+  }
 }

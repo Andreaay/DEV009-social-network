@@ -11,6 +11,10 @@ const eventRender = () => {
   onSnapshot(q, (querySnapshot) => {
     document.querySelector('.tiemporeal').innerHTML = '';
     querySnapshot.forEach((ev) => {
+
+      const elementCard = document.createElement('div');
+      elementCard.classList = 'elementCard';
+
       const postElement = document.createElement('p');
       postElement.textContent = ev.data().post;
 
@@ -70,9 +74,15 @@ const eventRender = () => {
           removeEvent(ev.id);
         }
       });
-      div.appendChild(postElement);
+
+      elementCard.appendChild(postElement);
+      elementCard.appendChild(deleteButton);
+      elementCard.appendChild(editButton);
+      div.appendChild(elementCard);
+/*       div.appendChild(postElement);
       div.appendChild(deleteButton);
       div.appendChild(editButton);
+      div.appendChild(elementCard); */
     });
   });
   return div;

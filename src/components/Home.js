@@ -1,8 +1,10 @@
+import { titleBox2 } from "./htmlElements";
+
 export const Home = (navigateTo) => {
+  console.log('estoy en la consola');
   const homeDiv = document.createElement('div');
 
-  const title = document.createElement('h2');
-  title.classList.add('title');
+
 
   const welcome = document.createElement('p');
   welcome.innerHTML = 'Welcome';
@@ -15,7 +17,6 @@ export const Home = (navigateTo) => {
 
   buttonRegister.textContent = 'Sign Up';
   buttonLogin.textContent = 'Sign In';
-  title.textContent = 'Expressio Music';
 
   buttonRegister.addEventListener('click', () => {
     navigateTo('/register');
@@ -24,7 +25,8 @@ export const Home = (navigateTo) => {
     navigateTo('/login');
   });
 
-  homeDiv.append(title, welcome, greeting);
+  homeDiv.append(titleBox2());
+  homeDiv.append( welcome, greeting);
   
   homeDiv.append(buttonRegister, buttonLogin);
   

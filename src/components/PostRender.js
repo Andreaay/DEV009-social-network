@@ -8,6 +8,9 @@ const postRender = () => {
   onSnapshot(q, (querySnapshot) => {
     document.querySelector('.postReal').innerHTML = '';
     querySnapshot.forEach((doc) => {
+      const postCard = document.createElement('div');
+      postCard.classList = 'postCard';
+
       const postElement = document.createElement('p');
       postElement.textContent = doc.data().post;
 
@@ -83,10 +86,12 @@ const postRender = () => {
       });
       
       postElement.appendChild(numberLikes);
-      div.appendChild(postElement);
-      div.appendChild(likeButton);
-      div.appendChild(deleteButton);
-      div.appendChild(editButton);
+      postCard.appendChild(postElement);
+      postCard.appendChild(likeButton);
+      postCard.appendChild(deleteButton);
+      postCard.appendChild(editButton);
+      div.appendChild(postCard);
+      
     });
   });
 
