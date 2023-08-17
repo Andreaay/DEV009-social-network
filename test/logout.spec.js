@@ -1,5 +1,5 @@
 /*
-*@jest-environment jsdom 
+*@jest-environment jsdom
 */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-sequences */
