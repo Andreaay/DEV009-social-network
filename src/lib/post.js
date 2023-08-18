@@ -1,7 +1,7 @@
 //* eslint-disable eol-last */
 /* eslint-disable import/no-duplicates */
 import {
-  getFirestore, collection, getDocs, addDoc, query, orderBy, doc, updateDoc, deleteDoc,
+  getFirestore, collection, getDocs, addDoc, query, orderBy, doc, updateDoc, deleteDoc, setDoc
   // incrementCounter
  } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
@@ -33,13 +33,21 @@ export const q = query(collection(database, 'posts'), orderBy('created_date', 'd
 export const createPost = async (data) => {
   try {
     const docRef = await addDoc(collection(database, 'posts'), data);
+
+    // crear una subcollection en la bd para los likes, que cadda like tenga el userid 
+    //y un booleano que diga si el user id ya le dio click
+    // en la creacion del post el booleano es falso
+    const likeDocRef = doc(database, 'posts', docRef.id, 'like', data.userId); // no estoy segura si es like o likes
+    await setDoc(likeDocRef, {liked:false});
+    //
     console.log(data);
     console.log('Document written with ID: ', docRef.id);
-    // return createPost;
   } catch (e) {
     console.error('Error adding post: ', e);
   }
 };
+
+
 export async function bringPost() {
   console.log('bring function');
   const everyPost = query(collection(database, 'posts'), orderBy('created_date', 'desc'));

@@ -49,6 +49,9 @@ const postRender = () => {
           updateLikeButtonState();
         }
       });
+
+
+
       const editButton = document.createElement('button');
       editButton.textContent = 'Edit';
       editButton.addEventListener('click', () => {

@@ -1,16 +1,14 @@
-import {
-  logOutUser, createProfile, getProfile, // getCurrentUser
-} from '../lib/account';
+import { logOutUser, createProfile, getProfile } from '../lib/account';
 import { bottomMenu2, titleBox2 } from './htmlElements';
 export const Profile = (navigateTo) => {
   const homeDiv = document.createElement('div');
   function createInputs() {
     // create input for name
-    const nameInput = document.createElement('input');
+    const nameInput = document.createElement('textarea');
     nameInput.id = 'profilNameInput';
     nameInput.placeholder = 'Write your name';
     // create input for URL
-    const photoUrlInput = document.createElement('input');
+    const photoUrlInput = document.createElement('textarea');
     photoUrlInput.id = 'profilNameInput';
     photoUrlInput.placeholder = 'Image URL';
     // create the button

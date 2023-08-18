@@ -1,3 +1,4 @@
+// import { getProfile } from '../lib/account';
 export function titleBox2() {
     const title = document.createElement('h1');
     title.textContent = 'Expressio Music';
@@ -15,8 +16,8 @@ export function titleBox2() {
     if (currentPrimaryColor === 'rgb(130, 32, 75)') {
       document.documentElement.style.setProperty('--primary-color', 'rgb(#e1e1e1)');
       document.documentElement.style.setProperty('--primary-accent','rgb(186, 186, 186');
-      document.documentElement.style.setProperty('--secondary-color', 'rgb(0, 0, 0)');
-      document.documentElement.style.setProperty('--secondary-accent','rgb(105, 105, 105)');
+      document.documentElement.style.setProperty('--secondary-color', 'rgb(#BB3F3F)');
+      document.documentElement.style.setProperty('--secondary-accent','rgb(#CB7723)');
     } else {
       document.documentElement.style.setProperty('--primary-color', 'rgb(130, 32, 75)'); // si cambias este color encesitas cambiar el del if
       document.documentElement.style.setProperty('--primary-accent','rgb(190, 90, 90');
@@ -24,7 +25,11 @@ export function titleBox2() {
       document.documentElement.style.setProperty('--secondary-accent','rgb(74, 0, 0)');
     }
 
+
   };
+ /*  const dataFromProfile = (getProfile());
+      // console.log(dataFromProfile);
+      nameProfile.textContent = `Welcome ${dataFromProfile[0]}`; */
   buttonTogleColors.addEventListener('click', toggleMenu);
   textTitleContainer.append(buttonTogleColors);
   return textTitleContainer;

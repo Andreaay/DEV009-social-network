@@ -26,13 +26,11 @@ export const Newpost = (navigateTo) => {
     if (valuePost.length === 0) {
       postsArea.innerHTML = 'Please fill this field'
     } else {
-      
       const data = {
+        userId: getCurrentUser().uid,
         user: getCurrentUser().displayName,//usuario logeado
-        // last: "Martínez",
         created_date: new Date(),
         post: valuePost,
-        // shard: 'shard_id',
         like: 0,
         likeUser: [],
         // aquí se puede id de usuario registrado

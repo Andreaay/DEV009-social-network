@@ -2,8 +2,8 @@
 :root {
   --primary-color: rgb(#e1e1e1);
   --primary-accent: rgb(186, 186, 186);
-  --secondary-color: rgb(0, 0, 0);
-  --secondary-accent: rgb(105, 105, 105);
+  --secondary-color: rgb(#bb3f3f);
+  --secondary-accent: rgb(#CB7723);
 }
 body {
   background:  var(--primary-color);
@@ -130,4 +130,15 @@ div {
   div.postReal{
     margin: 4rem 4rem;
   }
+}
+
+textarea{
+  margin: 1rem;
+  padding: 5rem;
+  border: 3px solid #0E0613;
+}
+#profilNameInput{
+  margin: .5rem;
+  padding: 2rem;
+  border: 3px solid #0E0613;
 }
