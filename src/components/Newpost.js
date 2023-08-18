@@ -14,7 +14,7 @@ export const Newpost = (navigateTo) => {
   const buttonShare = document.createElement('button');
   buttonShare.innerHTML = 'share <i class="fa-solid fa-share"></i>';
   buttonShare.setAttribute('id', 'paltesting')
-
+  const likedPostsNew = {};
 
   homeDiv.append(titleBox2());
   homeDiv.append(subtitle, inputPost, buttonShare);
@@ -34,10 +34,12 @@ export const Newpost = (navigateTo) => {
         post: valuePost,
         // shard: 'shard_id',
         like: 0,
+        likeUser: [],
         // aquí se puede id de usuario registrado
       };
       inputPost.value = '';
       createPost(data);
+      likedPostsNew[data.user + data.created_date] = false;
       postsArea.innerHTML = 'The post was created correctly: "' + data.post +'" by ' + data.user;
       
     }

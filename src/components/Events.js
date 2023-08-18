@@ -1,7 +1,7 @@
 import {
   addDoc, doc, updateDoc, deleteDoc,
 } from 'firebase/firestore';
-import { logOutUser } from '../lib/account';
+import { logOutUser, getProfile } from '../lib/account';
 import { createEvent, bringEvent } from '../lib/events';
 import eventRender from './EventRender';
 import { bottomMenu2, titleBox2 } from './htmlElements';
@@ -27,7 +27,7 @@ export const Events = (navigateTo) => {
       messageError.innerHTML = 'Please fill this field'
     } else {
       const data = {
-        // user: "Maria",
+        user: getProfile,
         // last: "Martínez",
         created_date: new Date(),
         // edited_date:"",

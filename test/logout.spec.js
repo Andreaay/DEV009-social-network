@@ -16,11 +16,11 @@ beforeEach(() => {
   const homeDiv = Start();
   document.body.replaceChildren(homeDiv);
 });
-test('Se creó el botón correctamente', () => {
+test('Button created correctly', () => {
   const buttonLogout = document.querySelector('button');
   expect(buttonLogout).toBeTruthy();
 });
-test('Al hacer click al botón logout redirecciona si la promesa es correcta', () => {
+test('Clicking the register button redirects if the promise is correct', () => {
   jest.spyOn(account, 'logOutUser').mockImplementation(() => jest.fn());
   const buttonLogout = document.querySelector('#botoncito');
   buttonLogout.click();

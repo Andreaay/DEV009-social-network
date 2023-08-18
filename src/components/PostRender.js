@@ -1,6 +1,12 @@
 import { onSnapshot } from 'firebase/firestore';
 import { updatePost, removePost, q } from '../lib/post';
+import { getCurrentUser } from '../lib/account';
 
+const likedPostsNew = {};
+function userLikedPost(postId) {
+  const userId = getCurrentUser().uid;
+  return likedPostsNew[postId]?.includes(userId);
+}
 
 const postRender = () => {
   const div = document.createElement('div');
@@ -19,15 +25,28 @@ const postRender = () => {
 
       const likeButton = document.createElement('button');
       likeButton.innerHTML = '<i class="fa-solid fa-heart"></i>';
+
+      function updateLikeButtonState() {
+        if (userLikedPost(doc.id)) {
+          likeButton.classList.add('liked');
+        } else {
+          likeButton.classList.remove('liked');
+        }
+      }
+      updateLikeButtonState();
       //aqui va validacion
       likeButton.addEventListener('click', () => {
-        console.log('click');
-        console.log(doc);
-        const newData = {
-          like: doc.data().like+1,
-        };
-        if (doc.id) {
+        if (!userLikedPost(doc.id)) {
+          likedPostsNew[doc.id] = likedPostsNew[doc.id] || [];
+          likedPostsNew[doc.id].push(getCurrentUser().uid);
+
+          const newData = {
+            like: doc.data().like + 1,
+            likeUser: likedPostsNew[doc.id],
+          };
+
           updatePost(doc.id, newData);
+          updateLikeButtonState();
         }
       });
       const editButton = document.createElement('button');

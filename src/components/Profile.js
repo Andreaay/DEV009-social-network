@@ -8,11 +8,11 @@ export const Profile = (navigateTo) => {
     // create input for name
     const nameInput = document.createElement('input');
     nameInput.id = 'profilNameInput';
-    nameInput.placeholder = 'Escribe tu nombre';
+    nameInput.placeholder = 'Write your name';
     // create input for URL
     const photoUrlInput = document.createElement('input');
     photoUrlInput.id = 'profilNameInput';
-    photoUrlInput.placeholder = 'Pega la url de tu imagen';
+    photoUrlInput.placeholder = 'Image URL';
     // create the button
     const updateProfileButton = document.createElement('button');
     updateProfileButton.id = 'updateProfileButton';

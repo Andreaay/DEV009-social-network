@@ -36,18 +36,20 @@ button:hover {
   top: 0;
   left: 0;
   width: 100%;
+  height: 4rem;
   display: flex;
   padding: 0 10px;
   justify-content : space-between;
   background-color: var(--primary-accent);
   flex-direction: row;
+  font-size: .8rem;
 }
 .title-container button {
   margin: 0;
   padding: 0;
   width: 4rem;
   padding-right: 5rem;
-  font-size: 3rem;
+  font-size: 2rem;
   background-color: var(--primary-accent);
 }
 
@@ -110,8 +112,22 @@ div {
 
 
 /* ESTILOS PARA PANTALLA GRANDE */
-@media (min-width: 769px) { 
+@media (max-width: 768px) {
   .bottom-menu {
-    background-color: aquamarine;
+    flex-direction: row;
+    bottom: 0;
+    border: none;
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .bottom-menu {
+    flex-direction: row;
+    border: none;
+    position: static;
+  }
+  div.postReal{
+    margin: 4rem 4rem;
   }
 }
