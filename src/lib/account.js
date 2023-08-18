@@ -38,6 +38,7 @@ export function signinUser(email, password, callback) {
     .then((userCredential) => {
       const { user } = userCredential;
       callback(true);
+      console.log(setPersistence);
     })
     .catch((error) => {
       const errorCode = error.code;

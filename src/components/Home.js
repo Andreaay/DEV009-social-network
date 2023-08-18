@@ -1,7 +1,6 @@
 import { titleBox2 } from "./htmlElements";
 
 export const Home = (navigateTo) => {
-  console.log('estoy en la consola');
   const homeDiv = document.createElement('div');
 
 

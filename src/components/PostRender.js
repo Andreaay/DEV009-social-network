@@ -1,5 +1,6 @@
 import { onSnapshot } from 'firebase/firestore';
 import { updatePost, removePost, q } from '../lib/post';
+import { getCurrentUser } from '../lib/account';
 
 
 const postRender = () => {
@@ -19,10 +20,17 @@ const postRender = () => {
 
       const likeButton = document.createElement('button');
       likeButton.innerHTML = '<i class="fa-solid fa-heart"></i>';
-      //aqui va validacion
+      //aqui va validacion del Like
+
+
+
       likeButton.addEventListener('click', () => {
+        console.log(getCurrentUser().uid);
         console.log('click');
-        console.log(doc);
+        
+//checar si el usaruio ya tiene un like ne la base de datos
+// if ya dio decrementamos
+// si no aumentamos
         const newData = {
           like: doc.data().like+1,
         };
@@ -30,6 +38,9 @@ const postRender = () => {
           updatePost(doc.id, newData);
         }
       });
+
+
+
       const editButton = document.createElement('button');
       editButton.textContent = 'Edit';
       editButton.addEventListener('click', () => {
