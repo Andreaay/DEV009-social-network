@@ -187,6 +187,24 @@ Acceso con Google:
 Beneficios:
 La implementación de opciones de registro y acceso mediante correo, contraseña y cuenta de Google en Expressio Music ofrece a los usuarios una experiencia flexible y versátil al interactuar con la plataforma. Esto facilita la incorporación de nuevos usuarios y les brinda la elección de un método de acceso conveniente para ellos. Además, garantiza la seguridad y protección de las cuentas de usuario al implementar procesos de autenticación confiables. La disponibilidad de múltiples opciones de acceso mejora la usabilidad y promueve la participación activa en la comunidad musical.
 
+
+### Diseño de lainterfaz de usuario
+
+Uso de Figma para Prototipos de Alta y Baja Fidelidad en el Proyecto Expressio Music
+
+En el proceso de diseño de la interfaz de usuario de Expressio Music, hemos empleado la plataforma de diseño colaborativo Figma para la creación de nuestros prototipos de alta y baja fidelidad.
+
+Prototipo de Baja Fidelidad:
+En la fase de diseño inicial, utilizamos Figma para crear prototipos de baja fidelidad. Estos prototipos se centran en la estructura general de la interfaz, la disposición de los elementos y las interacciones básicas. Con Figma, pudimos esbozar rápidamente las ideas y conceptos clave, lo que nos permitió obtener una comprensión temprana de la navegación y el flujo de la aplicación. La ventaja de esta etapa de baja fidelidad es la agilidad, ya que nos permitió iterar y ajustar el diseño en función de las retroalimentaciones y cambios necesarios antes de avanzar.
+
+Prototipo de Alta Fidelidad:
+Una vez que obtuvimos una dirección clara con nuestros prototipos de baja fidelidad, pasamos a crear prototipos de alta fidelidad utilizando Figma. Estos prototipos incluyen detalles visuales, estilos de diseño, tipografía, colores y elementos interactivos más avanzados. Figma nos permitió diseñar componentes reutilizables y establecer guías de diseño coherentes en toda la aplicación. Además, pudimos simular interacciones más complejas, como transiciones entre pantallas, animaciones y estados interactivos. Esto nos permitió tener una vista previa cercana de cómo se sentirá y se comportará la aplicación final.
+
+
+### Pruebas de Usabilidad
+
+Los prototipos creados en Figma también desempeñaron un papel fundamental en las pruebas de usabilidad. Utilizamos los prototipos de alta fidelidad para simular la experiencia de los usuarios y llevar a cabo pruebas con personas reales. Esto nos permitió identificar posibles problemas de flujo, interacción y diseño antes de desarrollar la aplicación final. Las pruebas de usabilidad nos ayudaron a optimizar la experiencia del usuario y garantizar que la aplicación satisfaga las necesidades y expectativas de nuestros usuarios.
+
 ## 5. Funcionalidades
 
 ### 5.1 Boilerplate
