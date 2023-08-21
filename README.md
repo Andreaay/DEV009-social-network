@@ -4,12 +4,10 @@
 
 * [1. Preámbulo](#1-preámbulo)
 * [2. Objetivos del proyecto](#2-objetivos-del-proyecto)
-* [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)
-* [4. Consideraciones generales](#4-consideraciones-generales)
-* [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
-* [6. Hacker edition](#6-hacker-edition)
-* [7. Entrega](#7-entrega)
-* [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
+* [3. Características del proyecto](#3-características-del-proyecto)
+* [4. Procedimiento](#4-procedimiento)
+* [5. Funcionalidades](#5-funcionalidades)
+* [6. Tecnologías utilizadas](#6-Tecnolgías-utilizadas)
 
 ## 1. Preámbulo
 
@@ -33,34 +31,31 @@ Expressio Music es el lugar donde los amantes de la música pueden unirse para c
 
 Expressio Music es más que una red social: es un espacio donde la música cobra vida y donde los músicos pueden unirse, compartir y crecer juntos. Únete a nuestra comunidad apasionada y sumérgete en un mundo de notas y acordes que te inspirarán a alcanzar nuevas alturas en tu viaje musical. ¡Exprésate a través de la música en Expressio Music!
 
-## 2. Resumen del proyecto
+## 2. Objetivos del proyecto
 
-En este proyecto construirás una Red Social sobre lo que decidan tú y tu equipo.
-Podría ser, por ejemplo, sobre alimentación saludable, feminismo, educación,
-salud, energías renovables, amantes de las [Empanadas](https://es.wikipedia.org/wiki/Empanada)
-o de los [Tacos de Canasta](https://es.wikipedia.org/wiki/Taco),
-de la [Feijoada](https://es.wikipedia.org/wiki/Feijoada), o de lo que sea.
-
-Tu Red Social tendrá que permitir a cualquier usuario crear una cuenta de acceso
-y loguearse con ella; crear, editar, borrar y _"likear"_ publicacciones.
-
-Por lo tanto, en este proyecto construirás una
-[Single-page Application (SPA)](https://es.wikipedia.org/wiki/Single-page_application)
-[_responsive_](https://curriculum.laboratoria.la/es/topics/css/02-responsive) (con más de una vista / página)
-en la que podamos **leer y escribir datos**.
+Expressio Music se esfuerza por reunir a músicos y amantes de la música en un espacio enriquecedor donde puedan conectar, colaborar y prosperar juntos en el mundo de la música.
 
 ### Los objetivos generales de este proyecto son los siguientes
 
-* Desarrollar una SPA con temática de red social
-* Aplicar los conceptos de responsividad en el desarrollo de las vistas (templates)
-* Implementar un router para la navegación entre las diferentes vistas de la aplicación
-* Emplear un servicio externo para la persistencia de datos de la aplicación
-* Crear una suite de pruebas unitarias que permitan testear código asíncrono
+* Construir una Comunidad Musical Unida: Crear un espacio en línea donde músicos de diferentes géneros y niveles de experiencia puedan conectarse, interactuar y colaborar en proyectos musicales.
 
-Para lograr estos objetivos, deberás aprender y hacer uso de las siguientes
-herramientas o habilidades técnicas:
+* Facilitar la Colaboración Musical: Proporcionar herramientas y recursos que permitan a los músicos encontrar colaboradores para proyectos musicales, desde la composición hasta la grabación y actuaciones en vivo.
 
-## 3. Objetivos de aprendizaje
+* Fomentar el Crecimiento Profesional: Ofrecer oportunidades para que los músicos compartan sus experiencias laborales y logros, lo que puede ayudar a otros a aprender y crecer en sus carreras musicales.
+
+* Facilitar la Búsqueda de Eventos Musicales: Proporcionar una plataforma donde los músicos puedan buscar y unirse a eventos musicales, desde actuaciones en vivo hasta audiciones y oportunidades de tocar con otros músicos.
+
+* Ampliar Redes Musicales: Ayudar a los músicos a expandir sus redes profesionales y personales al conectarse con otros músicos, bandas y profesionales de la industria.
+
+* Ofrecer Personalización de Perfil Profesional: Permitir a los usuarios crear perfiles personalizados donde puedan resaltar sus habilidades, géneros musicales favoritos y experiencias pasadas en la industria musical.
+
+* Promover la Comunidad de Apoyo: Facilitar la creación de preguntas, dudas y respuestas entre los músicos para que puedan ayudarse mutuamente en sus desafíos musicales.
+
+* Crear un Mercado Musical Integrado: Proporcionar a los músicos una plataforma para vender e intercambiar instrumentos y equipo de audio entre la comunidad musical.
+
+* Simplificar el Acceso y Registro: Ofrecer opciones de inicio de sesión con nombre de usuario, correo electrónico y cuentas de Google para que los músicos puedan unirse fácilmente a la comunidad.
+
+## 3. Características del proyecto
 
 Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en tu proyecto. Piensa en eso al decidir tu estrategia de trabajo.
 
@@ -498,68 +493,3 @@ profundizar y/o ejercitar más sobre los objetivos de aprendizaje del proyecto.
   posts _públicos_).
 * Permite comentar o responder una publicación.
 * Permite editar perfil.
-
-## 7. Entrega
-
-El proyecto será _entregado_ subiendo tu código a GitHub (`commit`/`push`) y la
-interfaz será desplegada usando GitHub pages u otro servicio de hosting
-(Firebase, Netlify, Vercel, etc) que puedas haber encontrado en el camino.
-Revisa la [documentación de Vite](https://vitejs.dev/guide/static-deploy.html)
-para guiarte con eso.
-
-***
-
-## 8. Pistas, tips y Lecturas complementarias
-
-Súmate al canal de Slack
-[#project-social-network](https://claseslaboratoria.slack.com/archives/C03SE63GFJQ)
-para conversar y pedir ayuda del proyecto.
-
-### Mobile first
-
-El concepto de [_mobile first_](https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/)
-hace referencia a un proceso de diseño y desarrollo donde partimos de cómo se ve
-y cómo funciona la aplicación en un dispositivo móvil primero, y más adelante se
-ve como adaptar la aplicación a pantallas progresivamente grandes y
-características específicas del entorno desktop. Esto es en contraposición al
-modelo tradicional, donde primero se diseñaban los websites (o webapps) para
-desktop y después se trataba de _arrugar_ el diseño para que entre en pantallas
-más chicas. La clave acá es asegurarse de que desde el principio diseñan usando
-la vista _responsive_ de las herramientas de desarrollador (developer tools) del
-navegador. De esa forma, partimos de cómo se ve y comporta la aplicación en una
-pantalla y entorno móvil.
-
-### Múltiples vistas
-
-En proyectos anteriores nuestras aplicaciones habían estado compuestas de una
-sola _vista_ principal (una sóla _página_). En este proyecto se introduce la
-necesidad de tener que dividir nuestra interfaz en varias _vistas_ o _páginas_
-y ofrecer una manera de navegar entre estas vistas. Este problema se puede
-afrontar de muchas maneras: con archivos HTML independientes (cada uno con su
-URL) y links tradicionales, manteniendo estado en memoria y rederizando
-condicionalmente (sin refrescar la página), [manipulando el historial del
-navegador](https://developer.mozilla.org/es/docs/DOM/Manipulando_el_historial_del_navegador)
-con [`window.history`](https://developer.mozilla.org/es/docs/Web/API/Window/history).
-En este proyecto te invitamos a explorar opciones y decidir una opción
-de implementación.
-
-### Escritura de datos
-
-En los proyectos anteriores hemos consumido (leído) datos, pero todavía no
-habíamos escrito datos (salvar cambios, crear datos, borrar, ...). En este
-proyecto tendrás que crear (salvar) nuevos datos, así como leer, actualizar y
-modificar datos existentes. Estos datos se podrán guardar de forma remota
-usando [Firebase](https://firebase.google.com/).
-
-Para usar Firebase hay que crear un proyecto en la consola de Firebase e
-instalar la dependencia `firebase` utilizando `npm`.
-Lee [las instrucciones paso a paso aqui](https://firebase.google.com/docs/web/setup).
-
-Otras:
-
-* [Modulos: Export](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export)
-* [Modulos: Import](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import)
-* [Diseño web, responsive design y la importancia del mobile first - Media Click](https://www.mediaclick.es/blog/diseno-web-responsive-design-y-la-importancia-del-mobile-first/)
-* [Mobile First: el enfoque actual del diseño web móvil - 1and1](https://www.1and1.es/digitalguide/paginas-web/diseno-web/mobile-first-la-nueva-tendencia-del-diseno-web/)
-* [Mobile First - desarrolloweb.com](https://desarrolloweb.com/articulos/mobile-first-responsive.html)
-* [Mobile First Is NOT Mobile Only - Nielsen Norman Group](https://www.nngroup.com/articles/mobile-first-not-mobile-only/)
