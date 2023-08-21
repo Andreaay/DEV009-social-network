@@ -99,11 +99,9 @@ Las historias de usuario en Expressio Music reflejan las necesidades y aspiracio
 CREACIÓN DE PERFIL PROFESIONAL.
 
 Descripción:
-
 "Como usuario de la red social Expressio Music, deseo contar con la funcionalidad de crear un perfil profesional que represente mi trayectoria y habilidades como músico, incluyendo a productores y managers. Este perfil me permitirá presentarme de manera completa y atractiva ante otros usuarios, fortaleciendo mi presencia en la comunidad musical y facilitando conexiones y colaboraciones."
 
 Criterios de Aceptación:
-
 * Desde la página de inicio de la red social, el usuario puede acceder a la función de crear un perfil.
 * Durante la creación del perfil, el usuario puede ingresar su nombre y cargar una foto de perfil.
 * Se proporciona la opción para agregar información relevante sobre la trayectoria y habilidades del usuario como músico, como experiencia previa, géneros musicales, instrumentos dominados, entre otros.
@@ -114,20 +112,17 @@ Criterios de Aceptación:
 
 
 Beneficios:
-
 La funcionalidad de creación de perfil profesional brinda a los usuarios la oportunidad de presentar su identidad musical de manera completa y detallada. Esto fomenta la construcción de relaciones profesionales y colaborativas dentro de la comunidad musical, permitiendo que músicos, productores y managers se conecten de manera efectiva. La posibilidad de destacar la experiencia y habilidades en el perfil contribuye a un networking más sólido y a la exploración de oportunidades en el entorno musical.
 
-  ### Historia de usuario 2
+  ### Historia de usuario 2.
 
 CREAR Y COMPARTIR PUBLICACIONES PERSONALIZADAS.
 
 Descripción:
-
 "Como usuario de la red social Expressio Music, deseo contar con la capacidad de crear y compartir posts personalizados que me permitan comunicar mis ideas, experiencias o intereses con otros usuarios de la red. Esta funcionalidad me permitirá interactuar con la comunidad musical, expresar mis pensamientos y compartir contenido relevante."
 
 
 Criterios de Aceptación:
-
 * Desde la interfaz principal de la red social, el usuario puede acceder a la función de crear un nuevo post.
 * El usuario tiene la opción de ingresar contenido al post en forma de texto.
 * Los posts se almacenan y se muestran en el feed de la red social en orden cronológico inverso, presentando los posts más recientes primero.
@@ -140,20 +135,17 @@ Criterios de Aceptación:
 
 
 Beneficios:
-
 La funcionalidad de creación y compartición de posts personalizados enriquece la experiencia de usuario al permitirle expresarse de manera creativa y auténtica en la comunidad musical. Los usuarios pueden compartir sus logros, conocimientos y pensamientos con otros miembros, fomentando la interacción y la colaboración. La capacidad de interactuar con los posts a través de likes y comentarios facilita la formación de conexiones y el intercambio de ideas, promoviendo un ambiente colaborativo y participativo en la red social.
 
 
-### Historia de usuario 3
+### Historia de usuario 3.
 
 CREACIÓN Y VISUALIZACIÓN DE EVENTOS. 
 
 Descripción:
-
 "Como usuario de la red social Expressio Music, deseo contar con la opción de visualizar eventos creados por otras personas, así como crear mis propios eventos. Esta funcionalidad me permitirá explorar oportunidades de colaboración, participar en eventos de interés y promover mis propias actividades musicales."
 
 Criterios de Aceptación:
-
 * Desde la interfaz principal de la red social, el usuario puede acceder a la sección de eventos.
 * La sección de eventos presenta una lista de eventos creados por otros usuarios, incluyendo información relevante como el título, descripción, fecha y ubicación.
 * El usuario tiene la capacidad de crear un nuevo evento, ingresando detalles como el título, descripción, fecha y ubicación.
@@ -163,10 +155,39 @@ Criterios de Aceptación:
 
 
 Beneficios:
-
 La inclusión de la funcionalidad de visualización y creación de eventos en la red social brinda a los usuarios la oportunidad de estar al tanto de eventos musicales relevantes y promover sus propias actividades. Esta característica fomenta la colaboración y el contacto entre músicos, productores y otros profesionales del ámbito musical, facilitando la organización y participación en eventos. La interacción con otros usuarios interesados en los eventos a través de comentarios y mensajería contribuye a la formación de conexiones y a la creación de oportunidades en la comunidad musical.
 
-## 5. Criterios de aceptación mínimos del proyecto
+### Historia de usuari 4.
+
+REGISTRO Y ACCESO A LA RED SOCIAL CON CORREO, CONTRASEÑA Y GOOGLE.
+
+Descripción:
+
+"Como usuario interesado en unirme a la comunidad musical de Expressio Music, deseo tener la posibilidad de registrarme y acceder a la red social de dos formas: mediante el uso de mi correo electrónico y contraseña, así como a través de mi cuenta de Google. Esto me brindará flexibilidad y comodidad al momento de ingresar y utilizar la plataforma."
+
+Criterios de Aceptación:
+
+Registro con Correo y Contraseña.
+* Desde la página de inicio de la red social, el usuario puede acceder a la opción de registro.
+* Se presenta un formulario donde el usuario debe ingresar su nombre, correo electrónico y contraseña.
+* El usuario puede completar el registro al hacer clic en el botón de SIGN UP.
+* Si los datos ingresados son válidos, se crea una cuenta en la plataforma asociada al correo y contraseña proporcionados.
+  
+Acceso con Correo y Contraseña:
+* En la página de inicio de la red social, el usuario puede acceder a la opción de SIGN IN.
+* Se muestra un formulario donde el usuario debe ingresar su correo electrónico y contraseña.
+* Al hacer clic en el botón de SIGN IN, se verifica la autenticidad de los datos ingresados y se permite el acceso a la plataforma.
+  
+Acceso con Google:
+* En la página de inicio de la red social, el usuario puede acceder a la opción de inicio de sesión con Google.
+* Al hacer clic en esta opción, se redirige al usuario a la página de inicio de sesión de Google.
+* El usuario puede ingresar sus credenciales de Google y autorizar el acceso a la red social.
+* Una vez autorizado, se establece la conexión con la cuenta de Google y se permite el acceso a la plataforma.
+
+Beneficios:
+La implementación de opciones de registro y acceso mediante correo, contraseña y cuenta de Google en Expressio Music ofrece a los usuarios una experiencia flexible y versátil al interactuar con la plataforma. Esto facilita la incorporación de nuevos usuarios y les brinda la elección de un método de acceso conveniente para ellos. Además, garantiza la seguridad y protección de las cuentas de usuario al implementar procesos de autenticación confiables. La disponibilidad de múltiples opciones de acceso mejora la usabilidad y promueve la participación activa en la comunidad musical.
+
+## 5. Funcionalidades
 
 ### 5.1 Boilerplate
 
