@@ -1,9 +1,7 @@
-import { titleBox2 } from "./htmlElements";
+import { titleBox2 } from './htmlElements';
 
 export const Home = (navigateTo) => {
   const homeDiv = document.createElement('div');
-
-
 
   const welcome = document.createElement('p');
   welcome.innerHTML = 'Welcome';
@@ -25,10 +23,9 @@ export const Home = (navigateTo) => {
   });
 
   homeDiv.append(titleBox2());
-  homeDiv.append( welcome, greeting);
-  
+  homeDiv.append(welcome, greeting);
+
   homeDiv.append(buttonRegister, buttonLogin);
-  
 
   const buttonContainer = document.createElement('div');
   buttonContainer.classList.add('button-container');

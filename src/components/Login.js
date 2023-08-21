@@ -60,7 +60,7 @@ export const Login = (navigateTo) => {
   buttonBack.addEventListener('click', () => {
     navigateTo('/');
   });
-  homeDiv.append(titleBox2())
+  homeDiv.append(titleBox2());
   homeDiv.append(title, note, inputEmail, password, inputPassword, button, buttonGoogle);
   homeDiv.append(buttonBack, loginError);
   const buttonContainer = document.createElement('div');

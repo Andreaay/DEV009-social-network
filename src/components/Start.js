@@ -1,6 +1,7 @@
 import { logOutUser } from '../lib/account';
 import postRender from './PostRender';
 import { bottomMenu2, titleBox2 } from './htmlElements';
+
 export const Start = (navigateTo) => {
   const buttonLogout = document.createElement('button');
   buttonLogout.setAttribute('id', 'botoncito');

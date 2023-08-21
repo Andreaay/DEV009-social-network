@@ -39,8 +39,7 @@ export const Register = (navigateTo) => {
         // // ...
       })
       .catch((error) => {
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        const errorMessage = error.message;
+        GoogleAuthProvider.credentialFromError(error);
         loginError.innerText = 'Invalid  Accound';
       });
   });
@@ -49,12 +48,10 @@ export const Register = (navigateTo) => {
   registerUser.textContent = 'Sign Up';
   registerUser.addEventListener('click', () => {
     addUser(inputEmail.value, inputPassword.value)
-      .then((userCredential) => {
-        const { user } = userCredential;
+      .then(() => {
         navigateTo('/start');
       })
-      .catch((error) => {
-        const errorMessage = error.message;
+      .catch(() => {
         loginError.innerText = 'Password or Email invalid';
       });
   });
@@ -67,7 +64,7 @@ export const Register = (navigateTo) => {
   buttonBack.addEventListener('click', () => {
     navigateTo('/');
   });
-  homeDiv.append(titleBox2())
+  homeDiv.append(titleBox2());
   homeDiv.append(title, note, inputEmail, password, buttonGoogle);
   homeDiv.append(inputPassword, buttonBack, loginError);
 

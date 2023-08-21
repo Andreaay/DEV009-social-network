@@ -25,8 +25,8 @@ const postRender = () => {
 
       const likeButton = document.createElement('button');
       likeButton.innerHTML = '<i class="fa-solid fa-heart"></i>';
-      
-function updateLikeButtonState() {
+
+      function updateLikeButtonState() {
         if (userLikedPost(doc.id)) {
           likeButton.classList.add('liked');
         } else {
@@ -34,23 +34,21 @@ function updateLikeButtonState() {
         }
       }
       updateLikeButtonState();
-      //aqui va validacion
+      // aqui va validacion
       likeButton.addEventListener('click', () => {
         if (!userLikedPost(doc.id)) {
           likedPostsNew[doc.id] = likedPostsNew[doc.id] || [];
           likedPostsNew[doc.id].push(getCurrentUser().uid);
 
-        const newData = {
-          like: doc.data().like + 1,
-likeUser: likedPostsNew[doc.id],
-        };
-        
-          updatePost(doc.id, newData);  
-updateLikeButtonState();
+          const newData = {
+            like: doc.data().like + 1,
+            likeUser: likedPostsNew[doc.id],
+          };
+
+          updatePost(doc.id, newData);
+          updateLikeButtonState();
         }
       });
-
-
 
       const editButton = document.createElement('button');
       editButton.textContent = 'Edit';
@@ -106,14 +104,13 @@ updateLikeButtonState();
           removePost(doc.id);
         }
       });
-      
+
       postElement.appendChild(numberLikes);
       postCard.appendChild(postElement);
       postCard.appendChild(likeButton);
       postCard.appendChild(deleteButton);
       postCard.appendChild(editButton);
       div.appendChild(postCard);
-      
     });
   });
 

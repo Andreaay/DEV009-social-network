@@ -6,19 +6,16 @@ import {
 // import {
 //   doc, updateDoc, arrayUnion, arrayRemove,
 // } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { app } from './firebase.js';
+// import { getAuth } from 'firebase/auth';
+import { app } from './firebase';
 
-export const auth = getAuth(app);
+// export const auth = getAuth(app);
 export const database = getFirestore(app);
 export const q = query(collection(database, 'events'), orderBy('created_date', 'desc'));
 
 // EVENTS
 export const createEvent = async (data) => {
-  try {
-    const docRef = await addDoc(collection(database, 'events'), data);
-  } catch (e) {
-  }
+  await addDoc(collection(database, 'events'), data);
 };
 
 export async function bringEvent() {
@@ -29,11 +26,8 @@ export async function bringEvent() {
 
 // UPDATE EVENT
 export async function updateEvent(eventId, newData) {
-  try {
-    const eventRef = doc(database, 'events', eventId);
-    await updateDoc(eventRef, newData);
-  } catch (e) {
-  }
+  const eventRef = doc(database, 'events', eventId);
+  await updateDoc(eventRef, newData);
 }
 
 // REMOVE EVENT

@@ -1,5 +1,6 @@
 import { logOutUser, createProfile, getProfile } from '../lib/account';
 import { bottomMenu2, titleBox2 } from './htmlElements';
+
 export const Profile = (navigateTo) => {
   const homeDiv = document.createElement('div');
   function createInputs() {
@@ -38,6 +39,7 @@ export const Profile = (navigateTo) => {
       const dataFromProfile = (getProfile());
       // console.log(dataFromProfile);
       nameProfile.textContent = `Welcome ${dataFromProfile[0]}`;
+      // eslint-disable-next-line prefer-destructuring
       photoProfile.src = dataFromProfile[2];
     });
     profilesDiv.append(getProfileButton);

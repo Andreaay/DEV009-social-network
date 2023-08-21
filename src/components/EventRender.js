@@ -11,7 +11,6 @@ const eventRender = () => {
   onSnapshot(q, (querySnapshot) => {
     document.querySelector('.tiemporeal').innerHTML = '';
     querySnapshot.forEach((ev) => {
-
       const elementCard = document.createElement('div');
       elementCard.classList = 'elementCard';
 
@@ -19,7 +18,7 @@ const eventRender = () => {
       postElement.textContent = ev.data().post;
 
       const editButton = document.createElement('button');
-      editButton.id = 'editbuttonid' 
+      editButton.id = 'editbuttonid';
       editButton.textContent = 'Edit';
       editButton.addEventListener('click', () => {
         function createEditPopup(initialValue) {
@@ -70,7 +69,7 @@ const eventRender = () => {
 
       const deleteButton = document.createElement('button');
       deleteButton.textContent = 'Delete';
-      deleteButton.addEventListener('click', () => { 
+      deleteButton.addEventListener('click', () => {
         if (ev.id) {
           removeEvent(ev.id);
         }
@@ -80,7 +79,7 @@ const eventRender = () => {
       elementCard.appendChild(deleteButton);
       elementCard.appendChild(editButton);
       div.appendChild(elementCard);
-/*       div.appendChild(postElement);
+      /* div.appendChild(postElement);
       div.appendChild(deleteButton);
       div.appendChild(editButton);
       div.appendChild(elementCard); */
