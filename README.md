@@ -17,7 +17,7 @@ Expressio Music es el lugar donde los amantes de la música pueden unirse para c
 
 ![adem-ay-Tk9m_HP4rgQ-unsplash](https://github.com/Andreaay/DEV009-social-network/blob/c849153174861d15a6b17f92b0ad1c38b157d77c/EXPRESSIO.jpg)
 
-🎶 Perfil Musical en Destaque: Construye tu perfil musical personalizado donde puedes destacar tus habilidades, experiencia laboral y logros en la industria. Comparte tu viaje musical y conecta con otros músicos que comparten tus intereses y metas.
+🎶 Perfil Musical: Construye tu perfil musical personalizado donde puedes destacar tus habilidades, experiencia laboral y logros en la industria. Comparte tu viaje musical y conecta con otros músicos que comparten tus intereses y metas.
 
 🎵 Publica tus Pensamientos Musicales: Expresa tus pensamientos, ideas y descubrimientos musicales a través de publicaciones creativas. Comparte tus últimas composiciones, momentos inspiradores o desafíos musicales que estás superando.
 
