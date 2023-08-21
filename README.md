@@ -17,7 +17,7 @@ Bienvenido a Expressio Music: La Comunidad en Línea para Músicos y Amantes de 
 
 Expressio Music es el lugar donde los amantes de la música pueden unirse para compartir sus talentos, conexiones y pasión por la música. Ofrecemos una plataforma única que reúne a músicos de todos los géneros y niveles de experiencia. Si amas la música y buscas una comunidad vibrante para conectar, crear y colaborar, ¡estás en el lugar correcto!
 
-![adem-ay-Tk9m_HP4rgQ-unsplash](https://user-images.githubusercontent.com/110297/135544666-4efa54f1-4ff6-4c4c-b398-6df04ef56117.jpg)
+![adem-ay-Tk9m_HP4rgQ-unsplash](https://github.com/Andreaay/DEV009-social-network/blob/c849153174861d15a6b17f92b0ad1c38b157d77c/EXPRESSIO.jpg)
 
 🎶 Perfil Musical en Destaque: Construye tu perfil musical personalizado donde puedes destacar tus habilidades, experiencia laboral y logros en la industria. Comparte tu viaje musical y conecta con otros músicos que comparten tus intereses y metas.
 
