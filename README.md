@@ -1,9 +1,9 @@
-# Creando una Red Social
+# Expressio Music
 
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
-* [2. Resumen del proyecto](#2-resumen-del-proyecto)
+* [2. Objetivos del proyecto](#2-objetivos-del-proyecto)
 * [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)
 * [4. Consideraciones generales](#4-consideraciones-generales)
 * [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
@@ -13,18 +13,25 @@
 
 ## 1. Preámbulo
 
-Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, etc. Las redes
-sociales han invadido nuestras vidas. Las amamos u odiamos, y muchos no podemos
-vivir sin ellas.
+Bienvenido a Expressio Music: La Comunidad en Línea para Músicos y Amantes de la Música
+
+Expressio Music es el lugar donde los amantes de la música pueden unirse para compartir sus talentos, conexiones y pasión por la música. Ofrecemos una plataforma única que reúne a músicos de todos los géneros y niveles de experiencia. Si amas la música y buscas una comunidad vibrante para conectar, crear y colaborar, ¡estás en el lugar correcto!
 
 ![adem-ay-Tk9m_HP4rgQ-unsplash](https://user-images.githubusercontent.com/110297/135544666-4efa54f1-4ff6-4c4c-b398-6df04ef56117.jpg)
 
-Hay redes sociales de todo tipo y para todo tipo de intereses. Por ejemplo,
-en una ronda de financiamiento con inversionistas, se presentó una red social
-para químicos en la que los usuarios podían publicar artículos sobre sus
-investigaciones, comentar en los artículos de sus colegas, y filtrar artículos
-de acuerdo a determinadas etiquetas o su popularidad, lo más reciente, o lo
-más comentado.
+🎶 Perfil Musical en Destaque: Construye tu perfil musical personalizado donde puedes destacar tus habilidades, experiencia laboral y logros en la industria. Comparte tu viaje musical y conecta con otros músicos que comparten tus intereses y metas.
+
+🎵 Publica tus Pensamientos Musicales: Expresa tus pensamientos, ideas y descubrimientos musicales a través de publicaciones creativas. Comparte tus últimas composiciones, momentos inspiradores o desafíos musicales que estás superando.
+
+🎸 Conéctate a través de Eventos Musicales: Descubre y crea eventos musicales que unen a músicos de diferentes géneros y habilidades. Ya sea que necesites un bajista para tu banda o quieras formar un grupo para tocar en un evento, Expressio Music te conecta con personas que comparten tu entusiasmo por la música en vivo.
+
+🤝 Construye Colaboraciones Musicales: Encuentra colaboradores para proyectos musicales emocionantes. Busca músicos con talentos complementarios y comienza a trabajar juntos en nuevas composiciones, grabaciones o actuaciones en vivo.
+
+🎤 Amplía tu Red Musical: Explora grupos y comunidades dedicadas a diferentes géneros musicales. Conoce músicos con influencias similares y amplía tu red musical para futuras colaboraciones y amistades duraderas.
+
+🎉 Eventos Únicos y Experiencias Musicales: Mantente al tanto de eventos exclusivos, talleres y oportunidades para mejorar tus habilidades y conocimientos musicales. Aprovecha la plataforma para aprender de expertos y maestros en la industria.
+
+Expressio Music es más que una red social: es un espacio donde la música cobra vida y donde los músicos pueden unirse, compartir y crecer juntos. Únete a nuestra comunidad apasionada y sumérgete en un mundo de notas y acordes que te inspirarán a alcanzar nuevas alturas en tu viaje musical. ¡Exprésate a través de la música en Expressio Music!
 
 ## 2. Resumen del proyecto
 
