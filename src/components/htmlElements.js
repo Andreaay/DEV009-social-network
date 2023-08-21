@@ -13,16 +13,19 @@ export function titleBox2() {
   const toggleMenu = () => {
     const currentPrimaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
     console.log(currentPrimaryColor);
-    if (currentPrimaryColor === 'rgb(130, 32, 75)') {
-      document.documentElement.style.setProperty('--primary-color', 'rgb(#e1e1e1)');
-      document.documentElement.style.setProperty('--primary-accent','rgb(186, 186, 186');
-      document.documentElement.style.setProperty('--secondary-color', 'rgb(#BB3F3F)');
-      document.documentElement.style.setProperty('--secondary-accent','rgb(#CB7723)');
-    } else {
-      document.documentElement.style.setProperty('--primary-color', 'rgb(130, 32, 75)'); // si cambias este color encesitas cambiar el del if
+    if (currentPrimaryColor === 'rgb(30, 32, 35)') {
+      document.documentElement.style.setProperty('--primary-color', 'rgb(255, 255, 255)');
       document.documentElement.style.setProperty('--primary-accent','rgb(190, 90, 90');
+      document.documentElement.style.setProperty('--secondary-color', 'rgb(#BB3F3F)');
+      document.documentElement.style.setProperty('--secondary-accent','rgb(242, 232, 237)');
+      document.documentElement.style.setProperty('--cardsColor','rgb(255, 255, 255)');
+    } else {
+      document.documentElement.style.setProperty('--primary-color', 'rgb(30, 32, 35)'); // si cambias este color encesitas cambiar el del if
+      document.documentElement.style.setProperty('--primary-accent','rgb(106, 20, 40)');
       document.documentElement.style.setProperty('--secondary-color', 'rgb(242, 232, 237)');
-      document.documentElement.style.setProperty('--secondary-accent','rgb(74, 0, 0)');
+      document.documentElement.style.setProperty('--secondary-accent','rgb(212, 121, 121)');
+      document.documentElement.style.setProperty('--cardsColor','rgb(145, 52, 52)');
+        //145, 52, 52
     }
 
 
