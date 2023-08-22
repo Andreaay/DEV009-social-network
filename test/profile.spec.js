@@ -12,7 +12,6 @@ import * as account from '../src/lib/account';
 // eslint-disable-next-line import/no-cycle
 import { Profile } from '../src/components/Profile';
 
-
 beforeEach(() => {
   const homeDiv = Profile();
   document.body.replaceChildren(homeDiv);
@@ -28,12 +27,12 @@ test('Clicking the button redirects if the promise is correct', () => {
   expect(account.createProfile).toHaveBeenCalled();
 });
 test('Button created correctly', () => {
-    const getProfileButton = document.querySelector('button');
-    expect(getProfileButton).toBeTruthy();
+  const getProfileButton = document.querySelector('button');
+  expect(getProfileButton).toBeTruthy();
 });
 test('Clicking the button redirects if the promise is correct', () => {
-    jest.spyOn(account, 'getProfile').mockImplementation(() => jest.fn());
-    const getProfileButton = document.querySelector('#getProfileButton');
-    getProfileButton.click();
-    expect(account.getProfile).toHaveBeenCalled();
+  jest.spyOn(account, 'getProfile').mockImplementation(() => jest.fn());
+  const getProfileButton = document.querySelector('#getProfileButton');
+  getProfileButton.click();
+  expect(account.getProfile).toHaveBeenCalled();
 });

@@ -15,7 +15,6 @@ import * as post from '../src/lib/post';
 import { Newpost } from '../src/components/Newpost';
 
 describe('Newpost', () => {
-  
   let bringPostSpy;
   beforeEach(() => {
     document.body.innerHTML = '';
@@ -36,14 +35,3 @@ describe('Newpost', () => {
     expect(bringPostSpy).toHaveBeenCalled();
   });
 });
-
-
-
-
-
-
-
-
-
-
-

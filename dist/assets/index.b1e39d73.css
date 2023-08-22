@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+:root {
+  --primary-color: rgb(#e1e1e1);
+  --primary-accent: rgb(186, 186, 186);
+  --secondary-color: rgb(#bb3f3f);
+  --secondary-accent: rgb(#CB7723);
+}
+body {
+  background:  var(--primary-color);
+  color: var(--secondary-color);
+  font-family: 'Libre Baskerville', serif;
+  padding-top: 90px;
+}
+button {
+  border: none;
+  margin: 0;
+  width: auto;
+  background:  var(--primary-color);
+  color: var(--secondary-color);
+  width: 13rem;
+  text-align: center;
+  padding: .7em 0;
+  font-size: 1.0em;
+  font-weight: 600;
+  /* negrita*/
+  text-transform: uppercase;
+  /* mayusculas*/
+}
+button:hover {
+  border-bottom: 4px solid;
+  border-bottom-color:var(--secondary-accent);
+  background-color: var(--primary-accent);
+}
+.title-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  padding: 0 10px;
+  justify-content : space-between;
+  background-color: var(--primary-accent);
+  flex-direction: row;
+  font-size: .8rem;
+}
+.title-container button {
+  margin: 0;
+  padding: 0;
+  width: 4rem;
+  padding-right: 5rem;
+  font-size: 2rem;
+  background-color: var(--primary-accent);
+}
+.bottom-menu button{
+  background-color: var(--primary-accent);
+}
+.bottom-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5em 0;
+  /* transition: 1s; */
+  border: none;
+  flex-direction: row;
+  border: none;
+  background-color: var(--primary-accent);
+}
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.postCard {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  margin: 20px;
+}
+.postCard p {
+  grid-row: 1;
+  margin: 0;
+}
+.postCard span,
+.postCard button:first-child {
+  grid-row: 2;
+}
+.postCard button:nth-child(2),
+.postCard button:nth-child(3) {
+  grid-row: 3;
+}
+.elementCard{
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  margin: 20px 10px;
+  padding: 10px;
+  width: 80%;
+}
+/* ESTILOS PARA PANTALLA GRANDE */
+@media (max-width: 768px) {
+  .bottom-menu {
+    flex-direction: row;
+    bottom: 0;
+    border: none;
+    width: 100%;
+  }
+}
+@media (min-width: 769px) {
+  .bottom-menu {
+    flex-direction: row;
+    border: none;
+    position: static;
+  }
+  div.postReal{
+    margin: 4rem 4rem;
+  }
+}
+textarea{
+  margin: 1rem;
+  padding: 5rem;
+  border: 3px solid #0E0613;
+}
+#profilNameInput{
+  margin: .5rem;
+  padding: 2rem;
+  border: 3px solid #0E0613;
+}
